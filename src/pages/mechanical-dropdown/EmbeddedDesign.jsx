@@ -42,7 +42,7 @@ const EmbeddedDesign = () => {
               <h2 className="text-2xl font-bold text-blue-900 mb-4">
                 Embedded Design
               </h2>
-              <p className="text-lg text-gray-800 mb-6 leading-relaxed">
+              <p className="text-lg text-gray-800 mb-6 leading-relaxed text-justify">
                 The controller system design, responsible for embedding hardware
                 and software design. The embedded design plays an essential role
                 in the computer system. The term embed defines as ‘fix something

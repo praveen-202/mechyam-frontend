@@ -44,7 +44,7 @@ const StructuralEngineering = () => {
           <div className="flex flex-col md:flex-row items-start gap-8">
             <div className="w-full md:w-1/2 text-left">
             <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">Structural Engineering Sevices</h2>
-              <p className="text-lg text-gray-800 mb-4">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                 Steel Detailing services from Mechyam use the state-of-the-art
                 technical tools and solutions. Our services are tailored to our
                 customers' needs in an efficient and transparent manner. The
@@ -53,7 +53,7 @@ const StructuralEngineering = () => {
                 personnel to deliver optimum solutions to customers in a closed
                 loop style.
               </p>
-              <p className="text-lg text-gray-800 mb-4">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                 Driven by a passion to build a better tomorrow, we strive to go
                 above and beyond customer expectations. With emphasis on
                 research and focus on quality, we offer highly innovative steel

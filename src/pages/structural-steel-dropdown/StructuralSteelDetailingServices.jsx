@@ -41,10 +41,10 @@ const StructuralSteelDetailingServices = () => (
             <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
               Structural Steel Detailing Services
             </h2>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               Structural steel detailing involves creating detailed drawings and plans for all manufacturing and construction activities like erection of buildings, shipbuilding etc. It is a critical process that requires 99.99% accuracy. Even a tiny error can lead to a loss of valuable time and money.
             </p>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               At Mechyam, we offer steel detailing and allied engineering services to clients worldwide using state of the art technical tools. We offer client specific Detailing Automation Services, which is customized and tailor made to exactly meet with the customer requirements. Our steel detailing services help the client simplify their project coordination, improve delivery schedules, and increase overall project quality. Building a strong, long-term relationship with our clients; consisting of General Contractors, Fabricators, Consulting firms, Architects, Professional Engineering firms, etc. is key to our success.
             </p>
           </div>

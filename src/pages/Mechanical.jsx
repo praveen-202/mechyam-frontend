@@ -40,10 +40,10 @@ const Mechanical = () => (
           <h2 className="text-2xl font-bold mb-4">
             Mechnical
           </h2>
-          <p className="text-lg text-gray-800 mb-4">
+          <p className="text-lg text-gray-800 mb-4 text-justify">
            Mechyam offers a range of outsourced engineering services that are tailored to suit the specific needs of companies operating in diverse industries. Our pragmatic approach to problem solving, proven offshore delivery model and global presence that ensures close proximity to our customers make us the preferred engineering services partner for clients across the world. Be it designing new products or solving complex engineering challenges, our multi-disciplinary team works closely with you to engineer solutions for a wide range of business requirements.
           </p>
-          <p className="text-lg text-gray-800 mb-4">
+          <p className="text-lg text-gray-800 mb-4 text-justify">
             As a provider of highly customer-centric consulting, engineering services, we offer you a seamless one-stop experience alongside high quality and timely delivery.
           </p>
         </div>

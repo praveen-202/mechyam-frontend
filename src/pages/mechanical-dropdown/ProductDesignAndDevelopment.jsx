@@ -43,11 +43,11 @@ const ProductDesignAndDevelopment = () => {
             <div className="w-full md:w-1/2 text-left">
             <h2 className="text-2xl font-bold text-navyblue mb-4">Product Design And Development</h2>
             <section className="w-full py-4 text-center bg-gray-50">
-         <h2 className="text-l font-bold mb-4 text-blue-900">
+         <h2 className="text-l font-bold mb-4 text-blue-900 text-justify">
           Product Design Services for Reduced Design Cycles, Faster Time-To-Market & higher ROI
         </h2>
       </section>
-              <p className="text-lg text-gray-800 mb-4">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                Staying competitive in today’s marketplace increasingly requires Reduced Design Cycles, Faster Time-To-Market, Lower Costs and Ultimately Higher ROI on Product Development Investments. At Mechyam, our product design services, including custom product design services, industrial product design services, and product development consulting, help global companies achieve their goals with innovative solutions.
               </p>
 
@@ -56,7 +56,7 @@ const ProductDesignAndDevelopment = () => {
           Our aim is to transform your ideas into reality
         </h2>
       </section>
-              <p className="text-lg text-gray-800 mb-4">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                Our Design team places great importance on client inputs. With a fully transparent design and development process, we work closely with our clients at every step.
 
 We help you to validate your concept and turn it into real, market-ready products. Our design approach focuses equally on aesthetics and functionality, ensuring your product looks great but also performs better.
@@ -66,7 +66,7 @@ We help you to validate your concept and turn it into real, market-ready product
           Product Design & Development - Mechyam Technical Services
         </h2>
         </section>
-        <p className="text-lg text-gray-800 mb-4">
+        <p className="text-lg text-gray-800 mb-4 text-justify">
                Our Design team places great importance on client inputs. With a fully transparent design and development process, we work closely with our clients at every step.
 
 We help you to validate your concept and turn it into real, market-ready products. Our design approach focuses equally on aesthetics and functionality, ensuring your product looks great but also performs better.

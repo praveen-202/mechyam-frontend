@@ -46,7 +46,7 @@ const Projects = () => (
       <div className="container mx-auto px-4">
         <div className="w-full text-left">
           <h2 className="text-2xl font-bold text-blue-900 mb-4">Projects</h2>
-          <p className="text-lg text-gray-800 mb-10">
+          <p className="text-lg text-gray-800 mb-10 text-justify">
             As a dedicated engineering consultancy, we have deep knowledge and
             experience on working all types of projects. Our projects ranged
             from small to large, simple to complex. All our projects were well

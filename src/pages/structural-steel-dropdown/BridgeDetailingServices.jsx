@@ -30,9 +30,9 @@ const BridgeDetailingServices = () => (
         <div className="flex flex-col md:flex-row items-start gap-8">
           <div className="w-full md:w-1/2 text-left">
           <h2 className="text-2xl font-bold mb-4 bg-gray-200  rounded">Bridge Detailing Services</h2>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               Mechyam Inc. is a Customer Centric and Consistent Performance organization Providing Detailing Services for Any Bridge Type throughout the United States and Canada. Mechyam Inc is a large and reputable 3D Modeling, Detailing, and Pre-Construction services provider. Our production team includes dedicated bridge squads working on bridges to make your bridge project a success. Teams at Mechyam are highly skilled and process oriented which enhances our ability further to deliver what is expected from our end.</p>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               Mechyam has worked from new Pedestrian/Foot bridges, to a simple single span beam bridge to geometrically complex multi span Plate Girder bridges with Camber, Skew and Curve (Horizontal/Vertical) on plan. Rail Road, Road Over, Beam Bridges, Truss Bridges, Tied Arch, Cable Stayed Bridge to repair work (Retrofit) on large bridges, are different category of bridges Mechyam have worked on.
             </p>
           </div>

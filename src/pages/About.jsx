@@ -42,11 +42,11 @@ const About = () => (
             <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
               About Us
             </h2>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               At<span className="font-semibold"> MECHYAM AI DESIGN SOLUTIONS (MADS),</span> we bring structure to complexity - engineering systems that rise
               with clarity, resilience, and purpose.
             </p>
-            <p className="text-lg text-gray-800 mb-4 ">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               Founded in 2025, <span className="font-semibold">MECHYAM</span> is a lean and agile firm powered by a leadership team with over 15 years of industry
               experience in mechanical design, structural analysis, and data-driven engineering. While we are young as a company, our
               roots run deep - built on integrity, technical mastery, and a shared belief that great design begins with understanding, not
@@ -54,19 +54,19 @@ const About = () => (
 
             </p>
 
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               <span className="block font-semibold mb-1 text-color-blue-900 bg-gray-200 px-3 py-2 rounded">Our name reflects our philosophy:</span>
               
-              “Mech” for the mechanical core of what we do.
-              “Yam” for the sea - symbolizing the depth, uncertainty, and potential of the engineering challenges we take on.
+              <span className="font-semibold">“Mech”</span> for the mechanical core of what we do.
+              <span className="font-semibold">“Yam”</span> for the sea - symbolizing the depth, uncertainty, and potential of the engineering challenges we take on.
             </p>
 
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               From concept development and CAD modelling to structural validation and AI-powered measurement analysis, we
               partner with clients to build systems that last- solutions that are as thoughtful as they are robust.
             </p>
 
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               We don’t just engineer products.<br />
               We engineer confidence.
             </p>
