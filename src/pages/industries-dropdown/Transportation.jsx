@@ -42,13 +42,13 @@ const Transportation = () => (
           <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
             Transportation/Rail Industry
           </h2>
-          <p className="text-lg text-gray-800 mb-4">
+          <p className="text-lg text-gray-800 mb-4 text-justify">
            We at Mechyam cater to the Rail industry providing them with a range of transportation engineering services and solutions.
           </p>
-          <p className="text-lg text-gray-800 mb-4">
+          <p className="text-lg text-gray-800 mb-4 text-justify">
             The Transportation industry is constantly faced with the challenge bringing new rails to the market. They need solutions to help manage the lifecycle of trains. They require cost effective, quality solutions to meet with market demands.
           </p>
-          <p className="text-lg text-gray-800 mb-4">DGS is a partner of choice to the rail industry, offering all them all Rail Engineering Services and Solutions.</p>
+          <p className="text-lg text-gray-800 mb-4 text-justify">Mechyam is a partner of choice to the rail industry, offering all them all Rail Engineering Services and Solutions.</p>
         </div>
         <div className="w-full md:w-1/2 flex items-center justify-center">
           <img
@@ -62,7 +62,7 @@ const Transportation = () => (
   </section>
   {/* Heading Section */}
       <section className="w-full text-left px-40 bg-gray-50">
-        <p className="text-lg  font-bold text-blue-900 mb-2">
+        <p className="text-lg  font-bold text-blue-900 ">
          <div>
           Engineering Services Offered:
           </div>

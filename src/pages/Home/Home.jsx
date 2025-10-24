@@ -45,31 +45,32 @@ const Home = () => {
           🏠 HERO SECTION
       ============================== */}
       <section
-        id="home"
-        className="relative w-full h-[80vh] md:h-screen overflow-hidden"
-      >
-        <img
-          src={MechymaImage}
-          alt="MECHYAM"
-          loading="eager"
-          decoding="async"
-          className="w-full h-full object-cover brightness-95 contrast-110"
-        />
-        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
-            MECHYAM AI DESIGN SOLUTIONS
-          </h1>
-          <p className="text-white max-w-2xl text-lg md:text-xl mb-6">
-            Engineering precision meets AI innovation
-          </p>
-          <Link
-            to="/about"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition"
-          >
-            Learn More
-          </Link>
-        </div>
-      </section>
+  id="home"
+  className="relative w-full h-screen overflow-hidden"
+>
+  <img
+    src={MechymaImage}
+    alt="MECHYAM"
+    loading="eager"
+    decoding="async"
+    className="absolute top-0 left-0 w-full h-full object-cover object-center"
+  />
+  <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
+      MECHYAM AI DESIGN SOLUTIONS
+    </h1>
+    <p className="text-white max-w-2xl text-lg md:text-xl mb-6">
+      Engineering precision meets AI innovation
+    </p>
+    <Link
+      to="/about"
+      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition"
+    >
+      Learn More
+    </Link>
+  </div>
+</section>
+
 
       {/* ==============================
           ⚙ OUR SERVICES
@@ -80,8 +81,8 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               OUR SERVICES
             </h2>
-            <p className="text-gray-600 max-w-2xl  md:text-3xl mx-auto text-sm md:text-base">
-              At MECHYAM AI DESIGN SOLUTIONS (MADS), we specialize in delivering
+            <p className="text-gray-600 max-w-2xl  md:text-3xl mx-auto text-sm md:text-base text-justify">
+              At <span className="font-semibold">MECHYAM AI DESIGN SOLUTIONS (MADS)</span>, we specialize in delivering
               precise, scalable, and forward-thinking engineering solutions. As
               a young company with a seasoned leadership team boasting over 15
               years of deep industry expertise, we blend agility with experience
@@ -146,7 +147,7 @@ const Home = () => {
 
             <div className="mb-6">
               <h3 className="text-2xl font-semibold mb-2">Vision</h3>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-justify">
                 To shape engineering solutions that rise from complexity with
                 clarity—anchored in integrity, guided by purpose, and built to
                 last. We aim to bring structure and insight to what was once
@@ -156,7 +157,7 @@ const Home = () => {
 
             <div>
               <h3 className="text-2xl font-semibold mb-2">Mission</h3>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-justify">
                 To serve as skilled stewards of design—transforming raw
                 potential into systems of strength, precision, and meaning.
                 Through thoughtful engineering and principled collaboration, we

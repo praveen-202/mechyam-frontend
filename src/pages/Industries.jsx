@@ -33,7 +33,7 @@ const Industries = () => (
           <div>
             <h1 className="text-6xl font-extrabold text-black">01</h1>
             <h2 className="text-xl font-bold text-blue-900 mb-2">Contracting</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-4 text-justify">
               Our clients are building professionals of all kinds that perform private and public work...
             </p>
             <Link to="/contracting" className="text-blue-700 font-semibold hover:underline">
@@ -45,7 +45,7 @@ const Industries = () => (
           <div>
             <h1 className="text-6xl font-extrabold text-black">02</h1>
             <h2 className="text-xl font-bold text-blue-900 mb-2">Transportation / Rail Industry</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-4 text-justify">
               We at Mechyam cater to the Rail industry providing a range of transportation engineering services...
             </p>
             <Link to="/transportation" className="text-blue-700 font-semibold hover:underline">
@@ -57,7 +57,7 @@ const Industries = () => (
           <div>
             <h1 className="text-6xl font-extrabold text-black">03</h1>
             <h2 className="text-xl font-bold text-blue-900 mb-2">Oil & Gas</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-4 text-justify">
               Mechyam provides engineering services to oil and gas companies globally...
             </p>
             <Link to="/oil-gas" className="text-blue-700 font-semibold hover:underline">
@@ -69,7 +69,7 @@ const Industries = () => (
           <div>
             <h1 className="text-6xl font-extrabold text-black">04</h1>
             <h2 className="text-xl font-bold text-blue-900 mb-2">Energy</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 mb-4 text-justify">
               The energy industry has 2 components, one for oil & gas and another for alternate energy...
             </p>
             <Link to="/energy" className="text-blue-700 font-semibold hover:underline">

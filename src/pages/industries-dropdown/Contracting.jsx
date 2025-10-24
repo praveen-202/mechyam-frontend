@@ -42,13 +42,13 @@ const Contracting = () => (
           <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
             Contracting
           </h2>
-          <p className="text-lg text-gray-800 mb-4">
+          <p className="text-lg text-gray-800 mb-4 text-justify">
            These services include turnkey projects, new construction, interior fit-outs, site improvements and renovations. On occasion, a general contractor even takes over a project that’s already underway. It includes taking up a project from conception to completion, handing it in its entirety from the ground up. These turnkey projects are increasingly popular in new construction. We deliver certain renovations on a turnkey basis.
           </p>
-          <p className="text-lg text-gray-800 mb-4">
+          <p className="text-lg text-gray-800 mb-4 text-justify">
             Our award winning visualisation, animation and virtual reality team help people to experience assets before they are built. Tools such as fly-through, 3D immersive experiences and animations allow the client, end user and the public to understand the space and make certain schemes are fit for purpose.
           </p>
-          <p className="text-lg text-gray-800 mb-4">Our vision is to be recognized as one of USA,s leading sustainable and innovative construction businesses.</p>
+          <p className="text-lg text-gray-800 mb-4 text-justify">Our vision is to be recognized as one of USA,s leading sustainable and innovative construction businesses.</p>
         </div>
         <div className="w-full md:w-1/2 flex items-center justify-center">
           <img
@@ -62,7 +62,7 @@ const Contracting = () => (
   </section>
   {/* Heading Section */}
       <section className="w-full text-center bg-gray-50">
-        <p className="text-lg text-gray-800 mb-2">
+        <p className="text-lg text-gray-800  p-5 text-justify">
          <div>
           We have great experience in the turn key contracting and complete solutions of commercial buildings such as warehouses, show rooms, offices …etc. including all activities to deliver your project up to completion from the authorities such as follow;
           </div>

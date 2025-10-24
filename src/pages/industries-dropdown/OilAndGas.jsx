@@ -45,16 +45,16 @@ const OilAndGas = () => (
             <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
               Oil & Gas
             </h2>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               Mechyam provides a wide range of engineering services to oil and gas companies globally. We empower oil & gas conglomerates with their upstream, downstream, and mid-stream OEMs operating both onshore as well as offshore to achieve objectives of maximizing revenues and ensuring sustainability through a range of engineering services.
             </p>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               The oil and gas industry face challenges with steadily depleting resources and risky exploration processes. Downstream refineries are under constant pressure to increase output at lower costs, and mid-stream companies are grappling with the geographical spread of their assets.
             </p>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               People who work in these demanding and sometimes inhospitable conditions need to be equipped with safer processes to reduce operational risks. Added to this is the need to constantly assess the environmental impact of the company’s operations.
             </p>
-            <p className="text-lg text-gray-800 mb-2">
+            <p className="text-lg text-gray-800 mb-2 text-justify">
               We have great experience in the turnkey contracting and complete solutions of commercial buildings such as warehouses, showrooms, offices, etc., including all activities to deliver your project up to completion from the authorities such as follow:
             </p>
           </div>
@@ -89,7 +89,7 @@ const OilAndGas = () => (
               <h3 className="text-xl font-semibold text-blue-800 mb-3">
                 Pre-bid Engineering Services
               </h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-gray-700 text-sm text-justify">
                 Comprehensive estimation, proposal support, and feasibility
                 studies for oil & gas projects.
               </p>
@@ -131,7 +131,7 @@ const OilAndGas = () => (
               <h3 className="text-xl font-semibold text-blue-800 mb-3">
                 Project Management
               </h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-gray-700 text-sm text-justify">
                 Effective coordination, scheduling, cost control, and project
                 delivery management for all engineering phases.
               </p>
