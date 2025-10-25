@@ -43,7 +43,7 @@ const MechnicalEngineeringRandD = () => (
           <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
            Mechanical Engineering R&D
           </h2>
-          <p className="text-lg text-gray-800 mb-4">
+          <p className="text-lg text-gray-800 mb-4 text-justify">
           At Mechyam, we have a team to work concurrently and provide solutions for R & D with product development. That said, we could provide solutions for Benchmarking new product and development. We have offered services in the domains pertaining to the Food Industry, Rail Domain, General Engineering and Industrial Engineering. With cutting edge software integrated into the PDM/PLM we could offer best solutions related to the product R &D.
           </p>
           

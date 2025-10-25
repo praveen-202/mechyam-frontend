@@ -40,7 +40,7 @@ const SteelStructure = () => (
         <div className="flex flex-col md:flex-row items-start gap-8">
           <div className="w-full md:w-1/2 text-left">
             <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">Structural Steel</h2>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               Steel Detailing services from Mechyam use the state of the art
               technical tools and solutions. Our services are tailored to our
               customers needs in an efficient and transparent manner. Majority
@@ -51,7 +51,7 @@ const SteelStructure = () => (
               coordination, improve delivery schedules, and increase overall
               project quality.
             </p>
-            <p className="text-lg text-gray-800 mb-4">
+            <p className="text-lg text-gray-800 mb-4 text-justify">
               Driven by a passion to build a better tomorrow, we strive to go
               above and beyond customer expectations. With emphasis on research,
               and focus on quality we offer highly innovative Steel detailing
@@ -107,7 +107,7 @@ const SteelStructure = () => (
             <h3 className="text-xl font-bold mt-2">
               Structural Engineering Services
             </h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-2 text-justify">
               Structural Engineering is all about providing the framework for
               structures and designing those structures to withstand the
               environment and remain safe, stable, and secure.
@@ -125,7 +125,7 @@ const SteelStructure = () => (
             <h3 className="text-xl font-bold mt-2">
               Structural Steel Detailing Services
             </h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-2 text-justify">
               Structural steel detailing involves creating detailed drawings
               and plans for all manufacturing and construction activities like
               erection of buildings, shipbuilding, etc.
@@ -141,7 +141,7 @@ const SteelStructure = () => (
           <div className="bg-white p-6 rounded-lg shadow">
             <span className="text-sm font-semibold text-indigo-600">03</span>
             <h3 className="text-xl font-bold mt-2">Bridge Detailing Services</h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-2 text-justify">
               Beyond 3D PMI Definition, SOLIDWORKS MBD helps organize CAD data
               into clean and structured 3D presentations with different views
               and display settings.

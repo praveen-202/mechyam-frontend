@@ -40,10 +40,10 @@ const ComputerAidedEngineering = () => {
           <div className="flex flex-col md:flex-row items-start gap-8">
             <div className="w-full md:w-1/2 text-left">
             <h2 className="text-2xl font-bold  text-blue-900 mb-4">Computer Aided Engineering (CAE) Service</h2>
-              <p className="text-lg text-gray-800 mb-4">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                 Mechyam has distinguished itself as one of the leading engineering consulting organization with FEA and CFD experts to help you get to the root of most challenging engineering problems. Our Engineering teams act as an extension of our Customers’ teams – responsible for delivering results on time and every time. We extend the capabilities of your engineering teams through unmatched global delivery excellence.
               </p>
-              <p className="text-lg text-gray-800 mb-4">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                 At Mechyam, Finite Element Analysis is charged with precise calculations, accurate models and resourceful evaluation modes in the transportation, industrial, foodservice, semiconductor industries. We collaborate with design engineers to evaluate product design right from early design stages and minimize prototyping trials. Our FEA specialists provide key insights on the product behavior and constraints that lead to possible pre-mature failure. Additionally, we deliver design optimization solutions for existing products and help reduce resource utilization while keeping product designs efficient and work on below areas of CAE activities.
               </p>
             </div>

@@ -186,7 +186,7 @@ const Home = () => {
 
             <div className="mb-6">
               <h3 className="text-2xl font-semibold mb-2">Vision</h3>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-justify">
                 To shape engineering solutions that rise from complexity with
                 clarity—anchored in integrity, guided by purpose, and built to
                 last. We aim to bring structure and insight to what was once
@@ -196,7 +196,7 @@ const Home = () => {
 
             <div>
               <h3 className="text-2xl font-semibold mb-2">Mission</h3>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-justify">
                 To serve as skilled stewards of design—transforming raw
                 potential into systems of strength, precision, and meaning.
                 Through thoughtful engineering and principled collaboration, we
