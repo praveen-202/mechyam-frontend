@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"; // ✨ Added Framer Motion
 
 // 🖼 Import the new hero image
 import MechymaImage from "../../assets/Mechyam.jpg";
@@ -40,7 +41,12 @@ const services = [
 
 const Home = () => {
   return (
-    <div className="w-full overflow-hidden font-sans">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="w-full overflow-hidden font-sans"
+    >
       {/* ==============================
           🏠 HERO SECTION
       ============================== */}
@@ -56,18 +62,36 @@ const Home = () => {
           className="w-full h-full object-cover brightness-95 contrast-110"
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
-            MECHYAM AI DESIGN SOLUTIONS
-          </h1>
-          <p className="text-white max-w-2xl text-lg md:text-xl mb-6">
-            Engineering precision meets AI innovation
-          </p>
-          <Link
-            to="/about"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition"
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg"
           >
-            Learn More
-          </Link>
+            MECHYAM AI DESIGN SOLUTIONS
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="text-white max-w-2xl text-lg md:text-xl mb-6"
+          >
+            Engineering precision meets AI innovation
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            <Link
+              to="/about"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition"
+            >
+              Learn More
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -80,7 +104,7 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               OUR SERVICES
             </h2>
-            <p className="text-gray-600 max-w-2xl  md:text-3xl mx-auto text-sm md:text-base">
+            <p className="text-gray-600 max-w-2xl md:text-3xl mx-auto text-sm md:text-base">
               At MECHYAM AI DESIGN SOLUTIONS (MADS), we specialize in delivering
               precise, scalable, and forward-thinking engineering solutions. As
               a young company with a seasoned leadership team boasting over 15
@@ -92,8 +116,12 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.7 }}
+                viewport={{ once: true }}
                 className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition transform hover:-translate-y-1"
               >
                 <img
@@ -118,7 +146,7 @@ const Home = () => {
                 >
                   Read More →
                 </Link>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -131,15 +159,27 @@ const Home = () => {
       ============================== */}
       <section id="vision-mission" className="bg-blue-900 text-white py-20">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-shrink-0 w-full md:w-1/2 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex-shrink-0 w-full md:w-1/2 flex justify-center"
+          >
             <img
               src={chess}
               alt="Vision & Mission"
               className="rounded-full w-72 h-72 object-cover shadow-lg border-4 border-white"
             />
-          </div>
+          </motion.div>
 
-          <div className="w-full md:w-1/2">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/2"
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left">
               OUR VISION & MISSION
             </h2>
@@ -163,183 +203,197 @@ const Home = () => {
                 build with intention and resilience.
               </p>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ==============================
+          💡 WE OFFER SECTION
+      ============================== */}
+      <section id="we-offer" className="py-20 bg-gray-50 font-sans">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 tracking-wide">
+            WE OFFER
+          </h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-2xl shadow-lg p-8 md:p-12"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+              {[
+                "Onsite vibration, strain, and load data collection",
+                "Modal testing and operational deflection shape (ODS) analysis",
+                "Signal processing in time and frequency domains",
+                "Statistical evaluation, anomaly detection, and data trend modelling",
+                "Custom dashboards and visualization tools for reporting",
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-4 group transition transform hover:-translate-y-1"
+                >
+                  <div className="flex-shrink-0 mt-1 text-blue-600 group-hover:scale-110 transition-transform duration-200">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12l2 2l4-4m5 2a9 9 0 11-18 0a9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed font-medium">
+                    {item}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ==============================
+          ⚡ CAPABILITIES SECTION
+      ============================== */}
+      <section
+        id="capabilities"
+        className="py-20 bg-gradient-to-r from-blue-600 to-blue-900 font-sans"
+      >
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 tracking-wide">
+            CAPABILITIES
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              "Linear and nonlinear Finite Element Analysis (FEA)",
+              "Static, dynamic, vibration, and fatigue assessments",
+              "Modal analysis and load path validation",
+              "Code-compliant design verification",
+              "Reports aligned with international standards and design codes",
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="flex items-start gap-4 bg-white/10 rounded-xl p-4 md:p-6 shadow-lg hover:scale-105 transition-transform duration-300"
+              >
+                <div className="flex-shrink-0 mt-1 text-white">
+                  <span className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-white">
+                    {index + 1}
+                  </span>
+                </div>
+                <p className="text-white text-lg leading-relaxed font-medium">
+                  {item}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ==============================
-     💡 WE OFFER SECTION (Enhanced)
-============================== */}
-<section id="we-offer" className="py-20 bg-gray-50 font-sans">
-  <div className="max-w-6xl mx-auto px-6 text-center">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 tracking-wide">
-      WE OFFER
-    </h2>
+          🛠 TOOLS WE USE SECTION
+      ============================== */}
+      <section id="tools" className="py-20 bg-gray-100 font-sans">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 tracking-wide">
+            TOOLS WE USE
+          </h2>
 
-    <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-        {[
-          "Onsite vibration, strain, and load data collection",
-          "Modal testing and operational deflection shape (ODS) analysis",
-          "Signal processing in time and frequency domains",
-          "Statistical evaluation, anomaly detection, and data trend modelling",
-          "Custom dashboards and visualization tools for reporting",
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="flex items-start gap-4 group transition transform hover:-translate-y-1"
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 justify-items-center bg-blue-50 p-8 rounded-2xl shadow-lg"
           >
-            <div className="flex-shrink-0 mt-1 text-blue-600 group-hover:scale-110 transition-transform duration-200">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
+            {[
+              "SP3D",
+              "SPPID",
+              "SPI",
+              "AutoCAD",
+              "ANSYS",
+              "REVIT",
+              "Hyper Mesh",
+              "NASTRAN",
+              "CATIA Analysis",
+            ].map((tool, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.1 }}
+                className="px-4 py-2 bg-white rounded-full shadow-md text-gray-800 font-semibold text-sm md:text-base hover:shadow-xl transition-transform duration-300"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12l2 2l4-4m5 2a9 9 0 11-18 0a9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <p className="text-gray-700 text-lg leading-relaxed font-medium">
-              {item}
-            </p>
+                {tool}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ==============================
+          💎 WHAT SETS US APART
+      ============================== */}
+      <section className="w-full bg-blue-500 py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+            What Sets Us Apart
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto text-left">
+            {[
+              {
+                title: "Startup Agility, Industry Depth",
+                desc: "We move fast, backed by decades of engineering knowledge.",
+              },
+              {
+                title: "Tool Chain Expertise",
+                desc: "SP3D, BIM, Revit, SPPID, SPI, SolidWorks, NX, AutoCAD, ANSYS, and more.",
+              },
+              {
+                title: "End-to-End Insight",
+                desc: "From concept design and analysis to real-world measurement and feedback.",
+              },
+              {
+                title: "Client-Centric Approach",
+                desc: "Flexible, collaborative, and always outcome-focused.",
+              },
+            ].map((point, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="flex items-start gap-4"
+              >
+                <div>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    {point.title}
+                  </h3>
+                  <p className="text-gray-100">{point.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-{/* ==============================
-     ⚡ CAPABILITIES SECTION (Distinct from We Offer)
-============================== */}
-<section id="capabilities" className="py-20 bg-gradient-to-r from-blue-600 to-blue-900 font-sans">
-  <div className="max-w-6xl mx-auto px-6 text-center">
-    <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 tracking-wide">
-      CAPABILITIES
-    </h2>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {[
-        "Linear and nonlinear Finite Element Analysis (FEA)",
-        "Static, dynamic, vibration, and fatigue assessments",
-        "Modal analysis and load path validation",
-        "Code-compliant design verification",
-        "Reports aligned with international standards and design codes",
-      ].map((item, index) => (
-        <div
-          key={index}
-          className="flex items-start gap-4 bg-white/10 rounded-xl p-4 md:p-6 shadow-lg hover:scale-105 transition-transform duration-300"
-        >
-          <div className="flex-shrink-0 mt-1 text-white">
-            <span className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-white">
-              {index + 1}
-            </span>
-          </div>
-          <p className="text-white text-lg leading-relaxed font-medium">
-            {item}
-          </p>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-{/* ==============================
-     🛠 TOOLS WE USE SECTION
-============================== */}
-<section id="tools" className="py-20 bg-gray-100 font-sans">
-  <div className="max-w-6xl mx-auto px-6 text-center">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 tracking-wide">
-      TOOLS WE USE
-    </h2>
-
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 justify-items-center bg-blue-50 p-8 rounded-2xl shadow-lg">
-      {[
-        "SP3D",
-        "SPPID",
-        "SPI",
-        "AutoCAD",
-        "ANSYS",
-        "REVIT",
-        "Hyper Mesh",
-        "NASTRAN",
-        "CATIA Analysis",
-      ].map((tool, index) => (
-        <div
-          key={index}
-          className="px-4 py-2 bg-white rounded-full shadow-md text-gray-800 font-semibold text-sm md:text-base hover:shadow-xl hover:scale-105 transition-transform duration-300"
-        >
-          {tool}
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-<section className="w-full bg-blue-500 py-16">
-  <div className="container mx-auto px-6">
-    <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-      What Sets Us Apart
-    </h2>
-
-    <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto text-left">
-      {/* Point 1 */}
-      <div className="flex items-start gap-4">
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            Startup Agility, Industry Depth
-          </h3>
-          <p className="text-gray-100">
-            We move fast, backed by decades of engineering knowledge.
-          </p>
-        </div>
-      </div>
-
-      {/* Point 2 */}
-      <div className="flex items-start gap-4">
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            Tool Chain Expertise
-          </h3>
-          <p className="text-gray-100">
-            SP3D, BIM, Revit, SPPID, SPI, SolidWorks, NX, AutoCAD, ANSYS, and more.
-          </p>
-        </div>
-      </div>
-
-      {/* Point 3 */}
-      <div className="flex items-start gap-4">
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            End-to-End Insight
-          </h3>
-          <p className="text-gray-100">
-            From concept design and analysis to real-world measurement and feedback.
-          </p>
-        </div>
-      </div>
-
-      {/* Point 4 */}
-      <div className="flex items-start gap-4">
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            Client-Centric Approach
-          </h3>
-          <p className="text-gray-100">
-            Flexible, collaborative, and always outcome-focused.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-    </div>
+      </section>
+    </motion.div>
   );
 };
 
