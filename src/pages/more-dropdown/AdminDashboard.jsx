@@ -99,6 +99,7 @@ import JobForm from "../../components/AdminPage/JobForm";
 import AppliedJobs from "../../components/AdminPage/AppliedJobs";
 import ContactDetails from "../../components/AdminPage/ContactDetails";
 import { Menu } from "lucide-react"; // For burger icon
+import UploadNewProjects from "../../components/AdminPage/UploadNewProjects";
 
 const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("JobList");
@@ -119,6 +120,8 @@ const AdminDashboard = () => {
         return <AppliedJobs />;
       case "ContactDetails":
         return <ContactDetails />;
+      case "UploadNewProjects":
+        return <UploadNewProjects />;
       default:
         return <JobList jobs={jobs} />;
     }
@@ -142,7 +145,7 @@ const AdminDashboard = () => {
           {/* 📋 Dropdown Menu */}
           {menuOpen && (
             <div className="absolute left-0 mt-2 w-52 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
-              {["JobList", "JobForm", "AppliedJobs", "ContactDetails"].map(
+              {["JobList", "JobForm", "AppliedJobs", "ContactDetails", "UploadNewProjects"].map(
                 (item) => (
                   <button
                     key={item}
@@ -158,6 +161,7 @@ const AdminDashboard = () => {
                     {item === "JobForm" && "➕ Add Job"}
                     {item === "AppliedJobs" && "👥 Applied Jobs"}
                     {item === "ContactDetails" && "📞 Contact Details"}
+                    {item === "UploadNewProjects" && "➕ UploadNewProjects "}
                   </button>
                 )
               )}
