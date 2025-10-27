@@ -15,7 +15,7 @@ const Navbar = () => {
         {/* Left: Logo + Company Name */}
         <div className="flex items-center space-x-3">
           <Link to="/" onClick={() => setMenuOpen(false)}>
-            <img src={logo} alt="Mechyam Logo" className="h-16 w-17" />
+            <img src={logo} alt="Mechyam Logo" className="h-20 w-17" />
           </Link>
           <span className="text-2xl font-bold text-blue-900">Mechyam</span>
         </div>
