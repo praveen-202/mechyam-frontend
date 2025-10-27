@@ -42,10 +42,8 @@ const Company = () => (
             <h2 className="text-xl font-bold mb-4 text-blue-900 p-3 rounded bg-white">
               Emergence of Mechyam
             </h2>
-            <p className="text-lg text-gray-800 mb-4">
-              The good ideas of engineering services built its form as an
-              establishment in 2004. The establishment always aims to provide
-              unique designs and durable outcomes to all scales of operations.
+            <p className="text-lg text-gray-800 mb-4 text-justify">
+              Founded in 2025, MECHYAM is a lean and agile firm powered by a leadership team with over 15 years of industry experience in mechanical design, structural analysis, and data-driven engineering. While we are young as a company, our roots run deep - built on integrity, technical mastery, and a shared belief that great design begins with understanding, not assumptions.
             </p>
           </div>
 
@@ -54,16 +52,14 @@ const Company = () => (
             <h2 className="text-xl font-bold mb-4 text-blue-900 p-3 rounded bg-white">
               Vision for Acquisition
             </h2>
-            <p className="text-lg text-gray-800 mb-4">
-              From 2006, Mechyam Technical Services carried out successful
-              acquisition of Indian companies from 2006 and irresistible. The
-              company expanded its operations and economised with its operations
-              through the acquisition of well resourced.
+            <p className="text-lg text-gray-800 mb-4 text-justify">
+              To shape engineering solutions that rise from complexity with clarity—anchored in integrity, guided by purpose, and built to last. We aim to bring structure and insight to what was once unformed.
+
             </p>
           </div>
 
           {/* 3️⃣ Unstoppable growth */}
-          <div className="w-full md:w-1/3 text-left">
+          <div className="w-full md:w-1/3 text-left text-justify">
             <h2 className="text-xl font-bold mb-4 text-blue-900 p-3 rounded bg-white">
               Unstoppable Growth
             </h2>

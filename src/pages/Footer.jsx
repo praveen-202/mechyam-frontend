@@ -168,9 +168,12 @@ import MADS from "../assets/MADS01.jpg"; // Your company logo
 const Footer = () => {
   const services = {
     "STEEL STRUCTURE": [
+       { name: "Engineering Design", link: "/engineering-design" },
+        { name: "Structural Analysis", link: "/structural-analysis" },
       { name: "Structural Engineering Services", link: "/structural-engineering" },
       { name: "Structural Steel Detailing Services", link: "/structuralsteeldetailingservices" },
       { name: "Bridge Detailing Services", link: "/bridge-detailing" },
+      
     ],
     MECHANICAL: [
       { name: "Product Design & Development" },
