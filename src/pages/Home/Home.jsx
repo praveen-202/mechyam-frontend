@@ -381,7 +381,7 @@ const Home = () => {
               },
               {
                 title: "Client-Centric Approach",
-                desc: "Flexible, collaborative, and always outcome-focused.",
+                desc: "Flexible,collaborative, and always outcome-focused.",
               },
             ].map((point, index) => (
               <motion.div
