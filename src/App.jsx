@@ -108,6 +108,7 @@ import Industries from "./pages/Industries";
 import Contracting from "./pages/industries-dropdown/Contracting";
 import OilAndGas from "./pages/industries-dropdown/OilAndGas";
 import Transportation from "./pages/industries-dropdown/Transportation";
+import AerospaceandTransportation from "./pages/industries-dropdown/AerospaceandTransportation.jsx";
 import Company from "./pages/about-dropdown/Company";
 import Testimonials from "./pages/about-dropdown/OurClients.jsx";
 import AdminPage from "./components/AdminPage/AdminPage";
@@ -148,6 +149,7 @@ function App() {
         <Route path="/contracting" element={<Contracting />} />
         <Route path="/oil-gas" element={<OilAndGas />} />
         <Route path="/transportation" element={<Transportation />} />
+        <Route path="/aerospace-transportation" element={<AerospaceandTransportation/>} />
         <Route path="/structural-rnd" element={<StructuralDetailingRandD />} />
         <Route path="/mechanical-rnd" element={<MechanicalEngineeringRandD />} />
         <Route path="/projects" element={<Projects />} />
