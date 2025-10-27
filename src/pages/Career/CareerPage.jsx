@@ -45,7 +45,9 @@ const CareerPage = () => {
 
       {/* 🌀 Loading State */}
       {loading && (
-        <div className="flex justify-center items-center min-h-[50vh] text-gray-600 text-lg">
+        <div className="flex flex-col justify-center items-center min-h-[50vh] text-gray-600 text-lg">
+          {/* ✅ Circular Buffer Loader */}
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
           Loading available jobs...
         </div>
       )}
