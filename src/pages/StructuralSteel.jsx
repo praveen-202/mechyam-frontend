@@ -39,7 +39,9 @@ const SteelStructure = () => (
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-start gap-8">
           <div className="w-full md:w-1/2 text-left">
-            <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">Structural Steel</h2>
+            <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
+              Structural Steel
+            </h2>
             <p className="text-lg text-gray-800 mb-4 text-justify">
               Steel Detailing services from Mechyam use the state of the art
               technical tools and solutions. Our services are tailored to our
@@ -100,17 +102,16 @@ const SteelStructure = () => (
           ))}
         </ul>
 
-        {/* ✅ Updated Read More Links */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* ✅ Updated Read More Links (5 Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
           <div className="bg-white p-6 rounded-lg shadow">
             <span className="text-sm font-semibold text-indigo-600">01</span>
             <h3 className="text-xl font-bold mt-2">
               Structural Engineering Services
             </h3>
             <p className="text-gray-600 mt-2 text-justify">
-              Structural Engineering is all about providing the framework for
-              structures and designing those structures to withstand the
-              environment and remain safe, stable, and secure.
+              Structural Engineering provides the framework and ensures
+              structures remain safe, stable, and resilient to their environment.
             </p>
             <Link
               to="/structural-engineering"
@@ -126,9 +127,8 @@ const SteelStructure = () => (
               Structural Steel Detailing Services
             </h3>
             <p className="text-gray-600 mt-2 text-justify">
-              Structural steel detailing involves creating detailed drawings
-              and plans for all manufacturing and construction activities like
-              erection of buildings, shipbuilding, etc.
+              Structural steel detailing involves preparing detailed drawings
+              and fabrication plans for construction and manufacturing.
             </p>
             <Link
               to="/structuralsteeldetailingservices"
@@ -142,12 +142,41 @@ const SteelStructure = () => (
             <span className="text-sm font-semibold text-indigo-600">03</span>
             <h3 className="text-xl font-bold mt-2">Bridge Detailing Services</h3>
             <p className="text-gray-600 mt-2 text-justify">
-              Beyond 3D PMI Definition, SOLIDWORKS MBD helps organize CAD data
-              into clean and structured 3D presentations with different views
-              and display settings.
+              Bridge detailing ensures accurate and durable designs for all
+              components, supporting safe and efficient construction.
             </p>
             <Link
               to="/bridge-detailing"
+              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
+            >
+              Read more →
+            </Link>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow">
+            <span className="text-sm font-semibold text-indigo-600">04</span>
+            <h3 className="text-xl font-bold mt-2">Engineering Design</h3>
+            <p className="text-gray-600 mt-2 text-justify">
+              Engineering Design focuses on creating efficient, practical, and
+              innovative solutions for mechanical and structural systems.
+            </p>
+            <Link
+              to="/engineering-design"
+              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
+            >
+              Read more →
+            </Link>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow">
+            <span className="text-sm font-semibold text-indigo-600">05</span>
+            <h3 className="text-xl font-bold mt-2">Structural Analysis</h3>
+            <p className="text-gray-600 mt-2 text-justify">
+              Structural Analysis evaluates forces, stresses, and deformations
+              to ensure safety, stability, and reliability of structures.
+            </p>
+            <Link
+              to="/structural-analysis"
               className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
             >
               Read more →

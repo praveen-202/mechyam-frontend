@@ -39,7 +39,7 @@ const EmbeddedDesign = () => {
           <div className="flex flex-col md:flex-row items-start gap-8">
             {/* Left Column - Text */}
             <div className="w-full md:w-1/2 text-left">
-              <h2 className="text-2xl font-bold text-blue-900 mb-4">
+              <h2 className="text-2xl font-bold text-black-900 mb-4 bg-gray-200 p-5 rounded">
                 Embedded Design
               </h2>
               <p className="text-lg text-gray-800 mb-6 leading-relaxed text-justify">

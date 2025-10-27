@@ -1,41 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // ✨ Added Framer Motion
+import { motion } from "framer-motion";
 
-// 🖼 Import the new hero image
+// 🖼 Image imports
 import MechymaImage from "../../assets/Mechyam.jpg";
-
-// 🖼 Import other images for services
-import structuralImg from "../../assets/structural-steel-detailing.jpeg";
-import steelDetailingImg from "../../assets/steel-detailing-services.webp";
-import mechanicalServiceImg from "../../assets/Mechanical-Engineering-Services.jpeg";
+import engineeringImg from "../../assets/engineeringdesign.jpg";
+import structuralImg from "../../assets/structural-analysis.jpg";
 import chess from "../../assets/chess.jpg";
 
-// ⚙ Services section data
+// ⚙ Services section data (updated)
 const services = [
   {
-    title: "Structural Steel Detailing",
-    subTitle: "Structural Engineering Services",
+    title: "Engineering Design",
+    subTitle: "Mechanical & Structural Systems",
     description:
-      "We provide precise structural steel detailing to ensure accurate fabrication and seamless construction management.",
+      "We provide end-to-end mechanical and structural design solutions using advanced CAD tools and analysis methods to achieve performance, cost-efficiency, and manufacturing readiness.",
+    image: engineeringImg,
+    link: "/engineering-design",
+  },
+  {
+    title: "Structural Analysis",
+    subTitle: "Strength & Stability Evaluation",
+    description:
+      "Our structural analysis services ensure that every design meets safety, stability, and reliability standards through advanced simulations and FEA-based methods.",
     image: structuralImg,
-    link: "/structural-engineering",
-  },
-  {
-    title: "Steel Detailing Services",
-    subTitle: "Structural Detailing Solutions",
-    description:
-      "Our steel detailing services offer comprehensive solutions for structural projects, ensuring high accuracy and quality.",
-    image: steelDetailingImg,
-    link: "/structuralsteeldetailingservices",
-  },
-  {
-    title: "Mechanical Engineering",
-    subTitle: "Mechanical Design & Analysis",
-    description:
-      "Our mechanical engineering solutions cover design, analysis, and optimization of machinery and systems for efficiency and reliability.",
-    image: mechanicalServiceImg,
-    link: "/mechanical",
+    link: "/structural-analysis",
   },
 ];
 
@@ -104,7 +93,7 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               OUR SERVICES
             </h2>
-            <p className="text-gray-600 max-w-2xl md:text-3xl mx-auto text-sm md:text-base">
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed text-justify">
               At MECHYAM AI DESIGN SOLUTIONS (MADS), we specialize in delivering
               precise, scalable, and forward-thinking engineering solutions. As
               a young company with a seasoned leadership team boasting over 15
@@ -114,7 +103,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -122,12 +111,12 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.7 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition transform hover:-translate-y-1"
+                className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition transform hover:-translate-y-1 max-w-md text-justify"
               >
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-20 h-20 object-contain mb-4"
+                  className="w-24 h-24 object-contain mb-4 rounded-lg"
                 />
                 <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-1 md:mb-2">
                   {service.title}

@@ -41,7 +41,7 @@ const ProductDesignAndDevelopment = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-start gap-8">
             <div className="w-full md:w-1/2 text-left">
-            <h2 className="text-2xl font-bold text-navyblue mb-4">Product Design And Development</h2>
+            <h2 className="text-2xl font-bold text-black mb-4 bg-gray-200 p-5 rounded">Product Design And Development</h2>
             <section className="w-full py-4 text-center bg-gray-50">
          <h2 className="text-l font-bold mb-4 text-blue-900 text-justify">
           Product Design Services for Reduced Design Cycles, Faster Time-To-Market & higher ROI

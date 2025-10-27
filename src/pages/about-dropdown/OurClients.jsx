@@ -81,6 +81,13 @@ const OurClients = () => (
         </div>
       </div>
     </section>
+    <section className="w-full bg-white py-8">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl font-semibold text-center text-blue-900 ">
+          OUR CLIENTS ARE OUR PATNERS AND OUR PRIORITY
+        </h2>
+        </div>
+    </section>
   </>
 );
 

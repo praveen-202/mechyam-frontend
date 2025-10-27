@@ -37,7 +37,7 @@ const Mechanical = () => (
     <div className="container mx-auto px-4">
       <div className="flex flex-col md:flex-row items-start gap-8">
         <div className="w-full md:w-1/2 text-left">
-          <h2 className="text-2xl font-bold mb-4">
+          <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
             Mechnical
           </h2>
           <p className="text-lg text-gray-800 mb-4 text-justify">
