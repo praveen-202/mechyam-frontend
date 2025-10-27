@@ -39,7 +39,7 @@ const ComputerAidedEngineering = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-start gap-8">
             <div className="w-full md:w-1/2 text-left">
-            <h2 className="text-2xl font-bold  text-blue-900 mb-4">Computer Aided Engineering (CAE) Service</h2>
+            <h2 className="text-2xl font-bold  text-black-900 mb-4 bg-gray-200 p-5 rounded">Computer Aided Engineering (CAE) Service</h2>
               <p className="text-lg text-gray-800 mb-4 text-justify">
                 Mechyam has distinguished itself as one of the leading engineering consulting organization with FEA and CFD experts to help you get to the root of most challenging engineering problems. Our Engineering teams act as an extension of our Customers’ teams – responsible for delivering results on time and every time. We extend the capabilities of your engineering teams through unmatched global delivery excellence.
               </p>

@@ -96,6 +96,8 @@ import ContactPage from "./pages/Contact/ContactPage";
 import CareerPage from "./pages/Career/CareerPage.jsx";
 import JobDetailsPage from "./pages/Career/JobDetailsPage.jsx";
 import Home from "./pages/Home/Home.jsx";
+import EngineeringDesign from "./pages/structural-steel-dropdown/EngineeringDesign.jsx";
+import StructuralAnalysis from "./pages/structural-steel-dropdown/StructuralAnalysis.jsx";
 import StructuralEngineering from "./pages/structural-steel-dropdown/StructuralEngineering";
 import StructuralSteelDetailingServices from "./pages/structural-steel-dropdown/StructuralSteelDetailingServices";
 import BridgeDetailingServices from "./pages/structural-steel-dropdown/BridgeDetailingServices";
@@ -133,6 +135,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/steel-structure" element={<StructuralSteel />} />
+        <Route path="/engineering-design" element={<EngineeringDesign />} />
+        <Route path="/structural-analysis" element={<StructuralAnalysis />} />
         <Route path="/structural-engineering" element={<StructuralEngineering />} />
         <Route path="/structuralsteeldetailingservices" element={<StructuralSteelDetailingServices />} />
         <Route path="/bridge-detailing" element={<BridgeDetailingServices />} />
