@@ -7,6 +7,7 @@ import MechymaImage from "../../assets/Mechyam.jpg";
 import engineeringImg from "../../assets/engineeringdesign.jpg";
 import structuralImg from "../../assets/structural-analysis.jpg";
 import chess from "../../assets/chess.jpg";
+import dataImg from "../../assets/data-analysis.jpg"; // ✅ Add a relevant image (e.g., data-analysis.jpg)
 
 // ⚙ Services section data (updated)
 const services = [
@@ -255,44 +256,64 @@ const Home = () => {
       </section>
 
       {/* ==============================
-          ⚡ CAPABILITIES SECTION
+          📊 MEASUREMENT & DATA ANALYSIS
       ============================== */}
       <section
-        id="capabilities"
-        className="py-20 bg-gradient-to-r from-blue-600 to-blue-900 font-sans"
+        id="measurement-data-analysis"
+        className="py-20 bg-white font-sans relative overflow-hidden"
       >
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 tracking-wide">
-            CAPABILITIES
-          </h2>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-blue-100 opacity-80"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              "Linear and nonlinear Finite Element Analysis (FEA)",
-              "Static, dynamic, vibration, and fatigue assessments",
-              "Modal analysis and load path validation",
-              "Code-compliant design verification",
-              "Reports aligned with international standards and design codes",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 bg-white/10 rounded-xl p-4 md:p-6 shadow-lg hover:scale-105 transition-transform duration-300"
-              >
-                <div className="flex-shrink-0 mt-1 text-white">
-                  <span className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-white">
-                    {index + 1}
-                  </span>
-                </div>
-                <p className="text-white text-lg leading-relaxed font-medium">
-                  {item}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="relative max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+          {/* Left Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/2"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight">
+              Measurement & Data Analysis
+            </h2>
+            <p className="text-lg text-gray-700 leading-relaxed text-justify mb-4">
+              We transform raw field data into <strong>reliable engineering insights</strong>. 
+              Our team has deep expertise in <strong>measurement strategy, instrumentation, signal processing,</strong> 
+              and <strong>data interpretation</strong>, helping clients make informed decisions faster.
+            </p>
+
+            <ul className="list-disc ml-6 space-y-2 text-gray-700 text-lg">
+              <li>Precision instrumentation and sensor calibration</li>
+              <li>Real-time data capture and monitoring systems</li>
+              <li>AI-driven anomaly detection and predictive analytics</li>
+              <li>Comprehensive data reporting and visualization</li>
+            </ul>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mt-6"
+            >
+              
+            </motion.div>
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/2 flex justify-center"
+          >
+            <img
+              src={dataImg}
+              alt="Measurement & Data Analysis"
+              className="rounded-2xl shadow-lg w-full md:w-10/12 object-cover"
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -360,7 +381,7 @@ const Home = () => {
               },
               {
                 title: "Client-Centric Approach",
-                desc: "Flexible, collaborative, and always outcome-focused.",
+                desc: "Flexible,collaborative, and always outcome-focused.",
               },
             ].map((point, index) => (
               <motion.div

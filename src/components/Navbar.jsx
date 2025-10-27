@@ -15,7 +15,7 @@ const Navbar = () => {
         {/* Left: Logo + Company Name */}
         <div className="flex items-center space-x-3">
           <Link to="/" onClick={() => setMenuOpen(false)}>
-            <img src={logo} alt="Mechyam Logo" className="h-16 w-17" />
+            <img src={logo} alt="Mechyam Logo" className="h-20 w-17" />
           </Link>
           <span className="text-2xl font-bold text-blue-900">Mechyam</span>
         </div>
@@ -67,10 +67,12 @@ const Navbar = () => {
             </Link>
             <div className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-200 z-50">
               <ul className="py-2">
+                <li><Link to ="/aerospace-transportation" className="block px-4 py-2 hover:bg-gray-100">Aerospace and Transportation</Link></li>
+                <li><Link to="/windenergyrenewables" className="block px-4 py-2 hover:bg-gray-100">Wind Energy and Renewables</Link></li>
                 <li><Link to="/contracting" className="block px-4 py-2 hover:bg-gray-100">Contracting</Link></li>
                 <li><Link to="/oil-gas" className="block px-4 py-2 hover:bg-gray-100">Oil & Gas</Link></li>
                 <li><Link to="/transportation" className="block px-4 py-2 hover:bg-gray-100">Transportation / Rail Industry</Link></li>
-                <li><Link to ="/aerospace-transportation" className="block px-4 py-2 hover:bg-gray-100">AeroSpace and Transportation</Link></li>
+                
               </ul>
             </div>
           </li>
