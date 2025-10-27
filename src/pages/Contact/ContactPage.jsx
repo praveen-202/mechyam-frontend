@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import contactBanner from "../assets/contact-us.jpg"; // ✅ Import image
+import contactBanner from "../../assets/contact-us.jpg"; // ✅ Import image
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -151,15 +151,16 @@ const ContactPage = () => {
     <div className="min-h-screen bg-gray-100">
       {/* ✅ Banner Section */}
       <div
-        className="relative bg-cover bg-center h-64 flex items-center justify-center text-white"
+        className="relative bg-cover bg-top h-64 flex items-center justify-center text-white"
         style={{
           backgroundImage: `url(${contactBanner})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top", // ✅ shows top part of image
         }}
       >
         {/* Dark Overlay for text visibility */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
         <h1 className="text-4xl font-bold relative z-10">Contact Us</h1>
       </div>
 
@@ -189,7 +190,7 @@ const ContactPage = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-6">Get in touch with us</h2>
             <form onSubmit={handleSubmit} noValidate>
-              
+
               {/* Name */}
               <div className="mb-4">
                 <input
@@ -210,13 +211,30 @@ const ContactPage = () => {
                   type="email"
                   name="email"
                   value={formData.email}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const { value } = e.target;
+                    setFormData({ ...formData, email: value });
+
+                    // ✅ Custom email validation logic
+                    let message = "";
+                    if (value.includes("@") && !value.endsWith(".com")) {
+                      message = "Invalid email format.";
+                    } else if (!value.includes("@")) {
+                      message = ""; // no error before '@'
+                    }
+
+                    setErrors((prev) => ({ ...prev, email: message }));
+                  }}
                   placeholder="Email"
-                  className="w-full p-2 border rounded"
+                  className={`w-full p-2 border rounded ${errors.email ? "border-red-500" : ""
+                    }`}
                   required
                 />
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
+
 
               {/* Country Code + Phone */}
               <div className="mb-4 flex gap-2">
@@ -289,9 +307,8 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`flex items-center justify-center bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 ${
-                  loading ? "opacity-70 cursor-not-allowed" : ""
-                }`}
+                className={`flex items-center justify-center bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 ${loading ? "opacity-70 cursor-not-allowed" : ""
+                  }`}
               >
                 {loading && (
                   <svg
