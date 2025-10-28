@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaLinkedin } from "react-icons/fa"; // LinkedIn icon import
-import MADS from "../assets/MADS01.jpg"; // Your company logo
+import { FaLinkedin, FaGlobe, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa"; // Added icons
+import MADS from "../assets/MADS01.jpg";
 
 const Footer = () => {
   const services = {
@@ -20,18 +20,17 @@ const Footer = () => {
     INDUSTRIES: [
       { name: "Aerospace and Transportation", link: "/aerospace-transportation" },
       { name: "Wind Energy and Renewables", link: "/windenergyrenewables" },
-      {name: "Manufacturing and Plant Engineering",link:"/manufacturing-plantengineering"},
+      { name: "Manufacturing and Plant Engineering", link: "/manufacturing-plantengineering" },
       { name: "Contracting", link: "/contracting" },
       { name: "Transportation", link: "/transportation" },
       { name: "Oil & Gas", link: "/oilandgas" },
-      
     ],
     GENERAL: [
       { name: "Home", link: "/" },
       { name: "About", link: "/about" },
       { name: "Projects", link: "/projects" },
       { name: "Contact", link: "/contact" },
-      { name: "News & Events", link: "/news" },
+      
     ],
     CAREERS: [{ name: "View Opportunities", link: "/careers" }],
   };
@@ -47,52 +46,83 @@ const Footer = () => {
               <h1 className="text-3xl font-bold text-blue-800">Mechyam</h1>
             </div>
 
-            <h2 className="text-lg font-semibold mb-4 tracking-wide">CONTACT</h2>
-            <div className="mb-6 text-sm leading-6">
+            <h2 className="text-lg font-semibold mb-4 tracking-wide border-b border-gray-600 pb-2">
+              CONTACT
+            </h2>
+            <div className="mb-6 text-sm leading-6 space-y-3">
               <p className="font-semibold text-gray-300">Corporate Office (India)</p>
               <p className="text-gray-300">MECHYAM AI DESIGN SOLUTIONS PVT. LTD.</p>
-              <p className="text-gray-400">
-                Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
-                Hitech-City, Hyderabad, Telangana - 500081
-              </p>
-              <p className="text-gray-400">
-                Contact : +91 79816 70612 , +91 80089 71490
-              </p>
-              <hr className="my-3" />
-              <p className="text-gray-400 leading-relaxed">
-                <span className="block font-semibold text-gray-300 mb-1">Website:</span>
-                <span className="block">www.mechyam.com</span>
-              </p>
-              <p className="text-gray-400 leading-relaxed">
-                <span className="block font-semibold text-gray-300 mb-1">Email:</span>
-                <span className="block">info@mechyam.com</span>
-                <span className="block">hr@mechyam.com</span>
-              </p>
-              <hr className="my-3" />
-              <p className="mb-3">
-                <span className="block font-semibold text-gray-300 mb-1">
-                  Follow us on social for updates
-                </span>
-              </p>
 
-              {/* ✅ Social Icons Section */}
-              <div className="flex space-x-4 mt-2">
+              {/* Address */}
+              <div className="flex items-start text-gray-300 mt-3">
+                  <FaMapMarkerAlt className="mt-1 mr-2 text-blue-400" size={18} /> 
+                  <p className="leading-relaxed">
+                      Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
+                      Hitech-City, Hyderabad, Telangana - 500081
+                  </p>
+              </div>
+              {/* Contact Numbers */}
+              <div className="flex items-center text-gray-400">
+                <FaPhoneAlt className="mr-2 text-blue-400" />
+                <p>+91 79816 70612 , +91 80089 71490</p>
+              </div>
+
+              <hr className="my-3 border-gray-700" />
+
+              {/* Website */}
+              <div className="flex items-center text-gray-400 hover:text-blue-400 transition duration-300">
+                <FaGlobe className="mr-2 text-blue-400" />
                 <a
-                  href="https://in.linkedin.com/in/mechyam-ai-design-solutions-private-limited-mads-383583361" // Replace with your real LinkedIn URL
+                  href="https://www.mechyam.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-blue-500 transition duration-300"
-                  aria-label="LinkedIn"
+                  className="underline"
                 >
-                  <FaLinkedin size={28} />
+                  www.mechyam.com
                 </a>
+              </div>
+
+              {/* Emails */}
+              <div className="flex flex-col space-y-1 mt-2 text-gray-400">
+                <div className="flex items-center hover:text-blue-400 transition duration-300">
+                  <FaEnvelope className="mr-2 text-blue-400" />
+                  <a href="mailto:info@mechyam.com" className="underline">
+                    info@mechyam.com
+                  </a>
+                </div>
+                <div className="flex items-center hover:text-blue-400 transition duration-300">
+                  <FaEnvelope className="mr-2 text-blue-400" />
+                  <a href="mailto:hr@mechyam.com" className="underline">
+                    hr@mechyam.com
+                  </a>
+                </div>
+              </div>
+
+              <hr className="my-3 border-gray-700" />
+
+              {/* Social Media */}
+              <div>
+                <p className="font-semibold text-gray-300 mb-2">
+                  Follow us on social for updates
+                </p>
+                <div className="flex space-x-4 mt-2">
+                  <a
+                    href="https://in.linkedin.com/in/mechyam-ai-design-solutions-private-limited-mads-383583361"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-blue-500 transition duration-300"
+                    aria-label="LinkedIn"
+                  >
+                    <FaLinkedin size={28} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
           {/* RIGHT SECTION - SERVICES */}
           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Column 1: Steel Structure + Mechanical */}
+            {/* Column 1 */}
             <div>
               <div className="mb-8">
                 <h3 className="font-bold text-white mb-4 text-base tracking-wide">
@@ -110,9 +140,7 @@ const Footer = () => {
               </div>
 
               <div>
-                <h3 className="font-bold text-white mb-4 text-base tracking-wide">
-                  MECHANICAL
-                </h3>
+                <h3 className="font-bold text-white mb-4 text-base tracking-wide">MECHANICAL</h3>
                 <ul className="space-y-2 text-sm text-gray-400">
                   {services["MECHANICAL"].map((item, index) => (
                     <li key={index}>
@@ -125,7 +153,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Column 2: Industries */}
+            {/* Column 2 */}
             <div>
               <h3 className="font-bold text-white mb-4 text-base tracking-wide">INDUSTRIES</h3>
               <ul className="space-y-2 text-sm text-gray-400">
@@ -139,7 +167,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Column 3: General + Careers */}
+            {/* Column 3 */}
             <div>
               <div className="mb-8">
                 <h3 className="font-bold text-white mb-4 text-base tracking-wide">GENERAL</h3>
