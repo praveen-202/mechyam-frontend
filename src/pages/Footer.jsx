@@ -5,7 +5,7 @@ import MADS from "../assets/MADS01.jpg"; // Your company logo
 
 const Footer = () => {
   const services = {
-    "STEEL STRUCTURE": [
+    "STRUCTURAL STEEL": [
       { name: "Engineering Design", link: "/engineering-design" },
       { name: "Structural Analysis", link: "/structural-analysis" },
       { name: "Structural Engineering Services", link: "/structural-engineering" },
@@ -96,10 +96,10 @@ const Footer = () => {
             <div>
               <div className="mb-8">
                 <h3 className="font-bold text-white mb-4 text-base tracking-wide">
-                  STEEL STRUCTURE
+                  STRUCTURAL STEEL
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  {services["STEEL STRUCTURE"].map((item, index) => (
+                  {services["STRUCTURAL STEEL"].map((item, index) => (
                     <li key={index}>
                       <Link to={item.link} className="hover:text-white cursor-pointer">
                         {item.name}
