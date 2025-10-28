@@ -183,6 +183,11 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
+                    <Link to="/structural-infrastructure" className="block px-4 py-2 hover:bg-gray-100">
+                     Structural Systems and Infrastructure
+                    </Link>
+                  </li>
+                  <li>
                     <Link to="/contracting" className="block px-4 py-2 hover:bg-gray-100">
                       Contracting
                     </Link>
