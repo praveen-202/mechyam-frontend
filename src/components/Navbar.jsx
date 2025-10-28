@@ -5,6 +5,7 @@ import EmailButton from "./EmailButton";
 import CareerButton from "./CareerButton";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/MADS01.jpg";
+//import mechyamImg from "../assets/mechyam.jpg";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

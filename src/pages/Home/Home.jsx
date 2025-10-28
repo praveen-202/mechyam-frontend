@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 // 🖼 Image imports
-import MechymaImage from "../../assets/Mechyam.jpg";
+import MechymaImage from "../../assets/Mechyam01.jpg";
 import engineeringImg from "../../assets/engineeringdesign.jpg";
 import structuralImg from "../../assets/structural-analysis.jpg";
 import chess from "../../assets/chess.jpg";
