@@ -368,19 +368,51 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto text-left">
             {[
               {
-                title: "Startup Agility, Industry Depth",
-                desc: "We move fast, backed by decades of engineering knowledge.",
+                  title: (
+                  <span className="flex items-center gap-2">
+                  <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                    🚀
+                  </span>
+                    Startup Agility, Industry Depth
+                  </span>
+                          ),
+                      desc: "We move fast, backed by decades of engineering knowledge.",
               },
+
               {
-                title: "Tool Chain Expertise",
+                title: (
+                  <span className="flex items-center gap-2">
+                    <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                      🧰
+                    </span>
+                    Tool Chain Expertise
+                  </span>
+                ),
                 desc: "SP3D, BIM, Revit, SPPID, SPI, SolidWorks, NX, AutoCAD, ANSYS, and more.",
               },
+
               {
-                title: "End-to-End Insight",
+                title: (
+                  <span className="flex items-center gap-2">
+                    <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                      🔍
+                    </span>
+                      End-to-End Insight
+                  </span>
+                  
+                  ),
                 desc: "From concept design and analysis to real-world measurement and feedback.",
               },
+
               {
-                title: "Client-Centric Approach",
+                title: (
+                  <span className="flex items-center gap-2">
+                    <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                      🤝
+                    </span>
+                    Client-Centric Approach
+                  </span>
+                ),
                 desc: "Flexible,collaborative, and always outcome-focused.",
               },
             ].map((point, index) => (

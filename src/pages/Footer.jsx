@@ -18,11 +18,13 @@ const Footer = () => {
       { name: "Embedded Design", link: "/embedded-design" },
     ],
     INDUSTRIES: [
+      { name: "Aerospace and Transportation", link: "/aerospace-transportation" },
+      { name: "Wind Energy and Renewables", link: "/windenergyrenewables" },
+      {name: "Manufacturing and Plant Engineering",link:"/manufacturing-plantengineering"},
       { name: "Contracting", link: "/contracting" },
       { name: "Transportation", link: "/transportation" },
       { name: "Oil & Gas", link: "/oilandgas" },
-      { name: "Aerospace and Transportation", link: "/aerospace-transportation" },
-      { name: "Wind Energy and Renewables", link: "/windenergyrenewables" },
+      
     ],
     GENERAL: [
       { name: "Home", link: "/" },
