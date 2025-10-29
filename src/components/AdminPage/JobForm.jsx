@@ -39,7 +39,6 @@ const JobForm = ({ onAddJob }) => {
     };
 
     try {
-      // ✅ Send data to backend API
       const response = await axios.post(
         "http://localhost:8080/mechyam/api/career/jobs",
         jobData
@@ -48,10 +47,8 @@ const JobForm = ({ onAddJob }) => {
       console.log("✅ Job uploaded:", response.data);
       alert("Job posted successfully!");
 
-      // Update UI if parent has handler
       if (onAddJob) onAddJob(response.data);
 
-      // Reset form after successful post
       setFormData({
         jobTitle: "",
         department: "",
@@ -182,14 +179,19 @@ const JobForm = ({ onAddJob }) => {
           className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
         />
 
-        {/* Closing Date */}
-        <input
-          type="date"
-          name="closingDate"
-          value={formData.closingDate}
-          onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-        />
+        {/* ✅ Closing Date with Label */}
+        <div>
+          <label className="block mb-1 font-medium text-gray-700">
+            Last Date to Apply
+          </label>
+          <input
+            type="date"
+            name="closingDate"
+            value={formData.closingDate}
+            onChange={handleChange}
+            className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
         {/* Is Active */}
         <label className="flex items-center space-x-2">
