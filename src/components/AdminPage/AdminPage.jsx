@@ -1,47 +1,3 @@
-// // src/components/AdminPage/AdminPage.jsx
-// import React, { useState } from "react";
-// import AdminLogin from "./AdminLogin";
-// import AdminDashboard from "../../pages/more-dropdown/AdminDashboard";
-
-// const AdminPage = () => {
-//   // State to track if admin is verified via OTP
-//   const [isVerified, setIsVerified] = useState(false);
-
-//   return (
-//     <div>
-//       {/* Show login if not verified, otherwise show dashboard */}
-//       {!isVerified ? (
-//         <AdminLogin onVerified={() => setIsVerified(true)} />
-//       ) : (
-//         <AdminDashboard />
-//       )}
-//     </div>
-//   );
-// };
-
-// export default AdminPage;
-
-// // src/components/AdminPage/AdminPage.jsx
-// import React, { useState } from "react";
-// import AdminLogin from "./AdminLogin";
-// import AdminDashboard from "../../pages/more-dropdown/AdminDashboard";
-
-// const AdminPage = () => {
-//   const [isVerified, setIsVerified] = useState(false);
-
-//   return (
-//     <div>
-//       {!isVerified ? (
-//         <AdminLogin onVerified={() => setIsVerified(true)} />
-//       ) : (
-//         <AdminDashboard />
-//       )}
-//     </div>
-//   );
-// };
-
-// export default AdminPage;
-      
 // src/components/AdminPage/AdminPage.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -53,10 +9,10 @@ const AdminPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // ✅ Check if user is already logged in (token exists)
+    // ✅ Check if token exists (user already logged in)
     const token = sessionStorage.getItem("token");
     console.log("🔹 Checking token on page load:", token);
-    
+
     if (token) {
       console.log("🔹 Token found, user is logged in");
       setIsVerified(true);
@@ -66,22 +22,21 @@ const AdminPage = () => {
     }
   }, []);
 
+  // ✅ When login is verified
   const handleVerified = () => {
-    console.log("🔹 handleVerified called - user logged in successfully");
+    console.log("✅ handleVerified called - user logged in successfully");
     setIsVerified(true);
-    // Ensure we're on the admin page
     navigate("/admin-page");
   };
 
+  // ✅ When logout is triggered
   const handleLogout = () => {
-    console.log("🔹 Logging out...");
+    console.log("✅ handleLogout called - user logged out");
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("email");
     setIsVerified(false);
     navigate("/admin-page");
   };
-
-  console.log("🔹 AdminPage - isVerified:", isVerified);
 
   return (
     <div>
