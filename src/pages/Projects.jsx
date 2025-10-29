@@ -9,7 +9,7 @@ const Projects = () => {
   // ✅ Fetch all projects from backend
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/mechyam/api/projects");
+      const res = await axios.get("http://localhost:8085/mechyam/api/projects");
       setProjects(res.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -74,7 +74,7 @@ const Projects = () => {
             <img
               src={selected.imageUrl || selected.image}
               alt={selected.title}
-              className="w-full h-56 object-cover rounded-lg mb-4"
+              className="w-full max-h-[500px] object-cover rounded-lg mb-4"
             />
             <h2 className="text-2xl font-bold mb-2 text-blue-600">
               {selected.title}

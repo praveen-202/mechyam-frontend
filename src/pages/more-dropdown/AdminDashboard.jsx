@@ -26,9 +26,9 @@ const AdminDashboard = ({ onLogout }) => {
       console.log("🔹 Logging out...");
 
       // 🔹 Call backend logout API
-      await axios.post("http://localhost:8080/mechyam/api/admin/auth/logout", {}, {
+      await axios.post("http://localhost:8085/mechyam/api/admin/auth/logout", {}, {
         headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          Authorization: Bearer `${sessionStorage.getItem("token")}`,
         },
       });
 

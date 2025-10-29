@@ -12,7 +12,7 @@ const CareerPage = () => {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/mechyam/api/career/jobs/all"
+          "http://localhost:8085/mechyam/api/career/jobs/all"
         );
 
         // ✅ Safely extract jobs array
