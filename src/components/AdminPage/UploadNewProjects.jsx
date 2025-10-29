@@ -65,13 +65,16 @@ const UploadNewProjects = () => {
       alert("Project uploaded successfully!");
 
       // Re-fetch all projects without reloading page
-      await fetchProjects();
+      // await fetchProjects();
 
-      // Reset form fields
-      setTitle("");
-      setDescription("");
-      setImage(null);
-      setPreview(null);
+      // // Reset form fields
+      // setTitle("");
+      // setDescription("");
+      // setImage(null);
+      // setPreview(null);
+
+      window.location.reload();
+
     } catch (error) {
       console.error("Error uploading project:", error);
       alert("Upload failed!");
