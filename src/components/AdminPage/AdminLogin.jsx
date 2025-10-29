@@ -102,7 +102,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import OTPModal from "./OTPModal";
-import axios from "axios";
 
 const AdminLogin = ({ onVerified }) => {
   // ===============================
