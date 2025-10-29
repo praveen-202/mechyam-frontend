@@ -1,3 +1,47 @@
+// // src/components/AdminPage/AdminPage.jsx
+// import React, { useState } from "react";
+// import AdminLogin from "./AdminLogin";
+// import AdminDashboard from "../../pages/more-dropdown/AdminDashboard";
+
+// const AdminPage = () => {
+//   // State to track if admin is verified via OTP
+//   const [isVerified, setIsVerified] = useState(false);
+
+//   return (
+//     <div>
+//       {/* Show login if not verified, otherwise show dashboard */}
+//       {!isVerified ? (
+//         <AdminLogin onVerified={() => setIsVerified(true)} />
+//       ) : (
+//         <AdminDashboard />
+//       )}
+//     </div>
+//   );
+// };
+
+// export default AdminPage;
+
+// // src/components/AdminPage/AdminPage.jsx
+// import React, { useState } from "react";
+// import AdminLogin from "./AdminLogin";
+// import AdminDashboard from "../../pages/more-dropdown/AdminDashboard";
+
+// const AdminPage = () => {
+//   const [isVerified, setIsVerified] = useState(false);
+
+//   return (
+//     <div>
+//       {!isVerified ? (
+//         <AdminLogin onVerified={() => setIsVerified(true)} />
+//       ) : (
+//         <AdminDashboard />
+//       )}
+//     </div>
+//   );
+// };
+
+// export default AdminPage;
+      
 // src/components/AdminPage/AdminPage.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";

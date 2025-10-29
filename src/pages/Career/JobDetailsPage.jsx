@@ -63,7 +63,7 @@ const JobDetailsPage = () => {
       console.log("Submitting application...");
 
       const response = await axios.post(
-        "http://localhost:8080/mechyam/api/career/apply",
+        "http://localhost:8085/mechyam/api/career/apply",
         submitData,
         {
           headers: { "Content-Type": "multipart/form-data" },

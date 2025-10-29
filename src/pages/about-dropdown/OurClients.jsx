@@ -81,13 +81,26 @@ const OurClients = () => (
         </div>
       </div>
     </section>
-    <section className="w-full bg-white py-8">
-      <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-semibold text-center text-blue-900 ">
-          OUR CLIENTS ARE OUR PATNERS AND OUR PRIORITY
-        </h2>
-        </div>
-    </section>
+    <section className="w-full bg-gradient-to-r from-blue-50 via-white to-blue-50 py-12">
+  <div className="container mx-auto px-4 text-center">
+    <h2
+      className="text-3xl md:text-4xl font-extrabold text-blue-900 tracking-wide mb-4"
+      style={{
+        textShadow: "1px 1px 6px rgba(0, 0, 0, 0.1)",
+        letterSpacing: "1px",
+      }}
+    >
+      OUR CLIENTS ARE OUR PARTNERS AND OUR PRIORITY
+    </h2>
+    <div className="mx-auto w-24 h-1 bg-blue-600 rounded-full mb-4"></div>
+    <p className="text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
+      We build lasting relationships based on trust, innovation, and
+      shared success — delivering quality solutions that empower our clients
+      across industries.
+    </p>
+  </div>
+</section>
+
   </>
 );
 

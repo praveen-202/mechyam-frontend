@@ -40,7 +40,7 @@ const JobForm = ({ onAddJob }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/mechyam/api/career/jobs",
+        "http://192.168.1.192:8080/mechyam/api/career/jobs",
         jobData
       );
 
