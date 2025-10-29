@@ -109,6 +109,9 @@ import Contracting from "./pages/industries-dropdown/Contracting";
 import OilAndGas from "./pages/industries-dropdown/OilAndGas";
 import Transportation from "./pages/industries-dropdown/Transportation";
 import AerospaceandTransportation from "./pages/industries-dropdown/AerospaceandTransportation.jsx";
+import WindEnergyandRenewables from "./pages/industries-dropdown/WindEnergyandRenewables.jsx";
+import ManufacturingandPlantEngineering from "./pages/industries-dropdown/ManfacturingandPlantEngineering.jsx";
+import StructuralSystemsandInfrastructure from "./pages/industries-dropdown/StructuralSystemsandInfrastructure.jsx";
 import Company from "./pages/about-dropdown/Company";
 import Testimonials from "./pages/about-dropdown/OurClients.jsx";
 import AdminPage from "./components/AdminPage/AdminPage";
@@ -150,6 +153,9 @@ function App() {
         <Route path="/oil-gas" element={<OilAndGas />} />
         <Route path="/transportation" element={<Transportation />} />
         <Route path="/aerospace-transportation" element={<AerospaceandTransportation/>} />
+        <Route path="/windenergyrenewables" element={<WindEnergyandRenewables/>}/>
+        <Route path="/manufacturing-plantengineering" element={<ManufacturingandPlantEngineering/>}/>
+        <Route path="/structural-infrastructure" element={<StructuralSystemsandInfrastructure/>}/>
         <Route path="/structural-rnd" element={<StructuralDetailingRandD />} />
         <Route path="/mechanical-rnd" element={<MechanicalEngineeringRandD />} />
         <Route path="/projects" element={<Projects />} />
