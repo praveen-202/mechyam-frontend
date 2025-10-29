@@ -1,9 +1,9 @@
 import React from "react";
 
 
-import brige from "../../assets/bridge.jpg";
-import structRandD from "../../assets/structRandD.jpg";
-import structRandD02 from "../../assets/structRandD02.jpg";
+
+import structRandD from "../../assets/StructuralDetailingRandD-Images/structRandD.jpg";
+import structRandD02 from "../../assets/StructuralDetailingRandD-Images/structRandD02.jpg";
 
 
 

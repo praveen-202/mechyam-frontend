@@ -1,7 +1,7 @@
 import React from "react";
 
-import aboutus from "../assets/aboutus.jpg";
-import aboutus02 from "../assets/aboutus02.svg";
+import aboutus from "../assets/AboutUs-Images/aboutus.jpg";
+import aboutus02 from "../assets/AboutUs-Images/aboutus02.svg";
 
 
 
