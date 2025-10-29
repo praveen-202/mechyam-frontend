@@ -2,71 +2,71 @@
 
 import React, { useState } from "react";
 
-const dummyProjects = [
-  {
-    id: 1,
-    title: "AI Chatbot",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-    description:
-      "An AI-powered chatbot built with NLP that automates customer support and answers user queries intelligently.",
-  },
-  {
-    id: 2,
-    title: "E-Commerce Platform",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
-    description:
-      "A scalable e-commerce web app built using React, Node.js, and MongoDB with integrated payment gateway.",
-  },
-  {
-    id: 3,
-    title: "Weather Forecasting App",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-    description:
-      "Provides real-time weather updates, forecasts, and alerts using OpenWeather API with data visualization.",
-  },
-  {
-    id: 4,
-    title: "Healthcare Dashboard",
-    image: "https://images.unsplash.com/photo-1581091215367-59ab6c5b1f3b",
-    description:
-      "A responsive healthcare data visualization dashboard for hospitals to track patient and staff analytics.",
-  },
-  {
-    id: 5,
-    title: "Portfolio Website",
-    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d",
-    description:
-      "A personal portfolio built using React and Tailwind CSS, showcasing skills, projects, and achievements.",
-  },
-  {
-    id: 6,
-    title: "IoT Home Automation",
-    image: "https://images.unsplash.com/photo-1606813902789-9b3e8c68f6e1",
-    description:
-      "IoT-based system that allows users to control home devices remotely using a mobile app.",
-  },
-  {
-    id: 7,
-    title: "Food Delivery App",
-    image: "https://images.unsplash.com/photo-1551218808-94e220e084d2",
-    description:
-      "A mobile-first food ordering platform that connects restaurants and customers with real-time tracking. IoT-based system that allows users to control home devices remotely using a mobile app. IoT-based system that allows users to control home devices remotely using a mobile app.",
-  },
-  {
-    id: 8,
-    title: "Stock Market Tracker",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c",
-    description:
-      "Real-time stock market tracker using financial APIs to visualize trends and portfolio insights.",
-  },
-  {
-    id: 9,
-    title: "Travel Blog",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    description:
-      "A blog platform for travel enthusiasts to share their journeys, stories, and recommendations.",
-  },
-];
+   const dummyProjects = [
+  // {
+  //   id: 1,
+  //   title: "AI Chatbot",
+  //   image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+  //   description:
+  //     "An AI-powered chatbot built with NLP that automates customer support and answers user queries intelligently.",
+  // },
+  // {
+  //   id: 2,
+  //   title: "E-Commerce Platform",
+  //   image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+  //   description:
+  //     "A scalable e-commerce web app built using React, Node.js, and MongoDB with integrated payment gateway.",
+  // },
+  // {
+  //   id: 3,
+  //   title: "Weather Forecasting App",
+  //   image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+  //   description:
+  //     "Provides real-time weather updates, forecasts, and alerts using OpenWeather API with data visualization.",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Healthcare Dashboard",
+  //   image: "https://images.unsplash.com/photo-1581091215367-59ab6c5b1f3b",
+  //   description:
+  //     "A responsive healthcare data visualization dashboard for hospitals to track patient and staff analytics.",
+  // },
+  // {
+  //   id: 5,
+  //   title: "Portfolio Website",
+  //   image: "https://images.unsplash.com/photo-1559028012-481c04fa702d",
+  //   description:
+  //     "A personal portfolio built using React and Tailwind CSS, showcasing skills, projects, and achievements.",
+  // },
+  // {
+  //   id: 6,
+  //   title: "IoT Home Automation",
+  //   image: "https://images.unsplash.com/photo-1606813902789-9b3e8c68f6e1",
+  //   description:
+  //     "IoT-based system that allows users to control home devices remotely using a mobile app.",
+  // },
+  // {
+  //   id: 7,
+  //   title: "Food Delivery App",
+  //   image: "https://images.unsplash.com/photo-1551218808-94e220e084d2",
+  //   description:
+  //     "A mobile-first food ordering platform that connects restaurants and customers with real-time tracking. IoT-based system that allows users to control home devices remotely using a mobile app. IoT-based system that allows users to control home devices remotely using a mobile app.",
+  // },
+  // {
+  //   id: 8,
+  //   title: "Stock Market Tracker",
+  //   image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c",
+  //   description:
+  //     "Real-time stock market tracker using financial APIs to visualize trends and portfolio insights.",
+  // },
+  // {
+  //   id: 9,
+  //   title: "Travel Blog",
+  //   image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  //   description:
+  //     "A blog platform for travel enthusiasts to share their journeys, stories, and recommendations.",
+  // },
+   ];
 
 const Projects = () => {
   const [selected, setSelected] = useState(null);

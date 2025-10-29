@@ -141,7 +141,7 @@ const AdminLogin = ({ onVerified }) => {
 
       // 🔹 Make POST request to backend for authentication
       const response = await axios.post(
-        "http://localhost:8080/mechyam/api/admin/auth/login",
+        "http://192.168.1.192:8085/mechyam/api/admin/auth/login",
         {
           email: formData.email,
           password: formData.password,
