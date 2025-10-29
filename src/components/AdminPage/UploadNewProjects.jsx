@@ -10,7 +10,8 @@ const UploadNewProjects = () => {
   // ✅ Fetch existing projects (optional — can use later for display)
   const fetchProjects = async () => {
     try {
-      await axios.get("http://localhost:8080/mechyam/api/projects");
+      await axios.get("http://192.168.1.192:8085/mechyam/api/projects");
+      // await axios.get("http://localhost:8085/mechyam/api/projects");
       // if you want to use data later, you can store it in state
       // but since not used now, we skip setProjects()
     } catch (error) {
@@ -52,7 +53,7 @@ const UploadNewProjects = () => {
     formData.append("image", image);
 
     try {
-      await axios.post("http://localhost:8080/mechyam/api/projects", formData, {
+      await axios.post("http://192.168.1.192:8085/mechyam/api/projects", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
