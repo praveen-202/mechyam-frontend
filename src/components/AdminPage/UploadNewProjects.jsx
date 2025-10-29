@@ -5,7 +5,6 @@ const UploadNewProjects = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [projects, setProjects] = useState([]);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -13,7 +12,7 @@ const UploadNewProjects = () => {
   // ✅ CORRECT URL - port 8085 with /mechyam context path
   const API_BASE_URL = "http://localhost:8085/mechyam";
 
-  // ✅ Fetch existing projects from backend
+  // ✅ Fetch existing projects (optional — can use later for display)
   const fetchProjects = async () => {
     try {
       const res = await axios.get(`${API_BASE_URL}/api/projects`);
@@ -45,14 +44,14 @@ const UploadNewProjects = () => {
     }
   };
 
-  // ✅ Clean up memory
+  // ✅ Clean up preview URL
   useEffect(() => {
     return () => {
       if (preview) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
-  // ✅ Submit form data to backend
+  // ✅ Submit new project
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !description || !image) {
@@ -64,9 +63,9 @@ const UploadNewProjects = () => {
     setError("");
 
     const formData = new FormData();
-    formData.append("image", image);
     formData.append("title", title);
     formData.append("description", description);
+    formData.append("image", image);
 
     try {
       await axios.post(`${API_BASE_URL}/api/projects`, formData, {
@@ -117,7 +116,7 @@ const UploadNewProjects = () => {
           Upload New Project
         </h2>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-8">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-rows gap-8">
           {/* Image Upload with Preview */}
           <div>
             <label className="block text-gray-700 mb-2 font-semibold">
@@ -145,10 +144,8 @@ const UploadNewProjects = () => {
           </div>
 
           {/* Title */}
-          <div>
-            <label className="block text-gray-700 mb-2 font-semibold">
-              Title
-            </label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label>Title</label>
             <input
               type="text"
               value={title}
@@ -160,10 +157,8 @@ const UploadNewProjects = () => {
           </div>
 
           {/* Description */}
-          <div>
-            <label className="block text-gray-700 mb-2 font-semibold">
-              Description
-            </label>
+          <div style={{ marginBottom: "1rem" }}>
+            <label>Description</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}

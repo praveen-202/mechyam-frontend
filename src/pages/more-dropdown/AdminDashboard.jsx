@@ -122,7 +122,7 @@ const AdminDashboard = ({ onLogout }) => {
           )}
         </div>
 
-        {/* 🏷 Heading */}
+        {/* 🏷️ Heading */}
         <h1 className="text-2xl font-bold text-blue-900">Admin Dashboard</h1>
       </header>
 

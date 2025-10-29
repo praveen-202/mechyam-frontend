@@ -1,6 +1,6 @@
 import React from "react";
 
-import company from "../../assets/company.jpg";
+import company from "../../assets/Company-Image/company.jpg";
 
 const Company = () => (
   <>

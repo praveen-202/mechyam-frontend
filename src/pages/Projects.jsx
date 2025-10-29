@@ -9,7 +9,7 @@ const Projects = () => {
   // ✅ Fetch all projects from backend
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://192.168.1.192:8085/mechyam/api/projects");
+      const res = await axios.get("http://localhost:8085/mechyam/api/projects");
       setProjects(res.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
