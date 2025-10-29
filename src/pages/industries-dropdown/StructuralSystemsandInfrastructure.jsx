@@ -1,9 +1,9 @@
 import React from "react";
 
-import structuralImg from "../../assets/structural-system.jpg";
-import structuralImg2 from "../../assets/structural-system01.jpg";
-import InfrastructureImg from "../../assets/infrastructure01.jpg";
-import InfrastructureImg2 from "../../assets/infrastructure02.jpg";
+import structuralImg from "../../assets/StructuralSystemsandInfrastructure-Images/structural-system.jpg";
+import structuralImg2 from "../../assets/StructuralSystemsandInfrastructure-Images/structural-system01.jpg";
+import InfrastructureImg from "../../assets/StructuralSystemsandInfrastructure-Images/infrastructure01.jpg";
+import InfrastructureImg2 from "../../assets/StructuralSystemsandInfrastructure-Images/infrastructure02.jpg";
 
 const StructuralSystemsandInfrastructure = () => (
   <>

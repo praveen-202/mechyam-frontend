@@ -1,9 +1,9 @@
 import React from "react";
-import brige from "../../assets/bridge.jpg";
-import rail from "../../assets/rail.jpg";
-import rail01 from "../../assets/rail01.jpg";
-import AerospaceImg from "../../assets/aerospace.jpg";
-import Aerospceimg2 from "../../assets/aerospace01.jpg";
+
+import rail from "../../assets/AerospaceandTransportation-Images/rail.jpg";
+import rail01 from "../../assets/AerospaceandTransportation-Images/rail01.jpg";
+import AerospaceImg from "../../assets/AerospaceandTransportation-Images/aerospace.jpg";
+import Aerospceimg2 from "../../assets/AerospaceandTransportation-Images/aerospace01.jpg";
 
 const AerospaceandTransportation = () => (
   <>
