@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import steelDetailingImg from "../assets/StructuralSteelImages/structural-steel-detailing.jpeg";
 import structuralsteel from "../assets/StructuralSteelImages/structuralsteel.jpg";
 
-const SteelStructure = () => (
+const StructuralSteel = () => (
   <>
     {/* Hero Section */}
     <section id="steel-structure" className="w-full overflow-hidden">
@@ -25,7 +25,7 @@ const SteelStructure = () => (
           style={{ maxWidth: "50vw" }}
         >
           <h1
-            className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+            className="text-5xl md:text-6xl font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             Structural Steel
@@ -43,24 +43,15 @@ const SteelStructure = () => (
               Structural Steel
             </h2>
             <p className="text-lg text-gray-800 mb-4 text-justify">
-              Steel Detailing services from Mechyam use the state of the art
+              Steel Detailing services from Mechyam use the state-of-the-art
               technical tools and solutions. Our services are tailored to our
-              customers needs in an efficient and transparent manner. Majority
-              of our offerings are CAD based with 3D Modeling. DGS believes in
-              using right technology tools with skilled personnel to deliver
-              optimum solutions to customers in a closed loop style. Our Steel
-              Detailing services help our clients to simplify project
-              coordination, improve delivery schedules, and increase overall
-              project quality.
+              customers’ needs in an efficient and transparent manner.
             </p>
             <p className="text-lg text-gray-800 mb-4 text-justify">
               Driven by a passion to build a better tomorrow, we strive to go
               above and beyond customer expectations. With emphasis on research,
-              and focus on quality we offer highly innovative Steel detailing
-              solutions to our valued customers. We Commit delivering quality
-              solutions on time and every time. Since pioneering, the scope and
-              scale of Mechyam has expanded year-on-year, generating a
-              substantial repeat business element.
+              and focus on quality, we offer highly innovative steel detailing
+              solutions to our valued customers.
             </p>
           </div>
           <div className="w-full md:w-1/2 flex items-center justify-center">
@@ -102,64 +93,18 @@ const SteelStructure = () => (
           ))}
         </ul>
 
-        {/* ✅ Updated Read More Links (5 Cards) */}
+        {/* ✅ Updated Read More Cards (5) with equal height alignment */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <span className="text-sm font-semibold text-indigo-600">01</span>
-            <h3 className="text-xl font-bold mt-2">
-              Structural Engineering Services
-            </h3>
-            <p className="text-gray-600 mt-2 text-justify">
-              Structural Engineering provides the framework and ensures
-              structures remain safe, stable, and resilient to their environment.
-            </p>
-            <Link
-              to="/structural-engineering"
-              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
-            >
-              Read more →
-            </Link>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow">
-            <span className="text-sm font-semibold text-indigo-600">02</span>
-            <h3 className="text-xl font-bold mt-2">
-              Structural Steel Detailing Services
-            </h3>
-            <p className="text-gray-600 mt-2 text-justify">
-              Structural steel detailing involves preparing detailed drawings
-              and fabrication plans for construction and manufacturing.
-            </p>
-            <Link
-              to="/structuralsteeldetailingservices"
-              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
-            >
-              Read more →
-            </Link>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow">
-            <span className="text-sm font-semibold text-indigo-600">03</span>
-            <h3 className="text-xl font-bold mt-2">Bridge Detailing Services</h3>
-            <p className="text-gray-600 mt-2 text-justify">
-              Bridge detailing ensures accurate and durable designs for all
-              components, supporting safe and efficient construction.
-            </p>
-            <Link
-              to="/bridge-detailing"
-              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
-            >
-              Read more →
-            </Link>
-          </div>
-
-          <div className="bg-white p-6 rounded-lg shadow">
-            <span className="text-sm font-semibold text-indigo-600">04</span>
-            <h3 className="text-xl font-bold mt-2">Engineering Design</h3>
-            <p className="text-gray-600 mt-2 text-justify">
-              Engineering Design focuses on creating efficient, practical, and
-              innovative solutions for mechanical and structural systems.
-            </p>
+          {/* 01 */}
+          <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
+            <div>
+              <span className="text-sm font-semibold text-indigo-600">01</span>
+              <h3 className="text-xl font-bold mt-2">Engineering Design</h3>
+              <p className="text-gray-600 mt-2 text-justify">
+                Engineering design focuses on creating practical, efficient, and
+                innovative structures and systems that meet project goals.
+              </p>
+            </div>
             <Link
               to="/engineering-design"
               className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
@@ -168,15 +113,76 @@ const SteelStructure = () => (
             </Link>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow">
-            <span className="text-sm font-semibold text-indigo-600">05</span>
-            <h3 className="text-xl font-bold mt-2">Structural Analysis</h3>
-            <p className="text-gray-600 mt-2 text-justify">
-              Structural Analysis evaluates forces, stresses, and deformations
-              to ensure safety, stability, and reliability of structures.
-            </p>
+          {/* 02 */}
+          <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
+            <div>
+              <span className="text-sm font-semibold text-indigo-600">02</span>
+              <h3 className="text-xl font-bold mt-2">Structural Analysis</h3>
+              <p className="text-gray-600 mt-2 text-justify">
+                Structural analysis ensures the stability and safety of
+                structures by evaluating loads, stresses, and overall behavior.
+              </p>
+            </div>
             <Link
               to="/structural-analysis"
+              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
+            >
+              Read more →
+            </Link>
+          </div>
+
+          {/* 03 */}
+          <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
+            <div>
+              <span className="text-sm font-semibold text-indigo-600">03</span>
+              <h3 className="text-xl font-bold mt-2">
+                Structural Engineering Services
+              </h3>
+              <p className="text-gray-600 mt-2 text-justify">
+                Structural engineering ensures buildings and infrastructure
+                remain safe, stable, and resilient to environmental forces.
+              </p>
+            </div>
+            <Link
+              to="/structural-engineering"
+              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
+            >
+              Read more →
+            </Link>
+          </div>
+
+          {/* 04 */}
+          <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
+            <div>
+              <span className="text-sm font-semibold text-indigo-600">04</span>
+              <h3 className="text-xl font-bold mt-2">
+                Structural Steel Detailing
+              </h3>
+              <p className="text-gray-600 mt-2 text-justify">
+                Structural steel detailing involves precise drawings for
+                fabrication and assembly, ensuring accuracy and efficiency.
+              </p>
+            </div>
+            <Link
+              to="/structuralsteeldetailingservices"
+              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
+            >
+              Read more →
+            </Link>
+          </div>
+
+          {/* 05 */}
+          <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
+            <div>
+              <span className="text-sm font-semibold text-indigo-600">05</span>
+              <h3 className="text-xl font-bold mt-2">Bridge Detailing</h3>
+              <p className="text-gray-600 mt-2 text-justify">
+                Bridge detailing provides durable, accurate designs for all
+                bridge components, supporting reliable construction processes.
+              </p>
+            </div>
+            <Link
+              to="/bridge-detailing"
               className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
             >
               Read more →
@@ -188,4 +194,4 @@ const SteelStructure = () => (
   </>
 );
 
-export default SteelStructure;
+export default StructuralSteel;
