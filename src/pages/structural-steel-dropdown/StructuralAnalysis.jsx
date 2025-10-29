@@ -1,8 +1,8 @@
 
 import React from "react";
 
-import structuralAnalysis from "../../assets/structural-analysis.jpg";
-import structuralAnalysis01 from "../../assets/structural-analysis01.jpg";
+import structuralAnalysis from "../../assets/StructuralAnalysis-Images/structural-analysis.jpg";
+import structuralAnalysis01 from "../../assets/StructuralAnalysis-Images/structural-analysis01.jpg";
 
 
 

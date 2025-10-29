@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 // 🖼 Image imports
-import MechymaImage from "../../assets/Mechyam01.jpg";
-import engineeringImg from "../../assets/engineeringdesign.jpg";
-import structuralImg from "../../assets/structural-analysis.jpg";
-import chess from "../../assets/chess.jpg";
-import dataImg from "../../assets/data-analysis.jpg"; // ✅ Add a relevant image (e.g., data-analysis.jpg)
+import MechymaImage from "../../assets/Home-Images/Mechyam01.jpg";
+import engineeringImg from "../../assets/EngineeringDesign-Images/engineeringdesign.jpg";
+import structuralImg from "../../assets/StructuralAnalysis-Images/structural-analysis.jpg";
+import chess from "../../assets/Home-Images/chess.jpg";
+import dataImg from "../../assets/Home-Images/data-analysis.jpg"; 
 
 // ⚙ Services section data (updated)
 const services = [

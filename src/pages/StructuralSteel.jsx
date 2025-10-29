@@ -94,7 +94,7 @@ const StructuralSteel = () => (
         </ul>
 
         {/* ✅ Updated Read More Cards (5) with equal height alignment */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {/* 01 */}
           <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
             <div>
@@ -172,22 +172,7 @@ const StructuralSteel = () => (
           </div>
 
           {/* 05 */}
-          <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-between">
-            <div>
-              <span className="text-sm font-semibold text-indigo-600">05</span>
-              <h3 className="text-xl font-bold mt-2">Bridge Detailing</h3>
-              <p className="text-gray-600 mt-2 text-justify">
-                Bridge detailing provides durable, accurate designs for all
-                bridge components, supporting reliable construction processes.
-              </p>
-            </div>
-            <Link
-              to="/bridge-detailing"
-              className="mt-4 inline-block text-indigo-600 font-medium hover:underline"
-            >
-              Read more →
-            </Link>
-          </div>
+          
         </div>
       </div>
     </section>

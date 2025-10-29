@@ -1,10 +1,8 @@
 import React from "react";
-import brige from "../../assets/bridge.jpg";
-import rail from "../../assets/rail.jpg";
-import rail01 from "../../assets/rail01.jpg";
-import WindenergyImg from "../../assets/windenergy.jpg";
-import WindenergyImg01 from "../../assets/windenergy01.jpg";
-import RenewableEnergyImg from "../../assets/renewableenergy.jpg"; // ✅ Add your new image here
+
+import WindenergyImg from "../../assets/WindEnergyandRenewables-Images/windenergy.jpg";
+import WindenergyImg01 from "../../assets/WindEnergyandRenewables-Images/windenergy01.jpg";
+import RenewableEnergyImg from "../../assets/WindEnergyandRenewables-Images/renewableenergy.jpg"; // ✅ Add your new image here
 
 const WindEnergyandRenewables = () => (
   <>

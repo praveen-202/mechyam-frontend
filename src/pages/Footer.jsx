@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaLinkedin, FaGlobe, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa"; // Added icons
-import MADS from "../assets/MADS01.jpg";
+import MADS from "../assets/Logo-Image/MADS01.jpg";
 
 const Footer = () => {
   const services = {

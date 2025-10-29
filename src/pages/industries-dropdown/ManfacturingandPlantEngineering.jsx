@@ -1,7 +1,7 @@
 import React from "react";
-import ManufacturingImg from "../../assets/manufacturing.jpg"; // You can replace with your actual manufacturing image
-import ManufacturingImg01 from "../../assets/manufacturing01.jpg";
-import PlantEngineeringImg from "../../assets/plantengineering.jpg"; // Replace with plant engineering image
+import ManufacturingImg from "../../assets/ManufacturingandPlantEngineering-Images/manufacturing.jpg"; 
+import ManufacturingImg01 from "../../assets/ManufacturingandPlantEngineering-Images/manufacturing01.jpg";
+import PlantEngineeringImg from "../../assets/ManufacturingandPlantEngineering-Images/plantengineering.jpg"; 
 
 const ManufacturingandPlantEngineering = () => (
   <>

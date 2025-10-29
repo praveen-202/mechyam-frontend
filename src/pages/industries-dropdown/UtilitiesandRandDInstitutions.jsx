@@ -1,10 +1,8 @@
 import React from "react";
-import bridge from "../../assets/bridge.jpg";
-import rail from "../../assets/rail.jpg";
-import rail01 from "../../assets/rail01.jpg";
-import utilityImg from "../../assets/utilities.jpg"; 
-import researchImg from "../../assets/utilities01.jpg"; 
-import innovationImg from "../../assets/randdinstitutions.jpg"; 
+
+import utilityImg from "../../assets/UtilitiesandRandDInstitutions-Images/utilities.jpg"; 
+import researchImg from "../../assets/UtilitiesandRandDInstitutions-Images/utilities01.jpg"; 
+import innovationImg from "../../assets/UtilitiesandRandDInstitutions-Images/randdinstitutions.jpg"; 
 
 const UtilitiesandRandDInstitutions = () => (
   <>

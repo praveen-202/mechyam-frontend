@@ -1,9 +1,9 @@
 import React from "react";
 
-import bridge from "../assets/bridge.jpg";
-import MES from "../assets/Mechanical-Engineering-Services.jpeg";
-import mechproj from "../assets/mechproj.jpg";
-import structproj from "../assets/structproj.jpg";
+import bridge from "../assets/Projects-Images/bridge.jpg";
+import MES from "../assets/Projects-Images/Mechanical-Engineering-Services.jpeg";
+import mechproj from "../assets/Projects-Images/mechproj.jpg";
+import structproj from "../assets/Projects-Images/structproj.jpg";
 
 
 const Projects = () => (

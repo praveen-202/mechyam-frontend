@@ -2,8 +2,8 @@ import React from "react";
 
 
 
-import mechRandD from "../../assets/mechRandD.jpg";
-import mechRandD02 from "../../assets/mechRandD02.jpg";
+import mechRandD from "../../assets/MechanicalEngineeringRandD-Images/mechRandD.jpg";
+import mechRandD02 from "../../assets/MechanicalEngineeringRandD-Images/mechRandD02.jpg";
 
 
 const MechnicalEngineeringRandD = () => (
