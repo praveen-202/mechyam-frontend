@@ -102,14 +102,7 @@ const Navbar = () => {
                       Structural Steel Detailing Services
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      to="/bridge-detailing"
-                      className="block px-4 py-2 hover:bg-gray-100"
-                    >
-                      Bridge Detailing Services
-                    </Link>
-                  </li>
+                  
                 </ul>
               </div>
             )}
@@ -188,20 +181,11 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/contracting" className="block px-4 py-2 hover:bg-gray-100">
-                      Contracting
+                    <Link to="/utilities-r&dinstutions" className="block px-4 py-2 hover:bg-gray-100">
+                     Utilities & R&D Institutions
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/oil-gas" className="block px-4 py-2 hover:bg-gray-100">
-                      Oil & Gas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/transportation" className="block px-4 py-2 hover:bg-gray-100">
-                      Transportation / Rail Industry
-                    </Link>
-                  </li>
+                  
                 </ul>
               </div>
             )}
