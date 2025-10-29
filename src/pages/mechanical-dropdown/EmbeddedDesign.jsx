@@ -1,7 +1,7 @@
 import React from "react";
 
-import embedded from "../../assets/embedded.jpg";
-import embedded01 from "../../assets/embedded01.jpg";
+import embedded from "../../assets/Embedded-images/embedded.jpg";
+import embedded01 from "../../assets/Embedded-images/embedded01.jpg";
 const EmbeddedDesign = () => {
   return (
     <main className="min-h-screen bg-white">

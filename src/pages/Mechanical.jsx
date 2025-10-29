@@ -1,7 +1,7 @@
 import React from "react";
 
- import mechanical from "../assets/mechanical.jpg";
-import mech01 from "../assets/mech01.jpg";
+ import mechanical from "../assets/Mechanical-Images/Mechanical.jpg";
+import mech01 from "../assets/Mechanical-Images/mech01.jpg";
 
 const Mechanical = () => (
   <>

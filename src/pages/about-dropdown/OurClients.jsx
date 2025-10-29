@@ -1,5 +1,5 @@
 import React from "react";
-import testimonials from "../../assets/testimonials.jpg";
+import testimonials from "../../assets/OurClients-Image/ourclients.jpg";
 
 const OurClients = () => (
   <>

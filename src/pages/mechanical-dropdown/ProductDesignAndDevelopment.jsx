@@ -1,10 +1,9 @@
 import React from "react";
-import heroImg from "../../assets/hero.png";
-import steelDetailingImg from "../../assets/StructuralSteelImages/structural-steel-detailing.jpeg";
 
-import project from "../../assets/project.jpg";
 
-import projectdesign from "../../assets/projectdesign.jpg";
+import project from "../../assets/ProductDesignAndDevelopment-Images/project.jpg";
+
+import projectdesign from "../../assets/ProductDesignAndDevelopment-Images/projectdesign.jpg";
 const ProductDesignAndDevelopment = () => {
   return (
     <main className="min-h-screen bg-white">
