@@ -1,41 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // ✨ Added Framer Motion
+import { motion } from "framer-motion";
 
-// 🖼 Import the new hero image
-import MechymaImage from "../../assets/Mechyam.jpg";
-
-// 🖼 Import other images for services
-import structuralImg from "../../assets/structural-steel-detailing.jpeg";
-import steelDetailingImg from "../../assets/steel-detailing-services.webp";
-import mechanicalServiceImg from "../../assets/Mechanical-Engineering-Services.jpeg";
+// 🖼 Image imports
+import MechymaImage from "../../assets/Mechyam01.jpg";
+import engineeringImg from "../../assets/engineeringdesign.jpg";
+import structuralImg from "../../assets/structural-analysis.jpg";
 import chess from "../../assets/chess.jpg";
+import dataImg from "../../assets/data-analysis.jpg"; // ✅ Add a relevant image (e.g., data-analysis.jpg)
 
-// ⚙ Services section data
+// ⚙ Services section data (updated)
 const services = [
   {
-    title: "Structural Steel Detailing",
-    subTitle: "Structural Engineering Services",
+    title: "Engineering Design",
+    subTitle: "Mechanical & Structural Systems",
     description:
-      "We provide precise structural steel detailing to ensure accurate fabrication and seamless construction management.",
+      "We provide end-to-end mechanical and structural design solutions using advanced CAD tools and analysis methods to achieve performance, cost-efficiency, and manufacturing readiness.",
+    image: engineeringImg,
+    link: "/engineering-design",
+  },
+  {
+    title: "Structural Analysis",
+    subTitle: "Strength & Stability Evaluation",
+    description:
+      "Our structural analysis services ensure that every design meets safety, stability, and reliability standards through advanced simulations and FEA-based methods.",
     image: structuralImg,
-    link: "/structural-engineering",
-  },
-  {
-    title: "Steel Detailing Services",
-    subTitle: "Structural Detailing Solutions",
-    description:
-      "Our steel detailing services offer comprehensive solutions for structural projects, ensuring high accuracy and quality.",
-    image: steelDetailingImg,
-    link: "/structuralsteeldetailingservices",
-  },
-  {
-    title: "Mechanical Engineering",
-    subTitle: "Mechanical Design & Analysis",
-    description:
-      "Our mechanical engineering solutions cover design, analysis, and optimization of machinery and systems for efficiency and reliability.",
-    image: mechanicalServiceImg,
-    link: "/mechanical",
+    link: "/structural-analysis",
   },
 ];
 
@@ -104,7 +94,7 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               OUR SERVICES
             </h2>
-            <p className="text-gray-600 max-w-2xl md:text-3xl mx-auto text-sm md:text-base">
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed text-justify">
               At MECHYAM AI DESIGN SOLUTIONS (MADS), we specialize in delivering
               precise, scalable, and forward-thinking engineering solutions. As
               a young company with a seasoned leadership team boasting over 15
@@ -114,7 +104,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -122,12 +112,12 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.7 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition transform hover:-translate-y-1"
+                className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition transform hover:-translate-y-1 max-w-md text-justify"
               >
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-20 h-20 object-contain mb-4"
+                  className="w-24 h-24 object-contain mb-4 rounded-lg"
                 />
                 <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-1 md:mb-2">
                   {service.title}
@@ -266,44 +256,64 @@ const Home = () => {
       </section>
 
       {/* ==============================
-          ⚡ CAPABILITIES SECTION
+          📊 MEASUREMENT & DATA ANALYSIS
       ============================== */}
       <section
-        id="capabilities"
-        className="py-20 bg-gradient-to-r from-blue-600 to-blue-900 font-sans"
+        id="measurement-data-analysis"
+        className="py-20 bg-white font-sans relative overflow-hidden"
       >
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 tracking-wide">
-            CAPABILITIES
-          </h2>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-blue-100 opacity-80"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              "Linear and nonlinear Finite Element Analysis (FEA)",
-              "Static, dynamic, vibration, and fatigue assessments",
-              "Modal analysis and load path validation",
-              "Code-compliant design verification",
-              "Reports aligned with international standards and design codes",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 bg-white/10 rounded-xl p-4 md:p-6 shadow-lg hover:scale-105 transition-transform duration-300"
-              >
-                <div className="flex-shrink-0 mt-1 text-white">
-                  <span className="flex items-center justify-center w-8 h-8 bg-white/20 rounded-full font-bold text-white">
-                    {index + 1}
-                  </span>
-                </div>
-                <p className="text-white text-lg leading-relaxed font-medium">
-                  {item}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="relative max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+          {/* Left Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/2"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6 leading-tight">
+              Measurement & Data Analysis
+            </h2>
+            <p className="text-lg text-gray-700 leading-relaxed text-justify mb-4">
+              We transform raw field data into <strong>reliable engineering insights</strong>. 
+              Our team has deep expertise in <strong>measurement strategy, instrumentation, signal processing,</strong> 
+              and <strong>data interpretation</strong>, helping clients make informed decisions faster.
+            </p>
+
+            <ul className="list-disc ml-6 space-y-2 text-gray-700 text-lg">
+              <li>Precision instrumentation and sensor calibration</li>
+              <li>Real-time data capture and monitoring systems</li>
+              <li>AI-driven anomaly detection and predictive analytics</li>
+              <li>Comprehensive data reporting and visualization</li>
+            </ul>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mt-6"
+            >
+              
+            </motion.div>
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/2 flex justify-center"
+          >
+            <img
+              src={dataImg}
+              alt="Measurement & Data Analysis"
+              className="rounded-2xl shadow-lg w-full md:w-10/12 object-cover"
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -358,20 +368,52 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto text-left">
             {[
               {
-                title: "Startup Agility, Industry Depth",
-                desc: "We move fast, backed by decades of engineering knowledge.",
+                  title: (
+                  <span className="flex items-center gap-2">
+                  <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                    🚀
+                  </span>
+                    Startup Agility, Industry Depth
+                  </span>
+                          ),
+                      desc: "We move fast, backed by decades of engineering knowledge.",
               },
+
               {
-                title: "Tool Chain Expertise",
+                title: (
+                  <span className="flex items-center gap-2">
+                    <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                      🧰
+                    </span>
+                    Tool Chain Expertise
+                  </span>
+                ),
                 desc: "SP3D, BIM, Revit, SPPID, SPI, SolidWorks, NX, AutoCAD, ANSYS, and more.",
               },
+
               {
-                title: "End-to-End Insight",
+                title: (
+                  <span className="flex items-center gap-2">
+                    <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                      🔍
+                    </span>
+                      End-to-End Insight
+                  </span>
+                  
+                  ),
                 desc: "From concept design and analysis to real-world measurement and feedback.",
               },
+
               {
-                title: "Client-Centric Approach",
-                desc: "Flexible, collaborative, and always outcome-focused.",
+                title: (
+                  <span className="flex items-center gap-2">
+                    <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                      🤝
+                    </span>
+                    Client-Centric Approach
+                  </span>
+                ),
+                desc: "Flexible,collaborative, and always outcome-focused.",
               },
             ].map((point, index) => (
               <motion.div
