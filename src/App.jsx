@@ -116,7 +116,7 @@ import UtilitiesandRandDInstitutions from "./pages/industries-dropdown/Utilities
 
 
 import Company from "./pages/about-dropdown/Company";
-import Testimonials from "./pages/about-dropdown/OurClients.jsx";
+import OurClients from "./pages/about-dropdown/OurClients.jsx";
 
 import AdminPage from "./components/AdminPage/AdminPage";
 
@@ -172,7 +172,7 @@ function App() {
 
         <Route path="/about" element={<About />} />
         <Route path="/company" element={<Company />} />
-        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/our-clients" element={<OurClients />} />
 
 
         <Route path="/admin-page" element={<AdminPage />} />
