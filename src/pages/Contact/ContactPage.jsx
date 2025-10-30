@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import contactBanner from "../../assets/contact-us.jpg"; // ✅ Import image
+import contactBanner from "../../assets/ContactUs-Image/contact-us.jpg"; 
+import contactImg from "../../assets/ContactUs-Image/contactus01.jpg";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -148,21 +149,23 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* ✅ Banner Section */}
-      <div
-        className="relative bg-cover bg-top h-64 flex items-center justify-center text-white"
-        style={{
-          backgroundImage: `url(${contactBanner})`,
-          backgroundSize: "cover",
-          backgroundPosition: "top", // ✅ shows top part of image
-        }}
-      >
-        {/* Dark Overlay for text visibility */}
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+   <div className="min-h-screen bg-gray-100">
+  {/* ✅ Banner Section */}
+  <div
+    className="relative bg-cover h-64 flex items-center justify-center text-white"
+    style={{
+      backgroundImage: `url(${contactImg})`,
+      backgroundSize: "cover",
+      backgroundPosition: " 40% 65%", // 👈 moves image slightly left (40%) and down (60%)
+    }}
+  >
+    {/* Dark Overlay for text visibility */}
+    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-        <h1 className="text-4xl font-bold relative z-10">Contact Us</h1>
-      </div>
+    <h1 className="text-4xl font-bold relative z-10">Contact Us</h1>
+  </div>
+
+
 
       <div className="container mx-auto px-4 py-8 flex flex-wrap">
         {/* Left Side */}
