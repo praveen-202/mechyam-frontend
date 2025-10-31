@@ -111,7 +111,7 @@ const Projects = () => {
             <img
               src={selected.imageUrl || selected.image}
               alt={selected.title}
-              className="w-full h-56 object-cover rounded-lg mb-4"
+              className="w-full max-h-[500px] object-cover rounded-lg mb-4"
             />
 
             {/* Modal Title */}

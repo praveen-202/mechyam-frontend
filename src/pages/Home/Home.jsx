@@ -262,7 +262,7 @@ const Home = () => {
         id="measurement-data-analysis"
         className="py-20 bg-white font-sans relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-blue-100 opacity-80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-white to-blue-100 opacity-80"></div>
 
         <div className="relative max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
           {/* Left Text */}

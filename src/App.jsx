@@ -116,7 +116,7 @@ import UtilitiesandRandDInstitutions from "./pages/industries-dropdown/Utilities
 
 
 import Company from "./pages/about-dropdown/Company";
-import Testimonials from "./pages/about-dropdown/OurClients.jsx";
+import OurClients from "./pages/about-dropdown/OurClients.jsx";
 
 import AdminPage from "./components/AdminPage/AdminPage";
 
@@ -142,9 +142,10 @@ function App() {
       <ScrollToTop />
 
       <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/steel-structure" element={<StructuralSteel />} />
+        <Route path="/structural-steel" element={<StructuralSteel />} />
         <Route path="/engineering-design" element={<EngineeringDesign />} />
         <Route path="/structural-analysis" element={<StructuralAnalysis />} />
         <Route path="/structural-engineering" element={<StructuralEngineering />} />
@@ -172,7 +173,7 @@ function App() {
 
         <Route path="/about" element={<About />} />
         <Route path="/company" element={<Company />} />
-        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/our-clients" element={<OurClients />} />
 
 
         <Route path="/admin-page" element={<AdminPage />} />
