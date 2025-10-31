@@ -83,7 +83,7 @@ const Navbar = () => {
               onMouseLeave={() => scheduleCloseDropdown()}
             >
               <Link
-                to="/steel-structure"
+                to="/structural-steel"
                 className="hover:text-blue-600 transition px-1 py-1 inline-block"
               >
                 Structural Steel ▾
