@@ -46,7 +46,7 @@ const ManufacturingandPlantEngineering = () => (
 
             <p className="text-lg text-gray-800 mb-4 text-justify">
               At <strong>Mechyam</strong>, we bring precision, innovation, and efficiency to every stage of manufacturing. 
-              Our team provides advanced <strong>manufacturing process design, optimization, and automation solutions</strong> 
+              Our team provides advanced <strong>manufacturing process design, optimization, and automation solutions </strong> 
               that help industries improve productivity, quality, and sustainability.
             </p>
 

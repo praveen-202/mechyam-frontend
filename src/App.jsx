@@ -145,7 +145,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/steel-structure" element={<StructuralSteel />} />
+        <Route path="/structural-steel" element={<StructuralSteel />} />
         <Route path="/engineering-design" element={<EngineeringDesign />} />
         <Route path="/structural-analysis" element={<StructuralAnalysis />} />
         <Route path="/structural-engineering" element={<StructuralEngineering />} />
