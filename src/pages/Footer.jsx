@@ -53,15 +53,15 @@ const Footer = () => {
               <p className="text-gray-300">MECHYAM AI DESIGN SOLUTIONS PVT. LTD.</p>
 
               {/* Address */}
-              <div className="flex items-start text-gray-300 mt-3">
-                  <FaMapMarkerAlt className="mt-1 mr-2 text-blue-400" size={25} /> 
+              <div className="flex items-start text-gray-300 mt-3 ">
+                  <FaMapMarkerAlt className="mt-2 mr-2 text-blue-400" size={25} /> 
                   <p className="leading-relaxed">
                       Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
                       Hitech-City, Hyderabad, Telangana - 500081
                   </p>
               </div>
               {/* Contact Numbers */}
-              <div className="flex items-center text-gray-400">
+              <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
                 <p>+91 79816 70612 , +91 80089 71490</p>
               </div>

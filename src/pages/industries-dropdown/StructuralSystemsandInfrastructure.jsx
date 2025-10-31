@@ -26,7 +26,7 @@ const StructuralSystemsandInfrastructure = () => (
           style={{ maxWidth: "50vw" }}
         >
           <h1
-            className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 py-2 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+            className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 py-2 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             Structural Systems and Infrastructure
