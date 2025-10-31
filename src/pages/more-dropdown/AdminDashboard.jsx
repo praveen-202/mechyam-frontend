@@ -1,11 +1,19 @@
 // src/pages/AdminDashboard.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import JobList from "../../components/AdminPage/JobList";
 import JobForm from "../../components/AdminPage/JobForm";
 import AppliedJobs from "../../components/AdminPage/AppliedJobs";
 import ContactDetails from "../../components/AdminPage/ContactDetails";
 import UploadNewProjects from "../../components/AdminPage/UploadNewProjects";
-import { Menu, LogOut } from "lucide-react";
+import {
+  Menu,
+  LogOut,
+  List,
+  PlusCircle,
+  Users,
+  Phone,
+  Upload,
+} from "lucide-react"; // Lucide icons import
 import axios from "axios";
 
 const AdminDashboard = ({ onLogout }) => {
@@ -14,39 +22,76 @@ const AdminDashboard = ({ onLogout }) => {
   const [jobs, setJobs] = useState([]);
   const [loadingLogout, setLoadingLogout] = useState(false);
 
-  // Handle job addition
+  // Reference for the menu container to detect outside clicks
+  const menuRef = useRef(null);
+
+  /**
+   * Handle job addition from JobForm
+   * @param {Object} job - New job object to add to the list
+   */
   const handleAddJob = (job) => {
     setJobs([...jobs, job]);
   };
 
-  // ✅ Handle logout click
+  /**
+   * Handle admin logout operation
+   * Calls backend API to invalidate token, clears session storage,
+   * and navigates to the login page.
+   */
   const handleLogoutClick = async () => {
     try {
       setLoadingLogout(true);
-      console.log("🔹 Logging out...");
 
-      // 🔹 Call backend logout API
-      await axios.post("http://localhost:8085/mechyam/api/admin/auth/logout", {}, {
-        headers: {
-          Authorization: Bearer `${sessionStorage.getItem("token")}`,
-        },
-      });
+      // Backend logout API call
+      await axios.post(
+        "http://192.168.1.192:8085/mechyam/api/admin/auth/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        }
+      );
 
-      // 🔹 Clear sessionStorage and notify parent
+      // Clear stored session data
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("email");
 
-      console.log("✅ Logged out successfully.");
-      onLogout(); // Notify AdminPage to navigate to login
+      // Notify parent component (AdminPage) to navigate back to login
+      onLogout();
     } catch (err) {
-      console.error("❌ Logout failed:", err);
+      console.error("Logout failed:", err);
       alert("Logout failed. Please try again.");
     } finally {
       setLoadingLogout(false);
     }
   };
 
-  // Render main content area
+  /**
+   * Close the burger menu if the user clicks outside of it.
+   */
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Check if the click is outside the menu and the menu button
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    // Attach the event listener only when the menu is open
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    // Cleanup the event listener when menu is closed or component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
+
+  /**
+   * Render the main content area based on the active menu option.
+   */
   const renderContent = () => {
     switch (activePage) {
       case "JobList":
@@ -67,11 +112,12 @@ const AdminDashboard = ({ onLogout }) => {
   return (
     <div className="h-screen flex flex-col bg-gray-100">
       {/* ==============================
-           🔹 Top Navigation Bar
+           Top Navigation Bar
          ============================== */}
       <header className="flex justify-between items-center bg-white shadow-md p-4 z-10">
-        {/* 🍔 Burger Menu */}
-        <div className="relative">
+        {/* Burger Menu Button and Dropdown */}
+        <div className="relative" ref={menuRef}>
+          {/* Burger icon button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 rounded-full hover:bg-gray-200 transition"
@@ -79,35 +125,52 @@ const AdminDashboard = ({ onLogout }) => {
             <Menu size={28} className="text-blue-900" />
           </button>
 
-          {/* 📋 Dropdown Menu */}
+          {/* Dropdown menu list */}
           {menuOpen && (
-            <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+            <div className="absolute left-0 mt-2 w-60 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
               {[
-                "JobList",
-                "JobForm",
-                "AppliedJobs",
-                "ContactDetails",
-                "UploadNewProjects",
+                {
+                  key: "JobList",
+                  label: "Job List",
+                  icon: <List size={18} className="text-blue-700" />,
+                },
+                {
+                  key: "JobForm",
+                  label: "Add Job",
+                  icon: <PlusCircle size={18} className="text-green-700" />,
+                },
+                {
+                  key: "AppliedJobs",
+                  label: "Applied Jobs",
+                  icon: <Users size={18} className="text-purple-700" />,
+                },
+                {
+                  key: "ContactDetails",
+                  label: "Contact Details",
+                  icon: <Phone size={18} className="text-orange-700" />,
+                },
+                {
+                  key: "UploadNewProjects",
+                  label: "Upload New Projects",
+                  icon: <Upload size={18} className="text-pink-700" />,
+                },
               ].map((item) => (
                 <button
-                  key={item}
+                  key={item.key}
                   onClick={() => {
-                    setActivePage(item);
+                    setActivePage(item.key);
                     setMenuOpen(false);
                   }}
-                  className={`block w-full text-left px-4 py-2 hover:bg-blue-100 ${
-                    activePage === item ? "bg-blue-50 font-semibold" : ""
+                  className={`flex items-center gap-3 w-full text-left px-4 py-2 hover:bg-blue-100 ${
+                    activePage === item.key ? "bg-blue-50 font-semibold" : ""
                   }`}
                 >
-                  {item === "JobList" && "📋 Job List"}
-                  {item === "JobForm" && "➕ Add Job"}
-                  {item === "AppliedJobs" && "👥 Applied Jobs"}
-                  {item === "ContactDetails" && "📞 Contact Details"}
-                  {item === "UploadNewProjects" && "🧩 Upload New Projects"}
+                  {item.icon}
+                  <span>{item.label}</span>
                 </button>
               ))}
 
-              {/* 🚪 Logout Button */}
+              {/* Logout Button Section */}
               <div className="border-t border-gray-200 mt-2">
                 <button
                   onClick={handleLogoutClick}
@@ -122,12 +185,12 @@ const AdminDashboard = ({ onLogout }) => {
           )}
         </div>
 
-        {/* 🏷️ Heading */}
+        {/* Dashboard Title */}
         <h1 className="text-2xl font-bold text-blue-900">Admin Dashboard</h1>
       </header>
 
       {/* ==============================
-           🔹 Scrollable Main Content
+           Scrollable Main Content Area
          ============================== */}
       <main
         className="flex-1 overflow-y-auto bg-white rounded-t-xl shadow-inner p-6"

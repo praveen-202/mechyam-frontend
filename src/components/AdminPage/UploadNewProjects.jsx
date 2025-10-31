@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Loader2 } from "lucide-react"; // Lucide spinner icon
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const UploadNewProjects = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  // ------------------- State Management -------------------
+  const [title, setTitle] = useState(""); // Holds project title
+  const [description, setDescription] = useState(""); // Holds project description
+  const [image, setImage] = useState(null); // Holds uploaded image file
+  const [preview, setPreview] = useState(null); // Stores preview image URL
+  const [loading, setLoading] = useState(false); // Controls spinner visibility
 
-  // ✅ CORRECT URL - port 8085 with /mechyam context path
-  const API_BASE_URL = "http://localhost:8085/mechyam";
-
-  // ✅ Fetch existing projects (optional — can use later for display)
+  // ------------------- Fetch All Projects -------------------
+  // Used to verify project upload success and refresh project data
   const fetchProjects = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/projects`);
-      setProjects(res.data);
-      setError("");
-      console.log("✅ Projects fetched successfully");
+      await axios.get("http://192.168.1.192:8085/mechyam/api/projects");
     } catch (error) {
       console.error("❌ Error fetching projects:", error);
       setError("Failed to load projects. Make sure backend is running on port 8085.");
     }
   };
 
+  // Called once when component loads
   useEffect(() => {
     fetchProjects();
   }, []);
 
-  // ✅ Handle image selection and preview
+  // ------------------- Handle Image Upload -------------------
+  // Updates state and preview when user selects an image
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -44,39 +44,40 @@ const UploadNewProjects = () => {
     }
   };
 
-  // ✅ Clean up preview URL
+  // Cleans up preview URL to prevent memory leaks
   useEffect(() => {
     return () => {
       if (preview) URL.revokeObjectURL(preview);
     };
   }, [preview]);
 
-  // ✅ Submit new project
+  // ------------------- Submit Form -------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate form fields before submission
     if (!title || !description || !image) {
       setError("Please fill all fields");
       return;
     }
 
-    setLoading(true);
-    setError("");
-
+    // Prepare multipart form data
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image", image);
 
     try {
-      await axios.post(`${API_BASE_URL}/api/projects`, formData, {
-        headers: { 
-          "Content-Type": "multipart/form-data",
-        },
+      setLoading(true); // Show spinner during upload
+
+      // Send POST request to backend
+      await axios.post("http://192.168.1.192:8085/mechyam/api/projects", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
       
       alert("Project uploaded successfully!");
-      
-      // Reset form
+
+      // Reset form fields and refresh project list
       setTitle("");
       setDescription("");
       setImage(null);
@@ -86,31 +87,27 @@ const UploadNewProjects = () => {
       fetchProjects();
       
     } catch (error) {
-      console.error("❌ Error uploading project:", error);
-      const errorMessage = error.response?.data?.message || "Upload failed! Please try again.";
-      setError(errorMessage);
+      console.error("Error uploading project:", error);
+      alert("Upload failed!");
     } finally {
-      setLoading(false);
+      setLoading(false); // Hide spinner
     }
   };
 
+  // ------------------- JSX UI -------------------
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-100 py-10 px-6">
+      {/* Header Section */}
       <div className="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-sky-400 text-white rounded-2xl shadow-lg p-8 text-center mb-12">
         <h1 className="text-4xl font-bold tracking-wide mb-2">
-          Mechyam Project Upload
+          Mechyam
         </h1>
         <p className="text-blue-100">
-          Upload your latest innovations and share your tech brilliance.
+          MECHYAM AI DESIGN SOLUTION
         </p>
       </div>
 
-      {error && (
-        <div className="max-w-5xl mx-auto mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-          {error}
-        </div>
-      )}
-
+      {/* Project Upload Form */}
       <div className="max-w-5xl mx-auto bg-white rounded shadow-xl p-8">
         <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
           Upload New Project
@@ -143,9 +140,11 @@ const UploadNewProjects = () => {
             </div>
           </div>
 
-          {/* Title */}
+          {/* Project Title Field */}
           <div style={{ marginBottom: "1rem" }}>
-            <label>Title</label>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Title
+            </label>
             <input
               type="text"
               value={title}
@@ -156,9 +155,11 @@ const UploadNewProjects = () => {
             />
           </div>
 
-          {/* Description */}
+          {/* Project Description Field */}
           <div style={{ marginBottom: "1rem" }}>
-            <label>Description</label>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Description
+            </label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -169,12 +170,20 @@ const UploadNewProjects = () => {
             />
           </div>
 
+          {/* Submit Button with Spinner */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-blue-600 to-sky-400 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-blue-600 to-sky-400 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300"
           >
-            {loading ? "Uploading..." : "Upload Project"}
+            {loading ? (
+              <>
+                <Loader2 className="animate-spin" size={20} />
+                Uploading...
+              </>
+            ) : (
+              "Upload Project"
+            )}
           </button>
         </form>
       </div>
