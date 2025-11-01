@@ -1,8 +1,10 @@
 // src/components/AdminPage/JobForm.jsx
 import React, { useState } from "react";
 import axios from "axios";
+import { Loader2 } from "lucide-react"; // Spinner icon
 
 const JobForm = ({ onAddJob }) => {
+  // ------------------- State Management -------------------
   const [formData, setFormData] = useState({
     jobTitle: "",
     department: "",
@@ -14,18 +16,21 @@ const JobForm = ({ onAddJob }) => {
     responsibilities: "",
     salaryRange: "",
     numberOfOpenings: "",
-    isActive: true,
     closingDate: "",
   });
 
+  const [loading, setLoading] = useState(false); // Spinner control
+
+  // ------------------- Input Change Handler -------------------
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     });
   };
 
+  // ------------------- Submit Handler -------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,19 +40,22 @@ const JobForm = ({ onAddJob }) => {
       return;
     }
 
+    // Prepare data for backend
     const jobData = {
       ...formData,
       postedDate: new Date().toISOString(),
       numberOfOpenings: parseInt(formData.numberOfOpenings, 10),
+      isActive: true, // Always true internally
     };
 
     try {
+      setLoading(true);
+
       const response = await axios.post(
         "http://192.168.1.192:8085/mechyam/api/career/jobs",
         jobData
       );
 
-      console.log("✅ Job uploaded:", response.data);
       alert("Job posted successfully!");
 
       if (onAddJob) onAddJob(response.data);
@@ -64,170 +72,195 @@ const JobForm = ({ onAddJob }) => {
         responsibilities: "",
         salaryRange: "",
         numberOfOpenings: "",
-        isActive: true,
         closingDate: "",
       });
     } catch (error) {
-      console.error("❌ Error posting job:", error);
-      alert("Failed to post job. Please check the backend connection.");
+      console.error("Error posting job:", error);
+      alert("Failed to post job. Please check backend connection.");
+    } finally {
+      setLoading(false);
     }
   };
 
+  // ------------------- JSX Layout -------------------
   return (
-    <div
-      className="bg-white p-6 rounded-xl shadow-md h-[85vh] overflow-y-auto"
-      style={{
-        scrollbarWidth: "thin",
-        scrollbarColor: "#CBD5E1 #F1F5F9",
-      }}
-    >
-      <h2 className="text-2xl font-semibold mb-4 text-blue-900">
-        Post a New Job
-      </h2>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-100 py-10 px-6">
+      {/* Job Posting Form Card */}
+      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+        <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
+          Post a New Job
+        </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Job Title */}
-        <input
-          type="text"
-          name="jobTitle"
-          value={formData.jobTitle}
-          onChange={handleChange}
-          placeholder="Job Title"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-          required
-        />
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-rows gap-8">
+          {/* Job Title */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Job Title</label>
+            <input
+              type="text"
+              name="jobTitle"
+              value={formData.jobTitle}
+              onChange={handleChange}
+              placeholder="Enter job title"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              required
+            />
+          </div>
 
-        {/* Department */}
-        <input
-          type="text"
-          name="department"
-          value={formData.department}
-          onChange={handleChange}
-          placeholder="Department"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-          required
-        />
+          {/* Department */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Department</label>
+            <input
+              type="text"
+              name="department"
+              value={formData.department}
+              onChange={handleChange}
+              placeholder="Enter department"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              required
+            />
+          </div>
 
-        {/* Location */}
-        <input
-          type="text"
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-          placeholder="Location"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-        />
+          {/* Location */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Location</label>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Enter location"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+          </div>
 
-        {/* Job Type */}
-        <select
-          name="jobType"
-          value={formData.jobType}
-          onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="">Select Job Type</option>
-          <option value="FULL_TIME">Full Time</option>
-          <option value="PART_TIME">Part Time</option>
-          <option value="CONTRACT">Contract</option>
-        </select>
+          {/* Job Type */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Job Type</label>
+            <select
+              name="jobType"
+              value={formData.jobType}
+              onChange={handleChange}
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+              <option value="">Select Job Type</option>
+              <option value="FULL_TIME">Full Time</option>
+              <option value="PART_TIME">Part Time</option>
+              <option value="CONTRACT">Contract</option>
+            </select>
+          </div>
 
-        {/* Experience Level */}
-        <select
-          name="experienceLevel"
-          value={formData.experienceLevel}
-          onChange={handleChange}
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="">Select Experience Level</option>
-          <option value="ENTRY">Entry</option>
-          <option value="MID">Mid</option>
-          <option value="SENIOR">Senior</option>
-        </select>
+          {/* Experience Level */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Experience Level</label>
+            <select
+              name="experienceLevel"
+              value={formData.experienceLevel}
+              onChange={handleChange}
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+              <option value="">Select Experience Level</option>
+              <option value="ENTRY">Entry</option>
+              <option value="MID">Mid</option>
+              <option value="SENIOR">Senior</option>
+            </select>
+          </div>
 
-        {/* Description */}
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Job Description"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-          rows="3"
-        />
+          {/* Description */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Enter job description"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              rows="3"
+            />
+          </div>
 
-        {/* Requirements */}
-        <textarea
-          name="requirements"
-          value={formData.requirements}
-          onChange={handleChange}
-          placeholder="Requirements"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-          rows="3"
-        />
+          {/* Requirements */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Requirements</label>
+            <textarea
+              name="requirements"
+              value={formData.requirements}
+              onChange={handleChange}
+              placeholder="Enter job requirements"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              rows="3"
+            />
+          </div>
 
-        {/* Responsibilities */}
-        <textarea
-          name="responsibilities"
-          value={formData.responsibilities}
-          onChange={handleChange}
-          placeholder="Responsibilities"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-          rows="3"
-        />
+          {/* Responsibilities */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Responsibilities</label>
+            <textarea
+              name="responsibilities"
+              value={formData.responsibilities}
+              onChange={handleChange}
+              placeholder="Enter job responsibilities"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              rows="3"
+            />
+          </div>
 
-        {/* Salary Range */}
-        <input
-          type="text"
-          name="salaryRange"
-          value={formData.salaryRange}
-          onChange={handleChange}
-          placeholder="Salary Range (e.g., ₹30,000 - ₹50,000)"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-        />
+          {/* Salary Range */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Salary Range</label>
+            <input
+              type="text"
+              name="salaryRange"
+              value={formData.salaryRange}
+              onChange={handleChange}
+              placeholder="e.g. ₹30,000 - ₹50,000"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+          </div>
 
-        {/* ✅ Number of Openings */}
-        <input
-          type="number"
-          name="numberOfOpenings"
-          value={formData.numberOfOpenings}
-          onChange={handleChange}
-          placeholder="Number of Openings"
-          min="1"
-          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-          required
-        />
+          {/* Number of Openings */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Number of Openings</label>
+            <input
+              type="number"
+              name="numberOfOpenings"
+              value={formData.numberOfOpenings}
+              onChange={handleChange}
+              placeholder="Enter number of openings"
+              min="1"
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              required
+            />
+          </div>
 
-        {/* Closing Date */}
-        <div>
-          <label className="block mb-1 font-medium text-gray-700">
-            Last Date to Apply
-          </label>
-          <input
-            type="date"
-            name="closingDate"
-            value={formData.closingDate}
-            onChange={handleChange}
-            className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+          {/* Closing Date */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">Last Date to Apply</label>
+            <input
+              type="date"
+              name="closingDate"
+              value={formData.closingDate}
+              onChange={handleChange}
+              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+          </div>
 
-        {/* Is Active */}
-        <label className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            name="isActive"
-            checked={formData.isActive}
-            onChange={handleChange}
-          />
-          <span>Active</span>
-        </label>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-900 text-white py-2 rounded-lg font-semibold hover:bg-blue-800 transition"
-        >
-          Upload Job
-        </button>
-      </form>
+          {/* Submit Button with Spinner */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-blue-600 to-sky-400 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="animate-spin" size={20} />
+                Uploading...
+              </>
+            ) : (
+              "Upload Job"
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
