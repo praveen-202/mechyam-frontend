@@ -1,8 +1,8 @@
 import React from "react";
 
 
-import engineeringDesign from "../../assets/engineeringdesign.jpg";
-import engineeringDesign01 from "../../assets/engineeringdesign01.jpg";
+import engineeringDesign from "../../assets/EngineeringDesign-Images/engineeringdesign.jpg";
+import engineeringDesign01 from "../../assets/EngineeringDesign-Images/engineeringdesign01.jpg";
 const EngineeringDesign = () => (
   <>
     <section className="w-full overflow-hidden">

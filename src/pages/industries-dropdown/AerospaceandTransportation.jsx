@@ -1,9 +1,9 @@
 import React from "react";
-import brige from "../../assets/bridge.jpg";
-import rail from "../../assets/rail.jpg";
-import rail01 from "../../assets/rail01.jpg";
-import AerospaceImg from "../../assets/aerospace.jpg";
-import Aerospceimg2 from "../../assets/aerospace01.jpg";
+
+import rail from "../../assets/AerospaceandTransportation-Images/rail.jpg";
+import rail01 from "../../assets/AerospaceandTransportation-Images/rail01.jpg";
+import AerospaceImg from "../../assets/AerospaceandTransportation-Images/aerospace.jpg";
+import Aerospceimg2 from "../../assets/AerospaceandTransportation-Images/aerospace01.jpg";
 
 const AerospaceandTransportation = () => (
   <>
@@ -26,7 +26,7 @@ const AerospaceandTransportation = () => (
           style={{ maxWidth: "50vw" }}
         >
           <h1
-            className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+            className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             Aerospace and Transportation

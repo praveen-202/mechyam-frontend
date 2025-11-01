@@ -1,6 +1,6 @@
 import React from "react";
 
-import company from "../../assets/company.jpg";
+import company from "../../assets/Company-Image/company.webp";
 
 const Company = () => (
   <>
@@ -23,7 +23,7 @@ const Company = () => (
           style={{ maxWidth: "50vw" }}
         >
           <h1
-            className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 bg-gray-800 bg-opacity-50 rounded"
+            className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 bg-gray-800 bg-opacity-50 rounded"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             Company

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 // 🖼 Image imports
-import MechymaImage from "../../assets/Mechyam01.jpg";
-import engineeringImg from "../../assets/engineeringdesign.jpg";
-import structuralImg from "../../assets/structural-analysis.jpg";
-import chess from "../../assets/chess.jpg";
-import dataImg from "../../assets/data-analysis.jpg"; // ✅ Add a relevant image (e.g., data-analysis.jpg)
+import MechymaImage from "../../assets/Home-Images/Mechyam01.jpg";
+import engineeringImg from "../../assets/EngineeringDesign-Images/engineeringdesign.jpg";
+import structuralImg from "../../assets/StructuralAnalysis-Images/structural-analysis.jpg";
+import chess from "../../assets/Home-Images/chess.jpg";
+import dataImg from "../../assets/Home-Images/data-analysis.jpg"; 
 
 // ⚙ Services section data (updated)
 const services = [
@@ -262,7 +262,7 @@ const Home = () => {
         id="measurement-data-analysis"
         className="py-20 bg-white font-sans relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-blue-100 opacity-80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-white to-blue-100 opacity-80"></div>
 
         <div className="relative max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
           {/* Left Text */}

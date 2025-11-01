@@ -17,6 +17,7 @@ const JobDetailsPage = () => {
   });
 
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   if (!job) {
     return <div className="text-center mt-10">No job details available.</div>;
@@ -33,9 +34,11 @@ const JobDetailsPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     if (!formData.fullName || !formData.email || !formData.resumeFile) {
-      setMessage("❌ Please fill all required fields (Name, Email, Resume)");
+      setMessage("Please fill all required fields (Full Name, Email, Resume)");
+      setIsLoading(false);
       return;
     }
 
@@ -45,12 +48,13 @@ const JobDetailsPage = () => {
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     ];
     if (!allowedTypes.includes(formData.resumeFile.type)) {
-      setMessage("❌ Please upload PDF or Word document only");
+      setMessage("Please upload only PDF or Word document.");
+      setIsLoading(false);
       return;
     }
 
     const submitData = new FormData();
-    submitData.append("jobId", job.id.toString());
+    submitData.append("jobId", job.id?.toString() || "");
     submitData.append("fullName", formData.fullName);
     submitData.append("email", formData.email);
     submitData.append("phoneNumber", formData.phoneNumber || "");
@@ -60,10 +64,8 @@ const JobDetailsPage = () => {
     submitData.append("resumeFile", formData.resumeFile);
 
     try {
-      console.log("Submitting application...");
-
-      const response = await axios.post(
-        "http://localhost:8080/mechyam/api/career/apply",
+      await axios.post(
+        "http://192.168.1.192:8085/mechyam/api/career/apply",
         submitData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -71,9 +73,7 @@ const JobDetailsPage = () => {
         }
       );
 
-      console.log("✅ Application submitted:", response.data);
-      setMessage("✅ Application submitted successfully!");
-
+      setMessage("Application submitted successfully!");
       setFormData({
         fullName: "",
         email: "",
@@ -83,68 +83,118 @@ const JobDetailsPage = () => {
         coverLetter: "",
         resumeFile: null,
       });
-
       const fileInput = document.querySelector('input[type="file"]');
       if (fileInput) fileInput.value = "";
     } catch (error) {
-      console.error("❌ Error submitting form:", error);
-      if (error.code === "ERR_NETWORK" || error.message.includes("CONNECTION_REFUSED")) {
-        setMessage("❌ Cannot connect to server. Please check if backend is running on port 8085.");
+      if (
+        error.code === "ERR_NETWORK" ||
+        error.message.includes("CONNECTION_REFUSED")
+      ) {
+        setMessage("Cannot connect to server. Please ensure backend is running.");
       } else if (error.response) {
-        setMessage(`❌ ${error.response.data.message || "Application failed. Please try again."}`);
+        setMessage(
+          error.response.data.message || "Application failed. Please try again."
+        );
       } else {
-        setMessage("❌ Something went wrong! Please try again.");
+        setMessage("Something went wrong. Please try again.");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      {/* Banner Section */}
-      <section className="bg-blue-700 text-white py-16 text-center shadow-md">
-        <h1 className="text-4xl font-bold mb-2">{job.title || job.jobTitle}</h1>
-        {job.department && <p className="text-lg opacity-90">Department: {job.department}</p>}
-      </section>
+    <main className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-100 py-10 px-6">
+      {/* ===== Blue Banner Section (Modern Style) ===== */}
+      <div className="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-sky-400 text-white rounded-2xl shadow-lg p-10 text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-2 tracking-wide drop-shadow-md">
+          {job.title || job.jobTitle}
+        </h1>
+        {job.department && (
+          <p className="text-blue-100 text-lg font-medium">
+            Department: {job.department}
+          </p>
+        )}
+      </div>
 
-      {/* Job Details + Application Form Section */}
-      <div className="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-8 mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* LEFT SIDE — Job Description */}
+      {/* ===== Main Content Section ===== */}
+      <div className="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* LEFT SIDE — Job Details */}
         <section className="border-r pr-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Job Description</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            Job Description
+          </h2>
+
           <p className="text-gray-700 mb-6 leading-relaxed">
-            {job.description || job.details || "We are looking for passionate and skilled professionals to join our team."}
+            {job.description ||
+              job.details ||
+              "We are looking for passionate and skilled professionals to join our team."}
           </p>
 
-          <div className="mt-6 space-y-3">
-            <p><strong>Location:</strong> {job.location || "Not specified"}</p>
-            <p><strong>Experience:</strong> {job.experienceLevel || job.experience || "Not specified"}</p>
-            <p><strong>Employment Type:</strong> {job.jobType || job.type || "Full-time"}</p>
-            <p><strong>Department:</strong> {job.department || "Not specified"}</p>
-            {job.salaryRange && <p><strong>Salary Range:</strong> {job.salaryRange}</p>}
+          <div className="mt-6 space-y-3 text-gray-700">
+            <p>
+              <strong>Location:</strong> {job.location || "Not specified"}
+            </p>
+            <p>
+              <strong>Experience:</strong>{" "}
+              {job.experienceLevel || job.experience || "Not specified"}
+            </p>
+            <p>
+              <strong>Employment Type:</strong>{" "}
+              {job.jobType || job.type || "Full-time"}
+            </p>
+            <p>
+              <strong>Department:</strong> {job.department || "Not specified"}
+            </p>
+
+            {job.numberOfOpenings && (
+              <p>
+                <strong>Openings:</strong> {job.numberOfOpenings}
+              </p>
+            )}
+
+            {job.salaryRange && (
+              <p>
+                <strong>Salary Range:</strong> {job.salaryRange}
+              </p>
+            )}
           </div>
 
           {job.requirements && (
             <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-2 text-blue-700">Requirements</h3>
-              <div className="text-gray-700 whitespace-pre-line">{job.requirements}</div>
+              <h3 className="text-xl font-semibold mb-2 text-blue-700">
+                Requirements
+              </h3>
+              <div className="text-gray-700 whitespace-pre-line">
+                {job.requirements}
+              </div>
             </div>
           )}
 
           {job.responsibilities && (
             <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-2 text-blue-700">Responsibilities</h3>
-              <div className="text-gray-700 whitespace-pre-line">{job.responsibilities}</div>
+              <h3 className="text-xl font-semibold mb-2 text-blue-700">
+                Responsibilities
+              </h3>
+              <div className="text-gray-700 whitespace-pre-line">
+                {job.responsibilities}
+              </div>
             </div>
           )}
         </section>
 
         {/* RIGHT SIDE — Application Form */}
         <section>
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">Apply for this Position</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-gray-800">
+            Apply for this Position
+          </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Full Name */}
             <div>
-              <label className="block font-medium mb-1" htmlFor="fullName">Full Name *</label>
+              <label className="block font-medium mb-1" htmlFor="fullName">
+                Full Name *
+              </label>
               <input
                 id="fullName"
                 type="text"
@@ -154,12 +204,14 @@ const JobDetailsPage = () => {
                 className="w-full border px-3 py-2 rounded"
                 placeholder="Enter your full name"
                 required
-                aria-label="Full Name"
               />
             </div>
 
+            {/* Email */}
             <div>
-              <label className="block font-medium mb-1" htmlFor="email">Email *</label>
+              <label className="block font-medium mb-1" htmlFor="email">
+                Email *
+              </label>
               <input
                 id="email"
                 type="email"
@@ -169,12 +221,14 @@ const JobDetailsPage = () => {
                 className="w-full border px-3 py-2 rounded"
                 placeholder="Enter your email"
                 required
-                aria-label="Email Address"
               />
             </div>
 
+            {/* Phone Number */}
             <div>
-              <label className="block font-medium mb-1" htmlFor="phoneNumber">Phone Number</label>
+              <label className="block font-medium mb-1" htmlFor="phoneNumber">
+                Phone Number
+              </label>
               <input
                 id="phoneNumber"
                 type="tel"
@@ -183,12 +237,14 @@ const JobDetailsPage = () => {
                 onChange={handleChange}
                 className="w-full border px-3 py-2 rounded"
                 placeholder="Enter your phone number"
-                aria-label="Phone Number"
               />
             </div>
 
+            {/* LinkedIn URL */}
             <div>
-              <label className="block font-medium mb-1" htmlFor="linkedinUrl">LinkedIn URL</label>
+              <label className="block font-medium mb-1" htmlFor="linkedinUrl">
+                LinkedIn URL
+              </label>
               <input
                 id="linkedinUrl"
                 type="url"
@@ -197,12 +253,14 @@ const JobDetailsPage = () => {
                 onChange={handleChange}
                 className="w-full border px-3 py-2 rounded"
                 placeholder="Enter your LinkedIn profile link"
-                aria-label="LinkedIn Profile URL"
               />
             </div>
 
+            {/* Portfolio URL */}
             <div>
-              <label className="block font-medium mb-1" htmlFor="portfolioUrl">Portfolio URL</label>
+              <label className="block font-medium mb-1" htmlFor="portfolioUrl">
+                Portfolio URL
+              </label>
               <input
                 id="portfolioUrl"
                 type="url"
@@ -211,12 +269,14 @@ const JobDetailsPage = () => {
                 onChange={handleChange}
                 className="w-full border px-3 py-2 rounded"
                 placeholder="Enter your portfolio link"
-                aria-label="Portfolio URL"
               />
             </div>
 
+            {/* Cover Letter */}
             <div>
-              <label className="block font-medium mb-1" htmlFor="coverLetter">Cover Letter</label>
+              <label className="block font-medium mb-1" htmlFor="coverLetter">
+                Cover Letter
+              </label>
               <textarea
                 id="coverLetter"
                 name="coverLetter"
@@ -225,12 +285,14 @@ const JobDetailsPage = () => {
                 rows="4"
                 className="w-full border px-3 py-2 rounded"
                 placeholder="Write a short cover letter..."
-                aria-label="Cover Letter"
               ></textarea>
             </div>
 
+            {/* Resume Upload */}
             <div>
-              <label className="block font-medium mb-1" htmlFor="resumeFile">Upload Resume *</label>
+              <label className="block font-medium mb-1" htmlFor="resumeFile">
+                Upload Resume *
+              </label>
               <input
                 id="resumeFile"
                 type="file"
@@ -239,26 +301,35 @@ const JobDetailsPage = () => {
                 className="w-full border px-3 py-2 rounded"
                 accept=".pdf,.doc,.docx"
                 required
-                aria-label="Upload Resume File"
               />
-              <p className="text-sm text-gray-500 mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+              <p className="text-sm text-gray-500 mt-1">
+                Accepted formats: PDF, DOC, DOCX (Max 5MB)
+              </p>
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
-              className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 active:scale-95 active:bg-blue-800 transition-transform duration-150 w-full font-medium"
-              aria-label="Submit Job Application"
+              disabled={isLoading}
+              className={`flex justify-center items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 active:scale-95 active:bg-blue-800 transition-transform duration-150 w-full font-medium ${
+                isLoading ? "opacity-70 cursor-not-allowed" : ""
+              }`}
             >
-              Submit Application
+              {isLoading && (
+                <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              )}
+              {isLoading ? "Submitting..." : "Submit Application"}
             </button>
           </form>
 
           {message && (
-            <div className={`mt-4 p-3 rounded ${
-              message.includes("✅")
-                ? "bg-green-100 text-green-700 border border-green-300"
-                : "bg-red-100 text-red-700 border border-red-300"
-            }`}>
+            <div
+              className={`mt-4 p-3 rounded ${
+                message.includes("successfully")
+                  ? "bg-green-100 text-green-700 border border-green-300"
+                  : "bg-red-100 text-red-700 border border-red-300"
+              }`}
+            >
               {message}
             </div>
           )}

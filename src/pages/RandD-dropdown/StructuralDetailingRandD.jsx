@@ -1,9 +1,9 @@
 import React from "react";
 
 
-import brige from "../../assets/bridge.jpg";
-import structRandD from "../../assets/structRandD.jpg";
-import structRandD02 from "../../assets/structRandD02.jpg";
+
+import structRandD from "../../assets/StructuralDetailingRandD-Images/structRandD.jpg";
+import structRandD02 from "../../assets/StructuralDetailingRandD-Images/structRandD02.jpg";
 
 
 
@@ -27,7 +27,7 @@ const StructuralRAndD = () => (
         style={{ maxWidth: "50vw" }}
       >
         <h1
-          className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+          className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
           style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
         >
           Structural  Detailing R&D

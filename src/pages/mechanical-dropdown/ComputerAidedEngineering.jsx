@@ -1,7 +1,7 @@
 import React from "react";
 
-import cad from "../../assets/cad-1.avif";
-import cad01 from "../../assets/cad01.jpg";
+import cad from "../../assets/ComputerAidedEngineering-Images/cad-1.avif";
+import cad01 from "../../assets/ComputerAidedEngineering-Images/cad01.jpg";
 
 const ComputerAidedEngineering = () => {
   return (

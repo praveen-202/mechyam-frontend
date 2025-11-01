@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaLinkedin, FaGlobe, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa"; // Added icons
-import MADS from "../assets/MADS01.jpg";
+import MADS from "../assets/Logo-Image/MADS01.jpg";
 
 const Footer = () => {
   const services = {
@@ -10,7 +10,7 @@ const Footer = () => {
       { name: "Structural Analysis", link: "/structural-analysis" },
       { name: "Structural Engineering Services", link: "/structural-engineering" },
       { name: "Structural Steel Detailing Services", link: "/structuralsteeldetailingservices" },
-      { name: "Bridge Detailing Services", link: "/bridge-detailing" },
+      
     ],
     MECHANICAL: [
       { name: "Product Design & Development", link: "/product-design-development" },
@@ -21,9 +21,8 @@ const Footer = () => {
       { name: "Aerospace and Transportation", link: "/aerospace-transportation" },
       { name: "Wind Energy and Renewables", link: "/windenergyrenewables" },
       { name: "Manufacturing and Plant Engineering", link: "/manufacturing-plantengineering" },
-      { name: "Contracting", link: "/contracting" },
-      { name: "Transportation", link: "/transportation" },
-      { name: "Oil & Gas", link: "/oilandgas" },
+      {name: "Structural System and Infrastructure",link:"/structural-infrastructure"},
+      {name:"Utilities & R&D Instutions",link:"/utilities-r&dinstutions"}
     ],
     GENERAL: [
       { name: "Home", link: "/" },
@@ -50,19 +49,19 @@ const Footer = () => {
               CONTACT
             </h2>
             <div className="mb-6 text-sm leading-6 space-y-3">
-              <p className="font-semibold text-gray-300">Corporate Office (India)</p>
+              <p className="font-semibold text-gray-300 text-lg">Corporate Office (India)</p>
               <p className="text-gray-300">MECHYAM AI DESIGN SOLUTIONS PVT. LTD.</p>
 
               {/* Address */}
-              <div className="flex items-start text-gray-300 mt-3">
-                  <FaMapMarkerAlt className="mt-1 mr-2 text-blue-400" size={18} /> 
+              <div className="flex items-start text-gray-300 mt-3 ">
+                  <FaMapMarkerAlt className="mt-2 mr-2 text-blue-400" size={25} /> 
                   <p className="leading-relaxed">
                       Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
                       Hitech-City, Hyderabad, Telangana - 500081
                   </p>
               </div>
               {/* Contact Numbers */}
-              <div className="flex items-center text-gray-400">
+              <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
                 <p>+91 79816 70612 , +91 80089 71490</p>
               </div>
