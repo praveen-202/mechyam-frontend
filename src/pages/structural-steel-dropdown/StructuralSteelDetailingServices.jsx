@@ -1,8 +1,8 @@
 import React from 'react';
 
-import steel from '../../assets/steel.jpg';
-import SDS from '../../assets/steel-detailing-services.webp';
-import sds from '../../assets/steeldetailingservices.jpg';
+
+import SDS from '../../assets/StructuralSteelDetailingServices-Images/steel-detailing-services.webp';
+import sds from '../../assets/StructuralSteelDetailingServices-Images/steeldetailingservices.jpg';
 
 
 const StructuralSteelDetailingServices = () => (

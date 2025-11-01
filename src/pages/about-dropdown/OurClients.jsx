@@ -1,5 +1,5 @@
 import React from "react";
-import testimonials from "../../assets/testimonials.jpg";
+import OurClientsImg from "../../assets/OurClients-Image/ourclients.jpg";
 
 const OurClients = () => (
   <>
@@ -7,7 +7,7 @@ const OurClients = () => (
     <section className="w-full overflow-hidden">
       <div className="relative w-screen flex items-center justify-start -mx-4">
         <img
-          src={testimonials}
+          src={OurClientsImg}
           alt="Steel Structure Background"
           className="w-full"
           style={{

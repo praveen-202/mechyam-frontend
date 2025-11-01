@@ -1,10 +1,8 @@
 import React from "react";
-import brige from "../../assets/bridge.jpg";
-import rail from "../../assets/rail.jpg";
-import rail01 from "../../assets/rail01.jpg";
-import WindenergyImg from "../../assets/windenergy.jpg";
-import WindenergyImg01 from "../../assets/windenergy01.jpg";
-import RenewableEnergyImg from "../../assets/renewableenergy.jpg"; // ✅ Add your new image here
+
+import WindenergyImg from "../../assets/WindEnergyandRenewables-Images/windenergy.jpg";
+import WindenergyImg01 from "../../assets/WindEnergyandRenewables-Images/windenergy01.jpg";
+import RenewableEnergyImg from "../../assets/WindEnergyandRenewables-Images/renewableenergy.jpg"; // ✅ Add your new image here
 
 const WindEnergyandRenewables = () => (
   <>
@@ -27,7 +25,7 @@ const WindEnergyandRenewables = () => (
           style={{ maxWidth: "50vw" }}
         >
           <h1
-            className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+            className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             Wind Energy & Renewables

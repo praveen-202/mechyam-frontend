@@ -100,22 +100,28 @@ import EngineeringDesign from "./pages/structural-steel-dropdown/EngineeringDesi
 import StructuralAnalysis from "./pages/structural-steel-dropdown/StructuralAnalysis.jsx";
 import StructuralEngineering from "./pages/structural-steel-dropdown/StructuralEngineering";
 import StructuralSteelDetailingServices from "./pages/structural-steel-dropdown/StructuralSteelDetailingServices";
-import BridgeDetailingServices from "./pages/structural-steel-dropdown/BridgeDetailingServices";
+
+
 import ProductDesignAndDevelopment from "./pages/mechanical-dropdown/ProductDesignAndDevelopment";
 import ComputerAidedEngineering from "./pages/mechanical-dropdown/ComputerAidedEngineering";
 import EmbeddedDesign from "./pages/mechanical-dropdown/EmbeddedDesign";
+
+
 import Industries from "./pages/Industries";
-import Contracting from "./pages/industries-dropdown/Contracting";
-import OilAndGas from "./pages/industries-dropdown/OilAndGas";
-import Transportation from "./pages/industries-dropdown/Transportation";
 import AerospaceandTransportation from "./pages/industries-dropdown/AerospaceandTransportation.jsx";
 import WindEnergyandRenewables from "./pages/industries-dropdown/WindEnergyandRenewables.jsx";
 import ManufacturingandPlantEngineering from "./pages/industries-dropdown/ManfacturingandPlantEngineering.jsx";
 import StructuralSystemsandInfrastructure from "./pages/industries-dropdown/StructuralSystemsandInfrastructure.jsx";
+import UtilitiesandRandDInstitutions from "./pages/industries-dropdown/UtilitiesandRandDInstitutions.jsx";
+
+
 import Company from "./pages/about-dropdown/Company";
-import Testimonials from "./pages/about-dropdown/OurClients.jsx";
+import OurClients from "./pages/about-dropdown/OurClients.jsx";
+
 import AdminPage from "./components/AdminPage/AdminPage";
+
 import Footer from "./pages/Footer.jsx";
+
 import DetailedJobList from "./pages/DetailedJobList";
 
 // ✅ ScrollToTop Component (inside App for simplicity)
@@ -136,32 +142,40 @@ function App() {
       <ScrollToTop />
 
       <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/steel-structure" element={<StructuralSteel />} />
+        <Route path="/structural-steel" element={<StructuralSteel />} />
         <Route path="/engineering-design" element={<EngineeringDesign />} />
         <Route path="/structural-analysis" element={<StructuralAnalysis />} />
         <Route path="/structural-engineering" element={<StructuralEngineering />} />
         <Route path="/structuralsteeldetailingservices" element={<StructuralSteelDetailingServices />} />
-        <Route path="/bridge-detailing" element={<BridgeDetailingServices />} />
+       
         <Route path="/mechanical" element={<Mechanical />} />
         <Route path="/product-design-development" element={<ProductDesignAndDevelopment />} />
         <Route path="/computer-aided-engineering" element={<ComputerAidedEngineering />} />
         <Route path="/embedded-design" element={<EmbeddedDesign />} />
+
+
         <Route path="/industries" element={<Industries />} />
-        <Route path="/contracting" element={<Contracting />} />
-        <Route path="/oil-gas" element={<OilAndGas />} />
-        <Route path="/transportation" element={<Transportation />} />
         <Route path="/aerospace-transportation" element={<AerospaceandTransportation/>} />
         <Route path="/windenergyrenewables" element={<WindEnergyandRenewables/>}/>
         <Route path="/manufacturing-plantengineering" element={<ManufacturingandPlantEngineering/>}/>
         <Route path="/structural-infrastructure" element={<StructuralSystemsandInfrastructure/>}/>
+        <Route path="/utilities-r&dinstutions" element={<UtilitiesandRandDInstitutions/>}/>
+
+
         <Route path="/structural-rnd" element={<StructuralDetailingRandD />} />
         <Route path="/mechanical-rnd" element={<MechanicalEngineeringRandD />} />
+
+
         <Route path="/projects" element={<Projects />} />
+
         <Route path="/about" element={<About />} />
         <Route path="/company" element={<Company />} />
-        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/our-clients" element={<OurClients />} />
+
+
         <Route path="/admin-page" element={<AdminPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/careers" element={<CareerPage />} />

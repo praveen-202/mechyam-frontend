@@ -1,9 +1,9 @@
 import React from "react";
 
-import structuralImg from "../../assets/structural-system.jpg";
-import structuralImg2 from "../../assets/structural-system01.jpg";
-import InfrastructureImg from "../../assets/infrastructure01.jpg";
-import InfrastructureImg2 from "../../assets/infrastructure02.jpg";
+import structuralImg from "../../assets/StructuralSystemsandInfrastructure-Images/structural-system.jpg";
+import structuralImg2 from "../../assets/StructuralSystemsandInfrastructure-Images/structural-system01.jpg";
+import InfrastructureImg from "../../assets/StructuralSystemsandInfrastructure-Images/infrastructure01.jpg";
+import InfrastructureImg2 from "../../assets/StructuralSystemsandInfrastructure-Images/infrastructure02.jpg";
 
 const StructuralSystemsandInfrastructure = () => (
   <>
@@ -26,7 +26,7 @@ const StructuralSystemsandInfrastructure = () => (
           style={{ maxWidth: "50vw" }}
         >
           <h1
-            className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 py-2 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+            className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 py-2 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             Structural Systems and Infrastructure

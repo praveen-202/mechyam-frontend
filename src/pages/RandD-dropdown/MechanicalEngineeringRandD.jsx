@@ -2,8 +2,8 @@ import React from "react";
 
 
 
-import mechRandD from "../../assets/mechRandD.jpg";
-import mechRandD02 from "../../assets/mechRandD02.jpg";
+import mechRandD from "../../assets/MechanicalEngineeringRandD-Images/mechRandD.jpg";
+import mechRandD02 from "../../assets/MechanicalEngineeringRandD-Images/mechRandD02.jpg";
 
 
 const MechnicalEngineeringRandD = () => (
@@ -26,7 +26,7 @@ const MechnicalEngineeringRandD = () => (
         style={{ maxWidth: "50vw" }}
       >
         <h1
-          className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+          className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
           style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
         >
           Mechanical Engineering R&D

@@ -13,6 +13,7 @@ const JobForm = ({ onAddJob }) => {
     requirements: "",
     responsibilities: "",
     salaryRange: "",
+    numberOfOpenings: "",
     isActive: true,
     closingDate: "",
   });
@@ -28,19 +29,21 @@ const JobForm = ({ onAddJob }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.jobTitle || !formData.department) {
-      alert("Please fill in required fields.");
+    // Basic validation
+    if (!formData.jobTitle || !formData.department || !formData.numberOfOpenings) {
+      alert("Please fill in required fields including Number of Openings.");
       return;
     }
 
     const jobData = {
       ...formData,
       postedDate: new Date().toISOString(),
+      numberOfOpenings: parseInt(formData.numberOfOpenings, 10),
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/mechyam/api/career/jobs",
+        "http://192.168.1.192:8085/mechyam/api/career/jobs",
         jobData
       );
 
@@ -49,6 +52,7 @@ const JobForm = ({ onAddJob }) => {
 
       if (onAddJob) onAddJob(response.data);
 
+      // Reset form
       setFormData({
         jobTitle: "",
         department: "",
@@ -59,6 +63,7 @@ const JobForm = ({ onAddJob }) => {
         requirements: "",
         responsibilities: "",
         salaryRange: "",
+        numberOfOpenings: "",
         isActive: true,
         closingDate: "",
       });
@@ -179,7 +184,19 @@ const JobForm = ({ onAddJob }) => {
           className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
         />
 
-        {/* ✅ Closing Date with Label */}
+        {/* ✅ Number of Openings */}
+        <input
+          type="number"
+          name="numberOfOpenings"
+          value={formData.numberOfOpenings}
+          onChange={handleChange}
+          placeholder="Number of Openings"
+          min="1"
+          className="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
+          required
+        />
+
+        {/* Closing Date */}
         <div>
           <label className="block mb-1 font-medium text-gray-700">
             Last Date to Apply

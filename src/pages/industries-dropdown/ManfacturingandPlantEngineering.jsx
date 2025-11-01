@@ -1,7 +1,7 @@
 import React from "react";
-import ManufacturingImg from "../../assets/manufacturing.jpg"; // You can replace with your actual manufacturing image
-import ManufacturingImg01 from "../../assets/manufacturing01.jpg";
-import PlantEngineeringImg from "../../assets/plantengineering.jpg"; // Replace with plant engineering image
+import ManufacturingImg from "../../assets/ManufacturingandPlantEngineering-Images/manufacturing.jpg"; 
+import ManufacturingImg01 from "../../assets/ManufacturingandPlantEngineering-Images/manufacturing01.jpg";
+import PlantEngineeringImg from "../../assets/ManufacturingandPlantEngineering-Images/plantengineering.jpg"; 
 
 const ManufacturingandPlantEngineering = () => (
   <>
@@ -24,7 +24,7 @@ const ManufacturingandPlantEngineering = () => (
           style={{ maxWidth: "50vw" }}
         >
           <h1
-            className="text-5xl md:text-6xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
+            className="text-5xl md:text-5xl lg:text-l font-extrabold text-white mb-2 text-left px-20 w-auto h-auto bg-gray-800 bg-opacity-50 rounded"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.6)" }}
           >
             Manufacturing & Plant Engineering
@@ -46,7 +46,7 @@ const ManufacturingandPlantEngineering = () => (
 
             <p className="text-lg text-gray-800 mb-4 text-justify">
               At <strong>Mechyam</strong>, we bring precision, innovation, and efficiency to every stage of manufacturing. 
-              Our team provides advanced <strong>manufacturing process design, optimization, and automation solutions</strong> 
+              Our team provides advanced <strong>manufacturing process design, optimization, and automation solutions </strong> 
               that help industries improve productivity, quality, and sustainability.
             </p>
 
