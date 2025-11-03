@@ -16,7 +16,7 @@ const CareerPage = () => {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          "http://192.168.1.192:8085/mechyam/api/career/jobs/all"
+          "http://192.168.1.114:8080/mechyam/api/career/jobs/all"
         );
 
         // Safely extract the jobs list from API response

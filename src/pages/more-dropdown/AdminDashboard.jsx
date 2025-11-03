@@ -44,7 +44,7 @@ const AdminDashboard = ({ onLogout }) => {
 
       // Backend logout API call
       await axios.post(
-        "http://192.168.1.192:8085/mechyam/api/admin/auth/logout",
+        "http://192.168.1.114:8080/mechyam/api/admin/auth/logout",
         {},
         {
           headers: {

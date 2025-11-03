@@ -3,7 +3,6 @@ import axios from "axios";
 import { Loader2 } from "lucide-react"; // Lucide spinner icon
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const UploadNewProjects = () => {
   // ------------------- State Management -------------------
   const [title, setTitle] = useState(""); // Holds project title
@@ -16,7 +15,7 @@ const UploadNewProjects = () => {
   // Used to verify project upload success and refresh project data
   const fetchProjects = async () => {
     try {
-      await axios.get("http://192.168.1.192:8085/mechyam/api/projects");
+      await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
     } catch (error) {
       console.error("❌ Error fetching projects:", error);
       setError("Failed to load projects. Make sure backend is running on port 8085.");
@@ -71,10 +70,10 @@ const UploadNewProjects = () => {
       setLoading(true); // Show spinner during upload
 
       // Send POST request to backend
-      await axios.post("http://192.168.1.192:8085/mechyam/api/projects", formData, {
+      await axios.post("http://192.168.1.114:8080/mechyam/api/projects", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      
+
       alert("Project uploaded successfully!");
 
       // Reset form fields and refresh project list
@@ -82,10 +81,10 @@ const UploadNewProjects = () => {
       setDescription("");
       setImage(null);
       setPreview(null);
-      
+
       // Refresh projects list
       fetchProjects();
-      
+
     } catch (error) {
       console.error("Error uploading project:", error);
       alert("Upload failed!");

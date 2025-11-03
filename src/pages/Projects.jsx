@@ -21,7 +21,7 @@ const Projects = () => {
   // -------------------------------------------------------
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://192.168.1.192:8085/mechyam/api/projects");
+      const res = await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
       setProjects(res.data);
     } catch (error) {
       // Log any errors that occur during API call
@@ -81,7 +81,7 @@ const Projects = () => {
                 alt={proj.title}
                 className="w-full h-48 object-cover"
               />
-              
+
               {/* Project Title */}
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-gray-800">

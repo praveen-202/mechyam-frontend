@@ -9,7 +9,7 @@ const ContactDetails = () => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.1.192:8080/mechyam/api/contact/all")
+      .get("http://192.168.1.114:8080/mechyam/api/contact/all")
       .then((res) => setContacts(res.data.data || []))
       .catch((err) => console.error("Error fetching contact details:", err));
   }, []);
