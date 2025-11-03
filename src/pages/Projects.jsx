@@ -21,7 +21,7 @@ const Projects = () => {
   // -------------------------------------------------------
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://192.168.1.192:8085/mechyam/api/projects");
+      const res = await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
       setProjects(res.data);
     } catch (error) {
       // Log any errors that occur during API call
@@ -67,26 +67,29 @@ const Projects = () => {
         // -------------------------------------------------------
         // Projects Grid Section
         // -------------------------------------------------------
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto auto-rows-fr">
           {projects.map((proj) => (
             // Each project card
             <div
               key={proj.id}
               onClick={() => setSelected(proj)} // Set selected project when clicked
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-transform transform hover:-translate-y-1 cursor-pointer"
+              className="bg-white rounded-xl shadow-lg  hover:shadow-2xl transition-transform transform hover:-translate-y-1 cursor-pointer flex flex-col"
             >
               {/* Project Image */}
               <img
                 src={proj.imageUrl || proj.image} // Supports both backend field names
                 alt={proj.title}
-                className="w-full h-48 object-cover"
+                className="w-full aspect-[4/3] object-cover"
               />
               
               {/* Project Title */}
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-800">
+              <div className="p-4 flex-grow">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {proj.title}
                 </h3>
+                <p className="text-gray-600 text-sm line-clamp-3">
+                  {proj.description}
+                </p>
               </div>
             </div>
           ))}
@@ -98,28 +101,35 @@ const Projects = () => {
          ------------------------------------------------------- */}
       {selected && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-10
+          "
           onClick={() => setSelected(null)} // Close modal when background is clicked
         >
           {/* Modal content box */}
           <div
-            className="bg-white rounded-lg shadow-xl p-6 max-w-lg mx-4 text-center"
+            className="bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto relative"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside
           >
             {/* Modal Project Image */}
             <img
               src={selected.imageUrl || selected.image}
               alt={selected.title}
-              className="w-full max-h-[500px] object-cover rounded-lg mb-4"
+              className="w-full max-h-[500px] object-cover rounded-t-2xl mb-4"
             />
 
-            {/* Modal Title */}
+            {/* Modal Title
             <h2 className="text-2xl font-bold mb-2 text-blue-600">
               {selected.title}
             </h2>
 
             {/* Modal Description */}
-            <p className="text-gray-700 mb-4">{selected.description}</p>
+            {/* <p className="text-gray-700 mb-4 max-h-60 overflow-y-auto text-justify">{selected.description}</p> */} 
+            <div className="p-6 text-left">
+    <h2 className="text-3xl font-bold mb-3 text-blue-600">{selected.title}</h2>
+    <p className="text-gray-700 leading-relaxed whitespace-pre-line text-justify">
+      {selected.description}
+    </p>
+  </div>
 
             {/* Modal Close Button */}
             <button

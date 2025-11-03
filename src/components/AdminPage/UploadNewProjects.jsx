@@ -10,13 +10,15 @@ const UploadNewProjects = () => {
   const [description, setDescription] = useState(""); // Holds project description
   const [image, setImage] = useState(null); // Holds uploaded image file
   const [preview, setPreview] = useState(null); // Stores preview image URL
+  const [error, setError] = useState(""); // For displaying error messages
   const [loading, setLoading] = useState(false); // Controls spinner visibility
 
   // ------------------- Fetch All Projects -------------------
   // Used to verify project upload success and refresh project data
   const fetchProjects = async () => {
     try {
-      await axios.get("http://192.168.1.192:8085/mechyam/api/projects");
+      await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
+      setError("");
     } catch (error) {
       console.error("❌ Error fetching projects:", error);
       setError("Failed to load projects. Make sure backend is running on port 8085.");
@@ -31,17 +33,17 @@ const UploadNewProjects = () => {
   // ------------------- Handle Image Upload -------------------
   // Updates state and preview when user selects an image
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      if (!file.type.startsWith('image/')) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return; 
+    if (!file.type.startsWith('image/')) {
         setError("Please select a valid image file");
         return;
-      }
-      setImage(file);
-      setError("");
-      const previewURL = URL.createObjectURL(file);
-      setPreview(previewURL);
     }
+    setImage(file);
+    setError("");
+    const previewURL = URL.createObjectURL(file);
+    setPreview(previewURL);
+    
   };
 
   // Cleans up preview URL to prevent memory leaks
@@ -71,7 +73,7 @@ const UploadNewProjects = () => {
       setLoading(true); // Show spinner during upload
 
       // Send POST request to backend
-      await axios.post("http://192.168.1.192:8085/mechyam/api/projects", formData, {
+      await axios.post("http://192.168.1.114:8080/mechyam/api/projects", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       
@@ -82,12 +84,15 @@ const UploadNewProjects = () => {
       setDescription("");
       setImage(null);
       setPreview(null);
+      setError("");
       
       // Refresh projects list
       fetchProjects();
       
-    } catch (error) {
-      console.error("Error uploading project:", error);
+    } catch (err) {
+      console.error("Error uploading project:", err);
+      alert("Upload failed!");
+      setError("Upload failed. Check server or network.");
       alert("Upload failed!");
     } finally {
       setLoading(false); // Hide spinner
@@ -112,6 +117,12 @@ const UploadNewProjects = () => {
         <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
           Upload New Project
         </h2>
+
+        {error && (
+          <div className="mb-4 text-red-600 font-semibold text-center">
+              {error}
+          </div>
+      )}
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-rows gap-8">
           {/* Image Upload with Preview */}
