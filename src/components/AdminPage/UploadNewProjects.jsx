@@ -16,7 +16,7 @@ const UploadNewProjects = () => {
   // Used to verify project upload success and refresh project data
   const fetchProjects = async () => {
     try {
-      await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
+      await axios.get("http://localhost:8080/mechyam/api/projects");
       setError("");
     } catch (error) {
       console.error("❌ Error fetching projects:", error);
@@ -72,7 +72,7 @@ const UploadNewProjects = () => {
       setLoading(true); // Show spinner during upload
 
       // Send POST request to backend
-      await axios.post("http://192.168.1.114:8080/mechyam/api/projects", formData, {
+      await axios.post("http://localhost:8080/mechyam/api/projects", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
