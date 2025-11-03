@@ -81,7 +81,7 @@ const Projects = () => {
                 alt={proj.title}
                 className="w-full aspect-[4/3] object-cover"
               />
-              
+
               {/* Project Title */}
               <div className="p-4 flex-grow">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">

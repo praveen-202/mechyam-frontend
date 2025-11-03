@@ -3,7 +3,6 @@ import axios from "axios";
 import { Loader2 } from "lucide-react"; // Lucide spinner icon
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const UploadNewProjects = () => {
   // ------------------- State Management -------------------
   const [title, setTitle] = useState(""); // Holds project title
@@ -76,7 +75,7 @@ const UploadNewProjects = () => {
       await axios.post("http://192.168.1.114:8080/mechyam/api/projects", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      
+
       alert("Project uploaded successfully!");
 
       // Reset form fields and refresh project list

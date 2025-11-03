@@ -61,8 +61,8 @@ const ComputerAidedEngineering = () => {
 
       {/* Heading Section */}
       <section className="w-full py-4 text-left bg-gray-50">
-         <h2 className="text-l font-bold mb-4 text-blue-900">
-            <div className="w-full md:w-1/3 text-right">
+         <h2 className="text-xl font-bold mb-4 text-blue-900">
+            <div className="w-full  text-center">
           Stress / Structural Analysis: Including
           </div>
         </h2>

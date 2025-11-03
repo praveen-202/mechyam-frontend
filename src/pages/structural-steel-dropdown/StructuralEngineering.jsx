@@ -76,7 +76,7 @@ const StructuralEngineering = () => {
 
       {/* Heading Section */}
       <section className="w-full py-4 text-center bg-gray-50">
-         <h2 className="text-2xl font-bold mb-4 text-black-900">
+         <h2 className="text-2xl font-bold mb-4 text-blue-900">
           Some of the structural engineering services offered are:
         </h2>
       </section>
