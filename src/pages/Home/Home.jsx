@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 // 🖼 Image imports
 import MechymaImage from "../../assets/Home-Images/Mechyam01.jpg";
 import engineeringImg from "../../assets/EngineeringDesign-Images/engineeringdesign.jpg";
 import structuralImg from "../../assets/StructuralAnalysis-Images/structural-analysis.jpg";
 import chess from "../../assets/Home-Images/chess.jpg";
-import dataImg from "../../assets/Home-Images/data-analysis.jpg"; 
+import dataImg from "../../assets/Home-Images/data-analysis.jpg";
 
 // ⚙ Services section data (updated)
 const services = [
@@ -31,7 +31,7 @@ const services = [
 
 const Home = () => {
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -52,25 +52,25 @@ const Home = () => {
           className="w-full h-full object-cover brightness-95 contrast-110"
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6">
-          <motion.h1
+          <Motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg"
           >
             MECHYAM AI DESIGN SOLUTIONS
-          </motion.h1>
+          </Motion.h1>
 
-          <motion.p
+          <Motion.p
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
             className="text-white max-w-2xl text-lg md:text-xl mb-6"
           >
             Engineering precision meets AI innovation
-          </motion.p>
+          </Motion.p>
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
@@ -81,7 +81,7 @@ const Home = () => {
             >
               Learn More
             </Link>
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 
@@ -106,7 +106,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center">
             {services.map((service, index) => (
-              <motion.div
+              <Motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ const Home = () => {
                 >
                   Read More →
                 </Link>
-              </motion.div>
+              </Motion.div>
             ))}
           </div>
 
@@ -149,7 +149,7 @@ const Home = () => {
       ============================== */}
       <section id="vision-mission" className="bg-blue-900 text-white py-20">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -161,9 +161,9 @@ const Home = () => {
               alt="Vision & Mission"
               className="rounded-full w-72 h-72 object-cover shadow-lg border-4 border-white"
             />
-          </motion.div>
+          </Motion.div>
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -193,7 +193,7 @@ const Home = () => {
                 build with intention and resilience.
               </p>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 
@@ -206,7 +206,7 @@ const Home = () => {
             WE OFFER
           </h2>
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -221,7 +221,7 @@ const Home = () => {
                 "Statistical evaluation, anomaly detection, and data trend modelling",
                 "Custom dashboards and visualization tools for reporting",
               ].map((item, index) => (
-                <motion.div
+                <Motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -248,10 +248,10 @@ const Home = () => {
                   <p className="text-gray-700 text-lg leading-relaxed font-medium">
                     {item}
                   </p>
-                </motion.div>
+                </Motion.div>
               ))}
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 
@@ -266,7 +266,7 @@ const Home = () => {
 
         <div className="relative max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
           {/* Left Text */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -277,8 +277,8 @@ const Home = () => {
               Measurement & Data Analysis
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed text-justify mb-4">
-              We transform raw field data into <strong>reliable engineering insights</strong>. 
-              Our team has deep expertise in <strong>measurement strategy, instrumentation, signal processing,</strong> 
+              We transform raw field data into <strong>reliable engineering insights</strong>.
+              Our team has deep expertise in <strong>measurement strategy, instrumentation, signal processing,</strong>
               and <strong>data interpretation</strong>, helping clients make informed decisions faster.
             </p>
 
@@ -289,19 +289,19 @@ const Home = () => {
               <li>Comprehensive data reporting and visualization</li>
             </ul>
 
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
               viewport={{ once: true }}
               className="mt-6"
             >
-              
-            </motion.div>
-          </motion.div>
+
+            </Motion.div>
+          </Motion.div>
 
           {/* Right Image */}
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -313,7 +313,7 @@ const Home = () => {
               alt="Measurement & Data Analysis"
               className="rounded-2xl shadow-lg w-full md:w-10/12 object-cover"
             />
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 
@@ -326,7 +326,7 @@ const Home = () => {
             TOOLS WE USE
           </h2>
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -344,15 +344,15 @@ const Home = () => {
               "NASTRAN",
               "CATIA Analysis",
             ].map((tool, index) => (
-              <motion.div
+              <Motion.div
                 key={index}
                 whileHover={{ scale: 1.1 }}
                 className="px-4 py-2 bg-white rounded-full shadow-md text-gray-800 font-semibold text-sm md:text-base hover:shadow-xl transition-transform duration-300"
               >
                 {tool}
-              </motion.div>
+              </Motion.div>
             ))}
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 
@@ -368,15 +368,15 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto text-left">
             {[
               {
-                  title: (
+                title: (
                   <span className="flex items-center gap-2">
-                  <span className="border-2 border-white rounded-full p-2 bg-transparent">
-                    🚀
-                  </span>
+                    <span className="border-2 border-white rounded-full p-2 bg-transparent">
+                      🚀
+                    </span>
                     Startup Agility, Industry Depth
                   </span>
-                          ),
-                      desc: "We move fast, backed by decades of engineering knowledge.",
+                ),
+                desc: "We move fast, backed by decades of engineering knowledge.",
               },
 
               {
@@ -397,10 +397,10 @@ const Home = () => {
                     <span className="border-2 border-white rounded-full p-2 bg-transparent">
                       🔍
                     </span>
-                      End-to-End Insight
+                    End-to-End Insight
                   </span>
-                  
-                  ),
+
+                ),
                 desc: "From concept design and analysis to real-world measurement and feedback.",
               },
 
@@ -416,7 +416,7 @@ const Home = () => {
                 desc: "Flexible,collaborative, and always outcome-focused.",
               },
             ].map((point, index) => (
-              <motion.div
+              <Motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -430,12 +430,12 @@ const Home = () => {
                   </h3>
                   <p className="text-gray-100">{point.desc}</p>
                 </div>
-              </motion.div>
+              </Motion.div>
             ))}
           </div>
         </div>
       </section>
-    </motion.div>
+    </Motion.div>
   );
 };
 
