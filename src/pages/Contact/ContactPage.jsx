@@ -121,7 +121,7 @@ const ContactPage = () => {
         captchaAnswer: parseInt(formData.captchaAnswer, 10)
       };
 
-      await axios.post("http://localhost:8080/mechyam/api/contact/submit", payload);
+      await axios.post("http://192.168.1.114:8080/mechyam/api/contact/submit", payload);
       alert("Form submitted successfully!");
 
       setFormData({

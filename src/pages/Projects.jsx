@@ -16,7 +16,7 @@ const Projects = () => {
   // -------------------------------------------------------
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/mechyam/api/projects");
+      const res = await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
       setProjects(res.data);
     } catch (error) {
       // Log any errors that occur during API call
@@ -96,13 +96,12 @@ const Projects = () => {
          ------------------------------------------------------- */}
       {selected && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-10
-          "
+          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-10"
           onClick={() => setSelected(null)} // Close modal when background is clicked
         >
           {/* Modal content box */}
           <div
-            className="bg-white p-2  rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto relative"
+            className="bg-white p-2  rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto scroller-p-2 relative"
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside
           >
             {/* Modal Project Image */}
@@ -112,18 +111,14 @@ const Projects = () => {
               className="w-full max-h-[500px] object-cover rounded-2xl mb-4"
             />
 
-            {/* Modal Title
-            <h2 className="text-2xl font-bold mb-2 text-blue-600">
-              {selected.title}
-            </h2>
-
-            {/* Modal Description */}
-            {/* <p className="text-gray-700 mb-4 max-h-60 overflow-y-auto text-justify">{selected.description}</p> */} 
             
-              <h2 className="text-3xl font-bold mb-3 text-blue-600">{selected.title}</h2>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line text-justify">
-                    {selected.description}
-              </p>
+              <h2 className="text-3xl font-bold mb-4 ml-2 text-blue-600">
+                {selected.title}
+              </h2>
+              
+              <div className="text-gray-700 mb-4 text-justify max-h-60 overflow-y-auto p-4 pr-6 bg-gray-200 rounded-md scroller-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-500  scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+                  {selected.description}
+              </div>
             
 
             {/* Modal Close Button */}
