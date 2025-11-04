@@ -16,7 +16,7 @@ import {
 } from "lucide-react"; // Lucide icons import
 import axios from "axios";
 
-const AdminDashboard = ({ onLogout }) => {
+const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("JobList");
   const [menuOpen, setMenuOpen] = useState(false);
   const [jobs, setJobs] = useState([]);
@@ -44,21 +44,23 @@ const AdminDashboard = ({ onLogout }) => {
 
       // Backend logout API call
       await axios.post(
-        "http://192.168.1.114:8080/mechyam/api/admin/auth/logout",
+        "http://localhost:8080/mechyam/api/admin/auth/logout",
         {},
         {
           headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            Authorization: `Bearer ${sessionStorage.getItem("adminToken")}`,
           },
         }
       );
 
       // Clear stored session data
-      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("adminToken");
       sessionStorage.removeItem("email");
 
       // Notify parent component (AdminPage) to navigate back to login
-      onLogout();
+  
+      window.location.href = "/admin/login";
+
     } catch (err) {
       console.error("Logout failed:", err);
       alert("Logout failed. Please try again.");
@@ -161,9 +163,8 @@ const AdminDashboard = ({ onLogout }) => {
                     setActivePage(item.key);
                     setMenuOpen(false);
                   }}
-                  className={`flex items-center gap-3 w-full text-left px-4 py-2 hover:bg-blue-100 ${
-                    activePage === item.key ? "bg-blue-50 font-semibold" : ""
-                  }`}
+                  className={`flex items-center gap-3 w-full text-left px-4 py-2 hover:bg-blue-100 ${activePage === item.key ? "bg-blue-50 font-semibold" : ""
+                    }`}
                 >
                   {item.icon}
                   <span>{item.label}</span>
