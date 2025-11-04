@@ -33,7 +33,7 @@ const AdminLogin = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:8080/mechyam/api/admin/auth/login",
+        "http://192.168.1.114:8080/mechyam/api/admin/auth/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
