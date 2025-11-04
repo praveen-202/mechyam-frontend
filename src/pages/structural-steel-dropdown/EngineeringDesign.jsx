@@ -35,7 +35,7 @@ const EngineeringDesign = () => (
             </p>
 
             {/* ✅ Added content starts here */}
-            <p className="text-lg text-gray-800 mb-4 text-justify">
+            <p className="text-lg font-bold text-blue-900 mb-4 text-justify">
               Our expertise spans multiple domains including:
             </p>
             <ul className="list-disc list-inside text-lg text-gray-800 mb-4 space-y-2">

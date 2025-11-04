@@ -61,7 +61,7 @@ const JobList = () => {
 
     try {
       await axios.delete(
-        `http://192.168.1.192:8085/mechyam/api/career/jobs/${jobId}`
+        `http://localhost:8080/mechyam/api/career/jobs/${jobId}`
       );
 
       // Update state after deletion
@@ -149,11 +149,10 @@ const JobList = () => {
                   handleDelete(job.id);
                 }}
                 disabled={deletingId === job.id}
-                className={`ml-4 px-3 py-2 rounded-lg text-white font-medium transition ${
-                  deletingId === job.id
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-red-600 hover:bg-red-700"
-                }`}
+                className={`ml-4 px-3 py-2 rounded-lg text-white font-medium transition ${deletingId === job.id
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-red-600 hover:bg-red-700"
+                  }`}
               >
                 {deletingId === job.id ? "Deleting..." : "Delete"}
               </button>

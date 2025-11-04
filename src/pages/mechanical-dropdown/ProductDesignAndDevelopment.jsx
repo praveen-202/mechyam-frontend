@@ -2,8 +2,8 @@ import React from "react";
 
 
 import project from "../../assets/ProductDesignAndDevelopment-Images/project.jpg";
-
 import projectdesign from "../../assets/ProductDesignAndDevelopment-Images/projectdesign.jpg";
+
 const ProductDesignAndDevelopment = () => {
   return (
     <main className="min-h-screen bg-white">
