@@ -66,7 +66,7 @@ const AppliedJobs = () => {
 
   // ✅ Resume download
   const handleDownload = (id) => {
-    const fileUrl = `http://localhost:8080/mechyam/api/career/applications/${id}/resume`;
+    const fileUrl = `http://192.168.1.114:8080/mechyam/api/career/applications/${id}/resume`;
     window.open(fileUrl, "_blank");
   };
 
