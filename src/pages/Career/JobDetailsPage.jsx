@@ -110,12 +110,19 @@ const JobDetailsPage = () => {
         <h1 className="text-4xl md:text-5xl font-extrabold mb-2 tracking-wide drop-shadow-md">
           {job.title || job.jobTitle}
         </h1>
-        {job.department && (
-          <p className="text-blue-100 text-lg font-medium">
-            Department: {job.department}
+
+        <p className="text-blue-100 text-lg font-medium">
+          {job.department ? `Department: ${job.department}` : ""}
+        </p>
+
+        {/* ✅ Job Code / ID Display */}
+        {job.id && (
+          <p className="mt-2 text-blue-200 text-sm font-semibold tracking-wide">
+            Job Code: {job.id}
           </p>
         )}
       </div>
+
 
       {/* ===== Main Content Section ===== */}
       <div className="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -311,9 +318,8 @@ const JobDetailsPage = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`flex justify-center items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 active:scale-95 active:bg-blue-800 transition-transform duration-150 w-full font-medium ${
-                isLoading ? "opacity-70 cursor-not-allowed" : ""
-              }`}
+              className={`flex justify-center items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 active:scale-95 active:bg-blue-800 transition-transform duration-150 w-full font-medium ${isLoading ? "opacity-70 cursor-not-allowed" : ""
+                }`}
             >
               {isLoading && (
                 <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
@@ -324,11 +330,10 @@ const JobDetailsPage = () => {
 
           {message && (
             <div
-              className={`mt-4 p-3 rounded ${
-                message.includes("successfully")
+              className={`mt-4 p-3 rounded ${message.includes("successfully")
                   ? "bg-green-100 text-green-700 border border-green-300"
                   : "bg-red-100 text-red-700 border border-red-300"
-              }`}
+                }`}
             >
               {message}
             </div>

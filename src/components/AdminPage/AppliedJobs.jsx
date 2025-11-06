@@ -9,24 +9,34 @@ const AppliedJobs = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [selectedApp, setSelectedApp] = useState(null);
 
+  // 🔹 Pagination States
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const pageSize = 5; // number of records per page
+
   useEffect(() => {
     fetchAllApplications();
-  }, []);
+  }, [page]); // Re-fetch on page change
 
+  // ✅ Fetch all applications with pagination
   const fetchAllApplications = () => {
     setLoading(true);
     axios
-      .get("http://localhost:8080/mechyam/api/career/applications")
+      .get(`http://localhost:8080/mechyam/api/career/applications?page=${page}&size=${pageSize}`)
       .then((res) => {
-        setApplications(res.data.data || []);
+        const data = res.data.data;
+        setApplications(data?.content || []);
+        setTotalPages(data?.totalPages || 0);
         setErrorMsg("");
       })
       .catch(() => {
+        setApplications([]);
         setErrorMsg("Failed to load applications.");
       })
       .finally(() => setLoading(false));
   };
 
+  // ✅ Handle job search
   const handleSearch = () => {
     if (!searchJobId.trim()) return fetchAllApplications();
     setLoading(true);
@@ -35,6 +45,8 @@ const AppliedJobs = () => {
       .get(`http://localhost:8080/mechyam/api/career/applications/job/${searchJobId}`)
       .then((res) => {
         setApplications(res.data.data || []);
+        setTotalPages(1);
+        setPage(0);
         setErrorMsg("");
       })
       .catch(() => {
@@ -44,12 +56,15 @@ const AppliedJobs = () => {
       .finally(() => setLoading(false));
   };
 
+  // ✅ Reset search
   const handleReset = () => {
     setSearchJobId("");
     setErrorMsg("");
+    setPage(0);
     fetchAllApplications();
   };
 
+  // ✅ Resume download
   const handleDownload = (id) => {
     const fileUrl = `http://localhost:8080/mechyam/api/career/applications/${id}/resume`;
     window.open(fileUrl, "_blank");
@@ -70,10 +85,16 @@ const AppliedJobs = () => {
             placeholder="Enter Job ID"
             className="border rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
-          <button onClick={handleSearch} className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-800">
+          <button
+            onClick={handleSearch}
+            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-800"
+          >
             <Search size={18} /> Search
           </button>
-          <button onClick={handleReset} className="flex items-center gap-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400">
+          <button
+            onClick={handleReset}
+            className="flex items-center gap-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400"
+          >
             <RotateCcw size={18} /> Reset
           </button>
         </div>
@@ -117,6 +138,29 @@ const AppliedJobs = () => {
         </div>
       )}
 
+      {/* ✅ Pagination Controls */}
+      {!loading && !errorMsg && totalPages > 1 && (
+        <div className="flex justify-center items-center mt-6 gap-3">
+          <button
+            disabled={page === 0}
+            onClick={() => setPage(page - 1)}
+            className="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span className="px-3 py-2 text-gray-700">
+            Page {page + 1} of {totalPages}
+          </span>
+          <button
+            disabled={page + 1 === totalPages}
+            onClick={() => setPage(page + 1)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
+
       {/* Modal */}
       {selectedApp && (
         <div
@@ -139,14 +183,33 @@ const AppliedJobs = () => {
               <p><strong>Name:</strong> {selectedApp.fullName}</p>
               <p><strong>Email:</strong> {selectedApp.email}</p>
               <p><strong>Phone:</strong> {selectedApp.phoneNumber}</p>
-
               <p><strong>Job:</strong> {selectedApp.job?.jobTitle} ({selectedApp.job?.id})</p>
               <p><strong>Department:</strong> {selectedApp.job?.department}</p>
 
-              <p><strong>LinkedIn:</strong> <a href={selectedApp.linkedinUrl} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">{selectedApp.linkedinUrl}</a></p>
-              <p><strong>Portfolio:</strong> <a href={selectedApp.portfolioUrl} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">{selectedApp.portfolioUrl}</a></p>
+              <p><strong>LinkedIn:</strong>{" "}
+                <a
+                  href={selectedApp.linkedinUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  {selectedApp.linkedinUrl}
+                </a>
+              </p>
+              <p><strong>Portfolio:</strong>{" "}
+                <a
+                  href={selectedApp.portfolioUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  {selectedApp.portfolioUrl}
+                </a>
+              </p>
 
-              <p><strong>Applied On:</strong> {new Date(selectedApp.applicationDate).toLocaleString()}</p>
+              <p><strong>Applied On:</strong>{" "}
+                {new Date(selectedApp.applicationDate).toLocaleString()}
+              </p>
 
               <p><strong>Cover Letter:</strong></p>
               <pre className="whitespace-pre-wrap bg-gray-100 p-2 rounded text-sm max-h-40 overflow-y-auto">

@@ -16,7 +16,7 @@ const CareerPage = () => {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/mechyam/api/career/jobs/all"
+          "http://192.168.1.114:8080/mechyam/api/career/jobs/all"
         );
 
         // Safely extract the jobs list from API response
@@ -60,8 +60,8 @@ const CareerPage = () => {
         <div className="flex flex-col items-center justify-center min-h-[50vh] bg-gray-100 px-6 text-center rounded-2xl shadow-sm max-w-3xl mx-auto">
           <h2
             className={`text-2xl font-bold mb-4 ${errorMessage.includes("Server")
-                ? "text-red-600"
-                : "text-blue-700"
+              ? "text-red-600"
+              : "text-blue-700"
               }`}
           >
             {errorMessage}
