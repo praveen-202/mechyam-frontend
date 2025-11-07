@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion as Motion } from "framer-motion";
+import Chatbot from "../../components/Chatbot";
 
 // 🖼 Image imports
 import MechymaImage from "../../assets/Home-Images/Mechyam01.jpg";
@@ -112,7 +113,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.7 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition transform hover:-translate-y-1 max-w-md text-justify"
+                className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center  hover:shadow-xl transition transform hover:-translate-y-1 max-w-md text-justify"
               >
                 <img
                   src={service.image}
@@ -435,6 +436,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <div className="fixed bottom-6 right-6 z-50">
+        < Chatbot />
+      </div>
     </Motion.div>
   );
 };
