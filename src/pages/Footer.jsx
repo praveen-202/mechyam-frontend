@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaLinkedin, FaGlobe, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaInstagram } from "react-icons/fa"; // Added icons
+import { FaYoutube, FaInstagram, FaLinkedin, FaGlobe, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa"; // Added icons
 import MADS from "../assets/Logo-Image/MADS01.jpg";
 
 const Footer = () => {
@@ -56,39 +56,34 @@ const Footer = () => {
               <div className="flex items-start text-gray-300 mt-3 ">
                   <FaMapMarkerAlt className=" mr-2 text-blue-400" size={25} /> 
                   <p className="leading-relaxed">
-                      Plot No. 97-E EP, Mahalaxmipuram, Narapally
-                      Ghatkesar (M), Medhcal-Malkajgiri (D)
-                      Hyderabad, Telangana – 500 088
+                      Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
+                      Hitech-City, Hyderabad, Telangana - 500081
+
+                  </p>
+              </div>
+
+              <p className="text-gray-300">BOSETEK SYSTEMS INDIA PRIVATE LIMITED.</p>
+                <div className="flex items-start text-gray-300 mt-3 ">
+                <FaMapMarkerAlt className="mt-2 mr-2 text-blue-400" size={25} /> 
+                  <p className="leading-relaxed">
+                      
+                      #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
+                      Ramanthapur Road, Uppal – Medhcal Malkajgiri Dist,
+                      Hyderabad – 500 039.
 
                   </p>
               </div>
               {/* Contact Numbers */}
               <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p> + 91 80089 71490</p>
-              </div>
-              {/* Corporate Office */}
-                <p className="font-semibold text-gray-300 text-lg mt-3">
-                        CORPORATE OFFICE (India)
-                  </p>
-                <div className="flex items-start text-gray-300 mt-1">
-                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={25} />
-                     <p className="leading-relaxed">
-                         #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
-                          Ramanthapur Road, Uppal, Medchal-Malkajgiri (D),
-                          Hyderabad, Telangana – 500 039</p>
-                </div>
-
-                <div className="flex items-center text-gray-300">
-                <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p>+91 72072 12746</p>
+                <p>+91 79816 70612 , +91 80089 71490, +91 72072 12746</p>
               </div>
               
 
               <hr className="my-3 border-gray-700" />
 
               {/* Website */}
-              <div className="flex items-center text-gray-400 hover:text-blue-400 transition duration-300">
+              <div className="flex items-center text-gray-400 hover:text-blue-400 space-x-4 transition duration-300">
                 <FaGlobe className="mr-2 text-blue-400" />
                 <a
                   href="https://www.mechyam.com"
@@ -97,6 +92,15 @@ const Footer = () => {
                   className="underline"
                 >
                   www.mechyam.com
+                </a>
+                 <FaGlobe className="mr-2 text-blue-400" />
+                <a
+                  href="https://bosetek.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  www.bosetek.com
                 </a>
               </div>
 
@@ -133,15 +137,34 @@ const Footer = () => {
                 <p className="font-semibold text-gray-300 mb-2">
                   Follow us on social for updates
                 </p>
-                <div className="flex space-x-4 mt-2">
+                <div className="flex flex-row space-x-4 mt-2">
                   <a
                     href="https://in.linkedin.com/in/mechyam-ai-design-solutions-private-limited-mads-383583361"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-blue-500 transition duration-300"
+                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
                     aria-label="LinkedIn"
                   >
                     <FaLinkedin size={28} />
+                    
+                  </a>
+                  <a
+                    href="https://www.instagram.com/?hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
+                    aria-label="Instagram"
+                  >
+                    <FaInstagram size={28} />
+                  </a>
+                   <a
+                    href="https://www.youtube.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
+                    aria-label="Youtube"
+                  >
+                    <FaYoutube size={28} />
                   </a>
 
                   <a
