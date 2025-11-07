@@ -16,7 +16,7 @@ const AppliedJobs = () => {
   const fetchAllApplications = () => {
     setLoading(true);
     axios
-      .get("http://localhost:8080/mechyam/api/career/applications")
+      .get("http://192.168.1.114:8080/mechyam/api/career/applications")
       .then((res) => {
         setApplications(res.data.data || []);
         setErrorMsg("");

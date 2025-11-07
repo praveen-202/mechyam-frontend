@@ -54,7 +54,7 @@ const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
     setSubmitting(true);
     try {
       const response = await fetch(
-        "http://localhost:8080/mechyam/api/admin/auth/verify-otp",
+        "http://192.168.1.114:8080/mechyam/api/admin/auth/verify-otp",
         {
           method: "POST",
           headers: {

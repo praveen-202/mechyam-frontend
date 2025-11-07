@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaLinkedin, FaGlobe, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa"; // Added icons
+import { FaLinkedin, FaGlobe, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaInstagram } from "react-icons/fa"; // Added icons
 import MADS from "../assets/Logo-Image/MADS01.jpg";
 
 const Footer = () => {
@@ -49,22 +49,41 @@ const Footer = () => {
               CONTACT
             </h2>
             <div className="mb-6 text-sm leading-6 space-y-3">
-              <p className="font-semibold text-gray-300 text-lg">Corporate Office (India)</p>
-              <p className="text-gray-300">MECHYAM AI DESIGN SOLUTIONS PVT. LTD.</p>
+             
+              <p className="font-semibold text-gray-300 text-lg">MECHYAM AI DESIGN SOLUTIONS PVT. LTD.</p>
 
               {/* Address */}
               <div className="flex items-start text-gray-300 mt-3 ">
-                  <FaMapMarkerAlt className="mt-2 mr-2 text-blue-400" size={25} /> 
+                  <FaMapMarkerAlt className=" mr-2 text-blue-400" size={25} /> 
                   <p className="leading-relaxed">
-                      Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
-                      Hitech-City, Hyderabad, Telangana - 500081
+                      Plot No. 97-E EP, Mahalaxmipuram, Narapally
+                      Ghatkesar (M), Medhcal-Malkajgiri (D)
+                      Hyderabad, Telangana – 500 088
+
                   </p>
               </div>
               {/* Contact Numbers */}
               <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p>+91 79816 70612 , +91 80089 71490</p>
+                <p> + 91 80089 71490</p>
               </div>
+              {/* Corporate Office */}
+                <p className="font-semibold text-gray-300 text-lg mt-3">
+                        CORPORATE OFFICE (India)
+                  </p>
+                <div className="flex items-start text-gray-300 mt-1">
+                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={25} />
+                     <p className="leading-relaxed">
+                         #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
+                          Ramanthapur Road, Uppal, Medchal-Malkajgiri (D),
+                          Hyderabad, Telangana – 500 039</p>
+                </div>
+
+                <div className="flex items-center text-gray-300">
+                <FaPhoneAlt className="mr-2 text-blue-400" />
+                <p>+91 72072 12746</p>
+              </div>
+              
 
               <hr className="my-3 border-gray-700" />
 
@@ -83,19 +102,29 @@ const Footer = () => {
 
               {/* Emails */}
               <div className="flex flex-col space-y-1 mt-2 text-gray-400">
+  {/* Info Mail */}
                 <div className="flex items-center hover:text-blue-400 transition duration-300">
                   <FaEnvelope className="mr-2 text-blue-400" />
-                  <a href="mailto:info@mechyam.com" className="underline">
+                  <a
+                    href="mailto:info@mechyam.com?subject=Inquiry%20Regarding%20Services"
+                    className="underline"
+                  >
                     info@mechyam.com
                   </a>
                 </div>
-                <div className="flex items-center hover:text-blue-400 transition duration-300">
-                  <FaEnvelope className="mr-2 text-blue-400" />
-                  <a href="mailto:hr@mechyam.com" className="underline">
-                    hr@mechyam.com
-                  </a>
-                </div>
-              </div>
+
+              {/* HR Mail */}
+            <div className="flex items-center hover:text-blue-400 transition duration-300">
+              <FaEnvelope className="mr-2 text-blue-400" />
+              <a
+                href="mailto:hr@mechyam.com?subject=Job%20Application"
+                className="underline"
+              >
+                hr@mechyam.com
+              </a>
+            </div>
+            </div>
+
 
               <hr className="my-3 border-gray-700" />
 
@@ -114,6 +143,15 @@ const Footer = () => {
                   >
                     <FaLinkedin size={28} />
                   </a>
+
+                  <a
+            href="https://www.instagram.com/Mechyam_2025/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-400 transition"
+          >
+            <FaInstagram size={28} />
+          </a>
                 </div>
               </div>
             </div>

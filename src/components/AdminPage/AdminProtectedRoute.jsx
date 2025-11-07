@@ -11,7 +11,7 @@ export default function AdminProtectedRoute({ children }) {
       return;
     }
 
-    fetch("http://localhost:8080/mechyam/api/admin/auth/validate-token", {
+    fetch("http://192.168.1.114:8080/mechyam/api/admin/auth/validate-token", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => setValid(res.ok))

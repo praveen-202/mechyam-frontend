@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Loader2 } from "lucide-react"; // Lucide spinner icon
+import { Loader2 } from "lucide-react";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const UploadNewProjects = () => {
@@ -14,11 +14,10 @@ const UploadNewProjects = () => {
   const [activeTab, setActiveTab] = useState("existing"); // "existing" or "upload"
   const [projects, setProjects] = useState([]); // Stores list of existing projects
 
-  // ------------------- Fetch All Projects -------------------
-  // Used to verify project upload success and refresh project data
-  const fetchProjects = async () => {
+  // Fetch Clients to refresh list after upload (if needed)
+  const fetchClients = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/mechyam/api/projects");
+      const res = await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
       setProjects(res.data);
       setError("");
     } catch (error) {
@@ -27,49 +26,19 @@ const UploadNewProjects = () => {
     }
   };
 
-  // Called once when component loads
   useEffect(() => {
-    fetchProjects();
+    fetchClients();
   }, []);
 
-  // ------------------- Handle Image Upload -------------------
-  // Updates state and preview when user selects an image
-  const handleImageChange = (e) => {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return; 
-    if (!file.type.startsWith('image/')) {
-        setError("Please select a valid image file");
-        return;
-    }
-    setImage(file);
-    setError("");
-    const previewURL = URL.createObjectURL(file);
-    setPreview(previewURL);
-    
-  };
-
-  // Cleans up preview URL to prevent memory leaks
-  useEffect(() => {
-    return () => {
-      if (preview) URL.revokeObjectURL(preview);
-    };
-  }, [preview]);
-
-  // ------------------- Submit Form -------------------
+  // Submit Client Data
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate form fields before submission
-    if (!title || !description || !image) {
+    if (!companyName || !location) {
       setError("Please fill all fields");
       return;
     }
 
-    // Prepare multipart form data
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("image", image);
+    const clientData = { companyName, location };
 
     try {
       setLoading(true); // Show spinner during upload
@@ -79,25 +48,21 @@ const UploadNewProjects = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      alert("Project uploaded successfully!");
+      alert("Client added successfully!");
 
-      // Reset form fields and refresh project list
-      setTitle("");
-      setDescription("");
-      setImage(null);
-      setPreview(null);
+      // Reset form
+      setCompanyName("");
+      setLocation("");
       setError("");
-      
-      // Refresh projects list
-      fetchProjects();
-      
+
+      // Reload clients list
+      fetchClients();
+
     } catch (err) {
-      console.error("Error uploading project:", err);
-      alert("Upload failed!");
-      setError("Upload failed. Check server or network.");
-      alert("Upload failed!");
+      console.error("❌ Error adding client:", err);
+      setError("Upload failed. Check server connection.");
     } finally {
-      setLoading(false); // Hide spinner
+      setLoading(false);
     }
   };
 
@@ -105,7 +70,7 @@ const UploadNewProjects = () => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      await axios.delete(`http://localhost:8080/mechyam/api/projects/${projectId}`);
+      await axios.delete(`http://192.168.1.114:8080/mechyam/api/projects/${projectId}`);
       alert("Project deleted successfully!");
       fetchProjects();
     } catch (err) {
@@ -162,73 +127,48 @@ const UploadNewProjects = () => {
      {activeTab === "upload" && (
       <div className="max-w-5xl mx-auto bg-white rounded shadow-xl p-8">
         <h2 className="text-3xl font-bold text-center text-blue-600 mb-8">
-          Upload New Project
+          Add New Client
         </h2>
 
         {error && (
           <div className="mb-4 text-red-600 font-semibold text-center">
-              {error}
+            {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-rows gap-8">
-          {/* Image Upload with Preview */}
-          <div>
-            <label className="block text-gray-700 mb-2 font-semibold">
-              Project Image
-            </label>
-            <div className="relative border-2 border-dashed border-blue-300 rounded-lg p-10 text-center bg-gray-50 hover:bg-blue-50 transition cursor-pointer">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              />
-              {!preview ? (
-                <p className="text-gray-500">Click or drag to upload an image</p>
-              ) : (
-                <div className="flex justify-center">
-                  <img
-                    src={preview}
-                    alt="Preview"
-                    className="w-64 h-64 object-cover rounded-lg shadow-md border"
-                  />
-                </div>
-              )}
-            </div>
-          </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
 
-          {/* Project Title Field */}
-          <div style={{ marginBottom: "1rem" }}>
+          {/* Company Name */}
+          <div>
             <label className="block text-gray-700 font-semibold mb-2">
-              Title
+              Client Company Name
             </label>
             <input
               type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter project title"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              placeholder="Enter company name"
               className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
               required
             />
           </div>
 
-          {/* Project Description Field */}
-          <div style={{ marginBottom: "1rem" }}>
+          {/* Location */}
+          <div>
             <label className="block text-gray-700 font-semibold mb-2">
-              Description
+              Project / Location
             </label>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter project description"
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Enter project / location"
               className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              rows="4"
               required
             />
           </div>
 
-          {/* Submit Button with Spinner */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
@@ -237,10 +177,10 @@ const UploadNewProjects = () => {
             {loading ? (
               <>
                 <Loader2 className="animate-spin" size={20} />
-                Uploading...
+                Saving...
               </>
             ) : (
-              "Upload Project"
+              "Add Client"
             )}
           </button>
         </form>
