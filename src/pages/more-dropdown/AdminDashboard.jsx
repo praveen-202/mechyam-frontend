@@ -5,7 +5,7 @@ import JobForm from "../../components/AdminPage/JobForm";
 import AppliedJobs from "../../components/AdminPage/AppliedJobs";
 import ContactDetails from "../../components/AdminPage/ContactDetails";
 import UploadNewProjects from "../../components/AdminPage/UploadNewProjects";
-import UploadNewClients from "../../components/AdminPage/UploadNewClients";  // ✅ NEW IMPORT
+import UploadNewClients from "../../components/AdminPage/UploadNewClients";
 import {
   Menu,
   LogOut,
@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 
-const AdminDashboard = ({ onLogout }) => {
+const AdminDashboard = () => {
   const [activePage, setActivePage] = useState("JobList");
   const [menuOpen, setMenuOpen] = useState(false);
   const [jobs, setJobs] = useState([]);
@@ -39,15 +39,19 @@ const AdminDashboard = ({ onLogout }) => {
         {},
         {
           headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            Authorization: `Bearer ${sessionStorage.getItem("adminToken")}`,
           },
         }
       );
 
-      sessionStorage.removeItem("token");
+      // Clear stored session data
+      sessionStorage.removeItem("adminToken");
       sessionStorage.removeItem("email");
 
-      onLogout();
+      // Notify parent component (AdminPage) to navigate back to login
+  
+      window.location.href = "/admin/login";
+
     } catch (err) {
       console.error("Logout failed:", err);
       alert("Logout failed. Please try again.");
@@ -142,9 +146,8 @@ const AdminDashboard = ({ onLogout }) => {
                     setActivePage(item.key);
                     setMenuOpen(false);
                   }}
-                  className={`flex items-center gap-3 w-full text-left px-4 py-2 hover:bg-blue-100 ${
-                    activePage === item.key ? "bg-blue-50 font-semibold" : ""
-                  }`}
+                  className={`flex items-center gap-3 w-full text-left px-4 py-2 hover:bg-blue-100 ${activePage === item.key ? "bg-blue-50 font-semibold" : ""
+                    }`}
                 >
                   {item.icon}
                   <span>{item.label}</span>

@@ -5,7 +5,7 @@ const OurClients = () => {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/clients")
+    fetch("http://192.168.1.114:8080/mechyam/api/clients")
       .then((res) => res.json())
       .then((data) => setClients(data))
       .catch((err) => console.error("Failed to load clients", err));
