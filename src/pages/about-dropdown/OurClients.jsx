@@ -3,12 +3,22 @@ import OurClientsImg from "../../assets/OurClients-Image/ourclients.jpg";
 
 const OurClients = () => {
   const [clients, setClients] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://192.168.1.114:8080/mechyam/api/clients")
-      .then((res) => res.json())
-      .then((data) => setClients(data))
-      .catch((err) => console.error("Failed to load clients", err));
+    fetch("http://192.168.1.192:8080/mechyam/clients/all")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch clients");
+        return res.json();
+      })
+      .then((data) => {
+        setClients(data);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Failed to load clients:", err);
+        setError("Unable to load clients. Please try again later.");
+      });
   }, []);
 
   return (
@@ -59,14 +69,23 @@ const OurClients = () => {
                 </tr>
               </thead>
               <tbody>
-                {clients.length > 0 ? (
+                {error ? (
+                  <tr>
+                    <td
+                      colSpan="2"
+                      className="text-center py-4 text-red-600 border border-gray-300"
+                    >
+                      {error}
+                    </td>
+                  </tr>
+                ) : clients.length > 0 ? (
                   clients.map((client) => (
                     <tr key={client.id} className="hover:bg-gray-100">
                       <td className="py-3 px-6 border border-gray-300">
                         {client.companyName}
                       </td>
                       <td className="py-3 px-6 border border-gray-300">
-                        {client.location}
+                        {client.companyLocation}
                       </td>
                     </tr>
                   ))
