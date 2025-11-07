@@ -11,6 +11,7 @@ import ContactPage from "./pages/Contact/ContactPage";
 import CareerPage from "./pages/Career/CareerPage.jsx";
 import JobDetailsPage from "./pages/Career/JobDetailsPage.jsx";
 import Home from "./pages/Home/Home.jsx";
+
 import EngineeringDesign from "./pages/structural-steel-dropdown/EngineeringDesign.jsx";
 import StructuralAnalysis from "./pages/structural-steel-dropdown/StructuralAnalysis.jsx";
 import StructuralEngineering from "./pages/structural-steel-dropdown/StructuralEngineering";
@@ -33,6 +34,10 @@ import OurClients from "./pages/about-dropdown/OurClients.jsx";
 import AdminPage from "./components/AdminPage/AdminPage";
 import AdminLogin from "./components/AdminPage/AdminLogin";
 import AdminDashboard from "./pages/more-dropdown/AdminDashboard";
+
+// ✅ FIXED WRONG IMPORT NAME
+//import UploadNewProjects from "./components/AdminPage/UploadNewProjects.jsx";
+import UploadNewClients from "./components/AdminPage/UploadNewClients.jsx";
 
 import Footer from "./pages/Footer.jsx";
 import DetailedJobList from "./pages/DetailedJobList";
@@ -60,6 +65,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/structural-steel" element={<StructuralSteel />} />
         <Route path="/engineering-design" element={<EngineeringDesign />} />
         <Route path="/structural-analysis" element={<StructuralAnalysis />} />
@@ -76,7 +82,9 @@ function App() {
         <Route path="/windenergyrenewables" element={<WindEnergyandRenewables />} />
         <Route path="/manufacturing-plantengineering" element={<ManufacturingandPlantEngineering />} />
         <Route path="/structural-infrastructure" element={<StructuralSystemsandInfrastructure />} />
-        <Route path="/utilities-r&dinstutions" element={<UtilitiesandRandDInstitutions />} />
+
+        {/* ✅ FIXED INVALID ROUTE PATH (removed &) */}
+        <Route path="/utilities-rnd-institutions" element={<UtilitiesandRandDInstitutions />} />
 
         <Route path="/structural-rnd" element={<StructuralDetailingRandD />} />
         <Route path="/mechanical-rnd" element={<MechanicalEngineeringRandD />} />
@@ -91,6 +99,11 @@ function App() {
         <Route path="/career/:id" element={<JobDetailsPage />} />
         <Route path="/jobs/:id" element={<DetailedJobList />} />
 
+        {/* ✅ FIXED ADMIN ROUTE COMPONENT */}
+       <Route path="/admin/add-client" element={<UploadNewClients />} />
+
+       
+
         {/* ✅ Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
@@ -102,10 +115,8 @@ function App() {
           }
         />
 
-        {/* ⚠ your old admin page - still here. delete later if unused */}
         <Route path="/admin-page" element={<AdminPage />} />
 
-        {/* ✅ catch all */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 

@@ -5,6 +5,7 @@ import JobForm from "../../components/AdminPage/JobForm";
 import AppliedJobs from "../../components/AdminPage/AppliedJobs";
 import ContactDetails from "../../components/AdminPage/ContactDetails";
 import UploadNewProjects from "../../components/AdminPage/UploadNewProjects";
+import UploadNewClients from "../../components/AdminPage/UploadNewClients";
 import {
   Menu,
   LogOut,
@@ -13,7 +14,8 @@ import {
   Users,
   Phone,
   Upload,
-} from "lucide-react"; // Lucide icons import
+  Building2, // optional icon
+} from "lucide-react";
 import axios from "axios";
 
 const AdminDashboard = () => {
@@ -22,29 +24,18 @@ const AdminDashboard = () => {
   const [jobs, setJobs] = useState([]);
   const [loadingLogout, setLoadingLogout] = useState(false);
 
-  // Reference for the menu container to detect outside clicks
   const menuRef = useRef(null);
 
-  /**
-   * Handle job addition from JobForm
-   * @param {Object} job - New job object to add to the list
-   */
   const handleAddJob = (job) => {
     setJobs([...jobs, job]);
   };
 
-  /**
-   * Handle admin logout operation
-   * Calls backend API to invalidate token, clears session storage,
-   * and navigates to the login page.
-   */
   const handleLogoutClick = async () => {
     try {
       setLoadingLogout(true);
 
-      // Backend logout API call
       await axios.post(
-        "http://localhost:8080/mechyam/api/admin/auth/logout",
+        "http://192.168.1.114:8080/mechyam/api/admin/auth/logout",
         {},
         {
           headers: {
@@ -69,31 +60,22 @@ const AdminDashboard = () => {
     }
   };
 
-  /**
-   * Close the burger menu if the user clicks outside of it.
-   */
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Check if the click is outside the menu and the menu button
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setMenuOpen(false);
       }
     };
 
-    // Attach the event listener only when the menu is open
     if (menuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
-    // Cleanup the event listener when menu is closed or component unmounts
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menuOpen]);
 
-  /**
-   * Render the main content area based on the active menu option.
-   */
   const renderContent = () => {
     switch (activePage) {
       case "JobList":
@@ -106,6 +88,8 @@ const AdminDashboard = () => {
         return <ContactDetails />;
       case "UploadNewProjects":
         return <UploadNewProjects />;
+      case "UploadNewClients":             // ✅ NEW CASE
+        return <UploadNewClients />;
       default:
         return <JobList jobs={jobs} />;
     }
@@ -113,13 +97,8 @@ const AdminDashboard = () => {
 
   return (
     <div className="h-screen flex flex-col bg-gray-100">
-      {/* ==============================
-           Top Navigation Bar
-         ============================== */}
       <header className="flex justify-between items-center bg-white shadow-md p-4 z-10">
-        {/* Burger Menu Button and Dropdown */}
         <div className="relative" ref={menuRef}>
-          {/* Burger icon button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 rounded-full hover:bg-gray-200 transition"
@@ -127,7 +106,6 @@ const AdminDashboard = () => {
             <Menu size={28} className="text-blue-900" />
           </button>
 
-          {/* Dropdown menu list */}
           {menuOpen && (
             <div className="absolute left-0 mt-2 w-60 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
               {[
@@ -156,6 +134,11 @@ const AdminDashboard = () => {
                   label: "Upload New Projects",
                   icon: <Upload size={18} className="text-pink-700" />,
                 },
+                {
+                  key: "UploadNewClients",             // ✅ NEW MENU ITEM
+                  label: "Add New Client",
+                  icon: <Building2 size={18} className="text-green-700" />,
+                },
               ].map((item) => (
                 <button
                   key={item.key}
@@ -171,7 +154,6 @@ const AdminDashboard = () => {
                 </button>
               ))}
 
-              {/* Logout Button Section */}
               <div className="border-t border-gray-200 mt-2">
                 <button
                   onClick={handleLogoutClick}
@@ -186,13 +168,9 @@ const AdminDashboard = () => {
           )}
         </div>
 
-        {/* Dashboard Title */}
         <h1 className="text-2xl font-bold text-blue-900">Admin Dashboard</h1>
       </header>
 
-      {/* ==============================
-           Scrollable Main Content Area
-         ============================== */}
       <main
         className="flex-1 overflow-y-auto bg-white rounded-t-xl shadow-inner p-6"
         style={{ scrollbarWidth: "thin", scrollbarColor: "#93c5fd #f3f4f6" }}

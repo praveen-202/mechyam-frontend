@@ -15,7 +15,7 @@ const ContactDetails = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8080/mechyam/api/contact/all?pageNo=${pageNo}&pageSize=${pageSize}`
+        `http://192.168.1.114:8080/mechyam/api/contact/all?pageNo=${pageNo}&pageSize=${pageSize}`
       )
       .then((res) => {
         const pageData = res.data.data;
