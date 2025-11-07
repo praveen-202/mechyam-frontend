@@ -20,7 +20,7 @@ const JobList = () => {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/mechyam/api/career/jobs/all"
+          "http://192.168.1.114:8080/mechyam/api/career/jobs/all"
         );
 
         // Validate and extract jobs array from the response
@@ -61,7 +61,7 @@ const JobList = () => {
 
     try {
       await axios.delete(
-        `http://localhost:8080/mechyam/api/career/jobs/${jobId}`
+        `http://192.168.1.114:8080/mechyam/api/career/jobs/${jobId}`
       );
 
       // Update state after deletion
