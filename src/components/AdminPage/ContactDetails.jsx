@@ -4,14 +4,28 @@ import axios from "axios";
 const ContactDetails = () => {
   const [contacts, setContacts] = useState([]);
 
+  // ✅ Pagination state
+  const [pageNo, setPageNo] = useState(1);
+  const pageSize = 5;
+  const [totalPages, setTotalPages] = useState(1);
+
+  // ✅ State for message popup
+  const [selectedMessage, setSelectedMessage] = useState(null);
+
   useEffect(() => {
     axios
-      .get("http://192.168.1.114:8080/mechyam/api/contact/all")
-      .then((res) => setContacts(res.data.data || []))
+      .get(
+        `http://192.168.1.114:8080/mechyam/api/contact/all?pageNo=${pageNo}&pageSize=${pageSize}`
+      )
+      .then((res) => {
+        const pageData = res.data.data;
+        setContacts(pageData.content || []);
+        setTotalPages(pageData.totalPages);
+      })
       .catch((err) => console.error("Error fetching contact details:", err));
-  }, []);
+  }, [pageNo]);
 
-  // Helper function to make the date human-readable
+  // ✅ Helper to format date
   const formatDate = (isoString) => {
     if (!isoString) return "-";
     const date = new Date(isoString);
@@ -46,6 +60,7 @@ const ContactDetails = () => {
                 <th className="border p-3 text-left">Submitted On</th>
               </tr>
             </thead>
+
             <tbody>
               {contacts.map((c) => (
                 <tr
@@ -56,19 +71,73 @@ const ContactDetails = () => {
                   <td className="border p-2">{c.email}</td>
                   <td className="border p-2">{c.phoneNumber}</td>
                   <td className="border p-2">{c.serviceType}</td>
-                  {/* Scrollable message cell */}
-                  <td className="border p-2 max-w-[250px]">
-                    <div className="max-h-24 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 p-1 rounded">
-                      {c.message}
-                    </div>
+
+                  {/* ✅ Show button instead of message text */}
+                  <td className="border p-2 text-center">
+                    <button
+                      onClick={() => setSelectedMessage(c.message)}
+                      className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm"
+                    >
+                      See Message
+                    </button>
                   </td>
+
                   <td className="border p-2">{formatDate(c.submissionDate)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+
+          {/* ✅ Pagination Controls */}
+          <div className="flex justify-center items-center gap-4 mt-4">
+            <button
+              disabled={pageNo === 1}
+              onClick={() => setPageNo(pageNo - 1)}
+              className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
+            >
+              Prev
+            </button>
+
+            <span className="font-semibold text-gray-700">
+              Page {pageNo} of {totalPages}
+            </span>
+
+            <button
+              disabled={pageNo === totalPages}
+              onClick={() => setPageNo(pageNo + 1)}
+              className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
+
+      {/* ✅ Message Popup Card */}
+      {selectedMessage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+          onClick={() => setSelectedMessage(null)} // Close on outside click
+        >
+          <div
+            className="bg-gray-100 w-[600px] p-5 rounded-lg shadow-lg"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+          >
+            <h3 className="text-lg font-semibold mb-3 text-blue-800">Message</h3>
+            <div className="bg-gray-100 p-3 rounded max-h-64 overflow-y-auto whitespace-pre-wrap">
+              {selectedMessage}
+            </div>
+
+            <button
+              onClick={() => setSelectedMessage(null)}
+              className="mt-4 w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

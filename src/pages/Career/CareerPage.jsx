@@ -60,8 +60,8 @@ const CareerPage = () => {
         <div className="flex flex-col items-center justify-center min-h-[50vh] bg-gray-100 px-6 text-center rounded-2xl shadow-sm max-w-3xl mx-auto">
           <h2
             className={`text-2xl font-bold mb-4 ${errorMessage.includes("Server")
-                ? "text-red-600"
-                : "text-blue-700"
+              ? "text-red-600"
+              : "text-blue-700"
               }`}
           >
             {errorMessage}
@@ -89,7 +89,7 @@ const CareerPage = () => {
             <div
               key={job.id}
               onClick={() => navigate(`/career/${job.id}`, { state: job })}
-              className="rounded-2xl border border-gray-200 p-5 shadow-md hover:shadow-xl transition-all duration-300 bg-white w-full sm:w-[300px] cursor-pointer transform hover:-translate-y-1"
+              className="rounded-2xl border border-gray-200 p-5 shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br hover:from-blue-200 hover:via-blue-300 hover:to-blue-400 w-full sm:w-[300px] cursor-pointer transform hover:-translate-y-1"
             >
               {/* Job Title */}
               <h3 className="text-blue-700 font-semibold mb-1 border-b border-blue-700 inline-block text-lg">

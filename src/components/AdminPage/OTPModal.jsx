@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 
 const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
@@ -15,7 +14,32 @@ const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
     const newOtp = [...otp];
     newOtp[index] = value.replace(/[^0-9]/g, "");
     setOtp(newOtp);
-    if (value && index < 5) inputRefs.current[index + 1]?.focus();
+
+    if (value && index < 5) {
+      inputRefs.current[index + 1]?.focus();
+    }
+  };
+
+  // ✅ Backspace support
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+
+      const newOtp = [...otp];
+      newOtp[index - 1] = "";
+      setOtp(newOtp);
+    }
+  };
+
+  // ✅ Paste full OTP support
+  const handlePaste = (e) => {
+    const pastedData = e.clipboardData.getData("text").replace(/\D/g, "");
+    if (pastedData.length !== 6) return; // only accept full OTP
+
+    const newOtp = pastedData.split("").slice(0, 6);
+    setOtp(newOtp);
+
+    inputRefs.current[5]?.focus(); // move to last box
   };
 
   const handleVerifyOTP = async (e) => {
@@ -69,6 +93,8 @@ const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
                 maxLength={1}
                 value={digit}
                 onChange={(e) => handleChange(e.target.value, i)}
+                onKeyDown={(e) => handleKeyDown(e, i)}          
+                onPaste={handlePaste}                          
                 ref={(el) => (inputRefs.current[i] = el)}
                 className="w-10 h-10 border text-center text-lg rounded"
               />
@@ -77,7 +103,7 @@ const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
 
           {error && <p className="text-red-500 mb-2">{error}</p>}
 
-          <button className="w-full bg-blue-900 text-white py-2 rounded">
+          <button disabled={submitting} className="w-full bg-blue-900 text-white py-2 rounded">
             {submitting ? "Verifying..." : "Verify OTP"}
           </button>
         </form>
@@ -91,4 +117,3 @@ const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
 };
 
 export default OTPModal;
-
