@@ -72,7 +72,7 @@ const Footer = () => {
                         CORPORATE OFFICE (India)
                   </p>
                 <div className="flex items-start text-gray-300 mt-1">
-                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={25} />
+                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
                      <p className="leading-relaxed">
                          #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
                           Ramanthapur Road, Uppal, Medchal-Malkajgiri (D),
