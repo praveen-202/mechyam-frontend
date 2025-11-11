@@ -76,7 +76,23 @@ const Footer = () => {
               {/* Contact Numbers */}
               <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p>+91 79816 70612 , +91 80089 71490, +91 72072 12746</p>
+                <p> + 91 80089 71490</p>
+              </div>
+              {/* Corporate Office */}
+                <p className="font-semibold text-gray-300 text-lg mt-3">
+                        CORPORATE OFFICE (India)
+                  </p>
+                <div className="flex items-start text-gray-300 mt-1">
+                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
+                     <p className="leading-relaxed">
+                         #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
+                          Ramanthapur Road, Uppal, Medchal-Malkajgiri (D),
+                          Hyderabad, Telangana – 500 039</p>
+                </div>
+
+                <div className="flex items-center text-gray-300">
+                <FaPhoneAlt className="mr-2 text-blue-400" />
+                <p>+91 72072 12746</p>
               </div>
               
 
