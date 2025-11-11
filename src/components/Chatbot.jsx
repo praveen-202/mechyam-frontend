@@ -1,18 +1,20 @@
-import react, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Chatbotimage from "../assets/ChatBot-images/Chatbot-image.png";
 import { X, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-<ExternalLink />
+import { Mic, MicOff } from "lucide-react";
 
 const Chatbot = () => {
     const [ open, setOpen ] = useState(false);
     const [messages, setMessages] = useState([
-        { sender: "bot", text: "Hello! How can I assis you today?" },
+        { sender: "bot", text: "Hello! How can I assist you today?" },
     ]);
     const [input, setInput] = useState("");
     const messagesEndRef = useRef(null);
+    const [showSuggestions, setShowSuggestions] = useState(true); // ✅ persistent buttons
     const navigate = useNavigate(); // ✅ for redirection
+    const [listening, setListening] = useState(false);
+    const recognitionRef = useRef(null);
 
      // Auto-scroll to latest message
     useEffect(() => {
@@ -23,41 +25,57 @@ const Chatbot = () => {
     const getBotReply = (userText) => {
     const lower = userText.toLowerCase();
 
-    if (lower.includes("hello") || lower.includes("hi"))
+    if (lower.includes("hello") || lower.includes("hi") || lower.includes("help")){
+        setShowSuggestions(true); // Show suggestions on greeting
       return "Hi there! 👋 How can I help you today?";
+    }
+     setShowSuggestions(false); // ❌ hide otherwise
+
     if (lower.includes("project")){
-        setTimeout(() => navigate("/Projects"), 1200);
+        setTimeout(() => navigate("/Projects"), 1000);
         return "Sure! Redirecting you to our Projects page 🚀";
     }
     if (lower.includes("career") || lower.includes("job")){
-        setTimeout(() => navigate("/careers"), 1200);
+        setTimeout(() => navigate("/careers"), 1000);
         return "Let’s take you to our Careers page 💼";
     }
     if (lower.includes("contact")){
-        setTimeout(() => navigate("/contact"), 1200);
+        setTimeout(() => navigate("/contact"), 1000);
         return "Heading over to the Contact page ☎️";
+    }
+    if (lower.includes("about") || lower.includes("Mechyam")){
+        setTimeout(() => navigate("/about"), 1000);
+        return "Let’s take you to our About page 💼";
     }
     if (lower.includes("service"))
       return "We offer mechanical design, automation, and AI integration services.";
-    if (lower.includes("location"))
-      return "We’re located in Bengaluru, India. 📍";
 
-    return "I’m here to help! You can explore Projects, Careers, or Contact us!";
+    if (lower.includes("location"))
+      return "We’re located in Hyderabad, Telangana, India. 📍";
+
+    return "I’m here to help! I am still learning ,Can u rephrase your question?";
     };
 
-    
+
+    // 🔊 Function to speak bot's reply
+
 
     const handleSend = (text = input) => {
-        if (!text.trim()) return;
-        
-        const newMessages = [
-        ...messages,
-        { sender: "user", text: text.trim() },
-        { sender: "bot", text: getBotReply(text.trim()) },
-       ];
-        setMessages(newMessages);
-        setInput("");
-        };
+        const messageText = typeof text === "string" ? text.trim() : "";
+        if (!messageText.trim()) return;
+        const userText = text.trim();
+        const reply = getBotReply(userText);
+
+    setMessages((prev) => [
+      ...prev,
+      { sender: "user", text: userText },
+      { sender: "bot", text: reply },
+    ]);
+
+    setInput("");
+    speakReply(reply); // 🎙speak bot reply aloud
+    };
+
 
         // 🎯 Keyword-based responses
     //     if (userMessage.includes("hello") || userMessage.includes("hi")) {
@@ -81,24 +99,78 @@ const Chatbot = () => {
             navigate(path);
             setOpen(false); // Close chatbot after redirect
         }, 1000); // Delay to allow user to see bot message
-  };
+     };
 
     // ✅ Suggestion buttons with redirect
   const suggestions = [
     { label: "View Projects", message: "Show me projects", path: " /Projects" },
     { label: "Careers", message: "Show me careers", path: "/careers" },
     { label: "Contact Us", message: "How can I contact you?", path: "/contact" },
-  ];
+    { label: "About mechyam", message: "Tell me about Mechyam..", path: "/about" },
 
+    ];
+
+    // 🎤 Voice Recognition Setup
+   useEffect(() => {
+
+    if (!("webkitSpeechRecognition" in window)) {
+        console.warn("Speech Recognition not supported in this browser.");
+        return;
+    }
     
-      // ✅ Add messages to chat window   
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "en-US";
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
+        handleSend(transcript); // Auto-send recognized text as message
+  };
+
+    recognition.onerror = (err) => {
+        console.error("Speech recognition error:", err);
+        setListening(false);
+    };
+
+   recognition.onend = () => setListening(false);
+
+  // ✅ Save recognition object to ref
+   recognitionRef.current = recognition;
+}, []);
+
+const speakReply = (text) => {
+    if (!window.speechSynthesis) return;
+
+    //stop any ongoing speech first
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    //choose a more natural female voice if available
+    const voices = window.SpeechSynthesis.getVoices();
+    const preferredVoice = voices.find(v => v.name.includes("Google US English") || v.name.includes("Microsoft Jenny")
+);
+    if (preferredVoice) utterance.voice = preferredVoice;
+
+    window.speechSynthesis.speak(utterance);
+};
+
 
     return (
         <div className="fixed bottom-6 right-6 z-50">
             {/* Floating Button */}
             {!open && (
                 <button 
-                    onClick={() => setOpen(true)}
+                    onClick={() => {
+                        setOpen(true);
+                        setShowSuggestions(true); // show buttons r open
+                    }}
                     className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition "
                     >
                       <img
@@ -116,7 +188,11 @@ const Chatbot = () => {
                     {/* Header */}
                     <div className="bg-blue-600 text-white p-4 flex justify-between items-center">
                         <h3 className="font-semibold text-lg">Chat Assistant</h3>
-                        <button onClick={() => setOpen(false)}>
+                        <button onClick={() => {
+                            setOpen(false)
+                            setShowSuggestions(false); // hide buttons on close
+                        }}
+                            >
                             <X size={20} />
                         </button>
                     </div>
@@ -139,7 +215,7 @@ const Chatbot = () => {
                     
 
                      {/* Suggestion buttons shown when chat opens */}
-                    {messages.length === 1 && (
+                    { showSuggestions  && (             // show only initial bot message
                         <div className="flex flex-col  gap-2 mt-3">
                             {suggestions.map((s, i) => (
                                 <button
@@ -148,25 +224,45 @@ const Chatbot = () => {
                                     className="flex items-center justify-center px-3 py-1 text-md border border-blue-500 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition"
                         >
                             {s.label}
-                            <ExternalLink />
+                            <ExternalLink size={14} />
                         </button>
                         ))}
                         </div>
                     )}
-
+                   
                     <div ref={messagesEndRef} />
                    </div>
 
                     {/* Input Area */}
-                    <div className="p-4 border-t flex border-gray-200 items-center gap-2">
+                    <div className="p-2 border-t flex border-gray-200 items-center gap-2">
                         <input
                             type="text"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                            placeholder="Type your message..."
-                            className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            placeholder="Type your message or use mic..."
+                            className="flex-1 w-10 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
                         />
+
+                        {/* Mic Button */}
+                        <button
+                            onClick={() => {
+                                if (!recognitionRef.current) return;
+                                if (listening) {
+                                    recognitionRef.current.stop();
+                                    setListening(false);
+                                } else {
+                                    recognitionRef.current.start();
+                                    setListening(true);
+                                }
+                            }}
+                            className={`p-2 rounded-full ${
+                                listening ? "bg-red-500" : "bg-blue-600"
+                            } text-white hover:opacity-90 transition`}
+                            title={listening ? "stop Listening" : "start Listening"} 
+                        >
+                            {listening ? <MicOff size={20} /> : <Mic size={20} />}
+                        </button>
                         <button
                             onClick={handleSend}
                             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full"
