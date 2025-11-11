@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import OurClientsImg from "../../assets/OurClients-Image/ourclients.jpg";
+import OurClientsImg from "../../assets/OurClients-Image/ourclients2.jpg";
 
 const OurClients = () => {
   const [clients, setClients] = useState([]);
@@ -24,104 +24,106 @@ const OurClients = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="w-full overflow-hidden">
-        <div className="relative w-screen flex items-center justify-start -mx-4">
-          <img
-            src={OurClientsImg}
-            alt="Steel Structure Background"
-            className="w-full"
-            style={{
-              height: "50vh",
-              width: "100vw",
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-          />
-          <div
-            className="absolute left-0 top-1/3 z-10 ml-8"
-            style={{ maxWidth: "50vw" }}
-          >
-            <h1
-              className="absolute left-0 top-10 text-5xl md:text-5xl font-extrabold text-white mb-2 text-left px-20 py-4 bg-gray-800 bg-opacity-50 rounded"
-              style={{
-                textShadow: "0 2px 10px rgba(0,0,0,0.6)",
-              }}
-            >
-              Our Clients
-            </h1>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section */}
+<section className="relative w-full h-[50vh] overflow-hidden m-0 p-0">
+  <img
+    src={OurClientsImg}
+    alt="Our Clients"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+  />
+
+  {/* Centered Box with Arrow */}
+  <div className="absolute inset-0 flex items-center justify-center">
+    <div className="relative bg-white/90 px-12 py-5 rounded-lg shadow-xl">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 tracking-wide">
+        Our Clients
+      </h1>
+
+      {/* Arrow Pointer */}
+      <div
+        className="absolute right-[-35px] top-1/2 -translate-y-1/2 w-0 h-0"
+        style={{
+          borderTop: "30px solid transparent",
+          borderBottom: "30px solid transparent",
+          borderLeft: "35px solid rgba(255,255,255,0.9)",
+        }}
+      ></div>
+    </div>
+  </div>
+</section>
+
 
       {/* Clients Table Section */}
       <section className="w-full bg-white py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-center text-blue-900 mb-8">
+          <h2 className="text-3xl font-bold text-center text-blue-900 mb-10">
             Trusted by Leading Organizations
           </h2>
 
-          <div className="overflow-x-auto shadow-lg rounded-lg">
-            <table className="min-w-full border border-gray-300 text-left">
-              <thead>
-                <tr className="bg-yellow-500 text-white text-lg">
-                  <th className="py-3 px-6 border border-gray-300">Client Name</th>
-                  <th className="py-3 px-6 border border-gray-300">Location / Project</th>
-                </tr>
-              </thead>
-              <tbody>
-                {error ? (
-                  <tr>
-                    <td
-                      colSpan="2"
-                      className="text-center py-4 text-red-600 border border-gray-300"
-                    >
-                      {error}
-                    </td>
+          {/* Scrollable Table Box */}
+          <div className="max-w-4xl mx-auto shadow-xl rounded-lg border border-gray-300 overflow-hidden">
+            
+            {/* Scroll Container */}
+            <div className="max-h-80 overflow-y-auto">
+              <table className="min-w-full border-collapse text-left">
+                <thead>
+                  <tr className="bg-yellow-500 text-white text-lg sticky top-0 z-10">
+                    <th className="py-3 px-6 border border-gray-300 font-semibold">Client Name</th>
+                    <th className="py-3 px-6 border border-gray-300 font-semibold">Location / Project</th>
                   </tr>
-                ) : clients.length > 0 ? (
-                  clients.map((client) => (
-                    <tr key={client.id} className="hover:bg-gray-100">
-                      <td className="py-3 px-6 border border-gray-300">
-                        {client.companyName}
-                      </td>
-                      <td className="py-3 px-6 border border-gray-300">
-                        {client.companyLocation}
+                </thead>
+
+                <tbody>
+                  {error ? (
+                    <tr>
+                      <td colSpan="2" className="text-center py-4 text-red-600 border border-gray-300">
+                        {error}
                       </td>
                     </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td
-                      colSpan="2"
-                      className="text-center py-4 text-gray-500 border border-gray-300"
-                    >
-                      No clients added yet.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                  ) : clients.length > 0 ? (
+                    clients.map((client, index) => (
+                      <tr
+                        key={client.id}
+                        className={`transition ${
+                          index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                        } hover:bg-blue-50`}
+                      >
+                        <td className="py-3 px-6 border border-gray-300 font-medium text-gray-800">
+                          {client.companyName}
+                        </td>
+                        <td className="py-3 px-6 border border-gray-300 text-gray-700">
+                          {client.companyLocation}
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="2" className="text-center py-4 text-gray-500 border border-gray-300">
+                        No clients added yet.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* Closing Section */}
-      <section className="w-full bg-gradient-to-r from-blue-50 via-white to-blue-50 py-12">
+      <section className="w-full bg-gradient-to-r from-blue-50 via-white to-blue-50 py-14">
         <div className="container mx-auto px-4 text-center">
           <h2
             className="text-3xl md:text-4xl font-extrabold text-blue-900 tracking-wide mb-4"
-            style={{
-              textShadow: "1px 1px 6px rgba(0, 0, 0, 0.1)",
-              letterSpacing: "1px",
-            }}
+            style={{ textShadow: "1px 1px 6px rgba(0,0,0,0.1)" }}
           >
             OUR CLIENTS ARE OUR PARTNERS AND OUR PRIORITY
           </h2>
-          <div className="mx-auto w-24 h-1 bg-blue-600 rounded-full mb-4"></div>
+          <div className="mx-auto w-24 h-1 bg-blue-600 rounded-full mb-5"></div>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
-            We build lasting relationships based on trust, innovation, and shared
-            success — delivering quality solutions that empower our clients across
-            industries.
+            We build lasting relationships based on trust, innovation, and shared success —
+            delivering solutions that empower our clients across industries.
           </p>
         </div>
       </section>

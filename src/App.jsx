@@ -42,6 +42,8 @@ import UploadNewClients from "./components/AdminPage/UploadNewClients.jsx";
 import Footer from "./pages/Footer.jsx";
 import DetailedJobList from "./pages/DetailedJobList";
 
+
+
 // ✅ ScrollToTop Component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -101,6 +103,7 @@ function App() {
 
         {/* ✅ FIXED ADMIN ROUTE COMPONENT */}
        <Route path="/admin/add-client" element={<UploadNewClients />} />
+      
 
        
 

@@ -18,7 +18,7 @@ const UploadNewProjects = () => {
   // Used to verify project upload success and refresh project data
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/mechyam/api/projects");
+      const res = await axios.get("http://192.168.1.192:8080/mechyam/api/projects");
       setProjects(res.data);
       setError("");
     } catch (error) {
@@ -75,7 +75,7 @@ const UploadNewProjects = () => {
       setLoading(true); // Show spinner during upload
 
       // Send POST request to backend
-      await axios.post("http://192.168.1.114:8080/mechyam/api/projects", formData, {
+      await axios.post("http://192.168.1.192:8080/mechyam/api/projects", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -105,7 +105,7 @@ const UploadNewProjects = () => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      await axios.delete(`http://localhost:8080/mechyam/api/projects/${projectId}`);
+      await axios.delete(`http://192.168.1.192:8080/mechyam/api/projects/${projectId}`);
       alert("Project deleted successfully!");
       fetchProjects();
     } catch (err) {
