@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Briefcase, Users, Building2, PlusCircle } from "lucide-react";
+import { Briefcase, Users, Building2, PlusCircle, FileText } from "lucide-react";
 import axios from "axios";
+import Applications from "../../pages/Applications";
 
 const DashboardHome = ({ setActivePage }) => {
   const [stats, setStats] = useState({
     jobs: 0,
     clients: 0,
     projects: 0,
+    applications: 0,
   });
 
+  const [applicationData, setApplicationData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showApplications, setShowApplications] = useState(false);
 
   const extractCount = (data) => {
     if (Array.isArray(data)) return data.length;
@@ -27,7 +31,7 @@ const DashboardHome = ({ setActivePage }) => {
       try {
         const token = sessionStorage.getItem("adminToken");
 
-        const [jobsRes, clientsRes, projectsRes] = await Promise.all([
+        const [jobsRes, clientsRes, projectsRes, applicationsRes] = await Promise.all([
           axios.get("http://192.168.1.192:8080/mechyam/api/career/jobs/all", {
             headers: { Authorization: `Bearer ${token}` }
           }),
@@ -36,7 +40,10 @@ const DashboardHome = ({ setActivePage }) => {
           }),
           axios.get("http://192.168.1.192:8080/mechyam/api/projects", {
             headers: { Authorization: `Bearer ${token}` }
-          })
+          }),
+          axios.get("http://192.168.1.192:8080/mechyam/api/career/applications", {
+            headers: { Authorization: `Bearer ${token}` }
+          }),
         ]);
 
         const extractArray = (res) =>
@@ -44,10 +51,16 @@ const DashboardHome = ({ setActivePage }) => {
           Array.isArray(res.data?.data) ? res.data.data :
           [];
 
+        const applications = extractArray(applicationsRes);
+
+        // Assuming applications have structure { jobCode, jobTitle, applicants: [] }
+        setApplicationData(applications);
+
         setStats({
           jobs: extractCount(extractArray(jobsRes)),
           clients: extractCount(extractArray(clientsRes)),
           projects: extractCount(extractArray(projectsRes)),
+          applications: extractCount(applications),
         });
 
       } catch (err) {
@@ -65,6 +78,7 @@ const DashboardHome = ({ setActivePage }) => {
     { label: "Total Jobs", value: stats.jobs, icon: <Briefcase size={40} />, page: "JobList", color: "from-blue-500 to-blue-700" },
     { label: "Clients", value: stats.clients, icon: <Users size={40} />, page: "UploadNewClients", color: "from-green-500 to-green-700" },
     { label: "Projects", value: stats.projects, icon: <Building2 size={40} />, page: "UploadNewProjects", color: "from-purple-500 to-purple-700" },
+    { label: "Applications", value: stats.applications, icon: <FileText size={40} />, page: "Applications", color: "from-orange-500 to-orange-700" },
   ];
 
   if (loading) return <p className="text-center text-lg py-10">Loading Dashboard...</p>;
@@ -80,11 +94,12 @@ const DashboardHome = ({ setActivePage }) => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         {cards.map((card, index) => (
           <button
             key={index}
             onClick={() => setActivePage(card.page)}
+
             className={`p-7 rounded-2xl text-white shadow-lg bg-gradient-to-r ${card.color} cursor-pointer w-full text-left transform hover:scale-[1.03] hover:shadow-2xl transition-all duration-300`}
           >
             <div className="flex justify-between items-center">
@@ -98,8 +113,39 @@ const DashboardHome = ({ setActivePage }) => {
         ))}
       </div>
 
+      {/* Applications Table */}
+      {showApplications && (
+        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+          <h2 className="text-2xl font-semibold mb-5 flex items-center gap-2 text-gray-800">
+            <FileText className="text-orange-600" /> Job Applications
+          </h2>
+          {applicationData.length > 0 ? (
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gray-100 text-gray-700 text-left">
+                  <th className="p-3 border-b">Job Code</th>
+                  <th className="p-3 border-b">Job Title</th>
+                  <th className="p-3 border-b">Applicants Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                {applicationData.map((app, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="p-3 border-b">{app.jobCode || "—"}</td>
+                    <td className="p-3 border-b">{app.jobTitle || "—"}</td>
+                    <td className="p-3 border-b">{app.applicants?.length || 0}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="text-gray-500 text-center">No applications available.</p>
+          )}
+        </div>
+      )}
+
       {/* Quick Actions */}
-      <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+      <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200 mt-10">
         <h2 className="text-2xl font-semibold mb-5 flex items-center gap-2 text-gray-800">
           <PlusCircle className="text-blue-600" /> Quick Actions
         </h2>
@@ -115,7 +161,6 @@ const DashboardHome = ({ setActivePage }) => {
           </button>
         </div>
       </div>
-
     </div>
   );
 };
