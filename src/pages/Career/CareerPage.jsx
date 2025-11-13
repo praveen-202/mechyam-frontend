@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Lucide Icons
 import { MapPin, Briefcase, Users } from "lucide-react";
@@ -16,7 +17,7 @@ const CareerPage = () => {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          "http://192.168.1.114:8080/mechyam/api/career/jobs/all"
+          `${API_BASE_URL}/api/career/jobs/all`
         );
 
         // Safely extract the jobs list from API response

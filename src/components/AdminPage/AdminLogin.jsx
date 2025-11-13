@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import OTPModal from "./OTPModal";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -33,8 +34,9 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
+      console.log("API_BASE_URL:", API_BASE_URL);
       const response = await fetch(
-        "http://localhost:8080/mechyam/api/admin/auth/login",
+        `${API_BASE_URL}/api/admin/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

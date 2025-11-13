@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const JobDetailsPage = () => {
   const location = useLocation();
@@ -65,7 +66,7 @@ const JobDetailsPage = () => {
 
     try {
       await axios.post(
-        "http://192.168.1.114:8080/mechyam/api/career/apply",
+        `${API_BASE_URL}/api/career/apply`,
         submitData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -331,8 +332,8 @@ const JobDetailsPage = () => {
           {message && (
             <div
               className={`mt-4 p-3 rounded ${message.includes("successfully")
-                  ? "bg-green-100 text-green-700 border border-green-300"
-                  : "bg-red-100 text-red-700 border border-red-300"
+                ? "bg-green-100 text-green-700 border border-green-300"
+                : "bg-red-100 text-red-700 border border-red-300"
                 }`}
             >
               {message}
