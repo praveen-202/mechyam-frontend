@@ -15,6 +15,8 @@ const DashboardHome = ({ setActivePage }) => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [newAppsMessage, setNewAppsMessage] = useState("");
+
 
   const extractCount = (data) => {
     if (Array.isArray(data)) return data.length;
@@ -83,6 +85,16 @@ const DashboardHome = ({ setActivePage }) => {
         projects: projects.length,
         applications: totalApplicants, // ✅ fixed
       });
+      // 📌 Compare today's and yesterday's applications count
+const yesterdayCount = Number(localStorage.getItem("applicationsCount"));
+
+if (yesterdayCount && totalApplicants > yesterdayCount) {
+  setNewAppsMessage("Today, new applications have been received.");
+}
+
+// 📌 Save today's count for tomorrow
+localStorage.setItem("applicationsCount", totalApplicants);
+
     } catch (err) {
       console.error("❌ Error fetching dashboard stats:", err);
       setError("Unable to load dashboard data");
@@ -112,10 +124,14 @@ const DashboardHome = ({ setActivePage }) => {
         <h1 className="text-4xl font-bold text-blue-800 tracking-wide drop-shadow-sm">
           Welcome, Admin
         </h1>
-        <p className="text-gray-600 mt-2 text-lg">
-          Here’s what’s happening at a glance.
-        </p>
+       
       </div>
+      {newAppsMessage && (
+  <div className="mb-6 bg-green-100 text-green-700 p-4 rounded-xl text-center font-semibold">
+    {newAppsMessage}
+  </div>
+)}
+
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">

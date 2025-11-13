@@ -86,7 +86,7 @@ function App() {
         <Route path="/structural-infrastructure" element={<StructuralSystemsandInfrastructure />} />
 
         {/* ✅ FIXED INVALID ROUTE PATH (removed &) */}
-        <Route path="/utilities-rnd-institutions" element={<UtilitiesandRandDInstitutions />} />
+        <Route path="/utilities-r&dinstutions" element={<UtilitiesandRandDInstitutions />} />
 
         <Route path="/structural-rnd" element={<StructuralDetailingRandD />} />
         <Route path="/mechanical-rnd" element={<MechanicalEngineeringRandD />} />

@@ -64,7 +64,7 @@ const Footer = () => {
 
               <p className="text-gray-300">BOSETEK SYSTEMS INDIA PRIVATE LIMITED.</p>
                 <div className="flex items-start text-gray-300 mt-3 ">
-                <FaMapMarkerAlt className="mt-2 mr-2 text-blue-400" size={25} /> 
+                <FaMapMarkerAlt className=" mr-2 text-blue-400" size={28} /> 
                   <p className="leading-relaxed">
                       
                       #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
@@ -82,7 +82,7 @@ const Footer = () => {
                 <p className="font-semibold text-gray-300 text-lg mt-3">
                         CORPORATE OFFICE (India)
                   </p>
-                <div className="flex items-start text-gray-300 mt-1">
+                <div className="flex items-start text-gray-300 ">
                      <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
                      <p className="leading-relaxed">
                          #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
@@ -164,30 +164,13 @@ const Footer = () => {
                     <FaLinkedin size={28} />
                     
                   </a>
-                  <a
-                    href="https://www.instagram.com/?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
-                    aria-label="Instagram"
-                  >
-                    <FaInstagram size={28} />
-                  </a>
-                   <a
-                    href="https://www.youtube.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
-                    aria-label="Youtube"
-                  >
-                    <FaYoutube size={28} />
-                  </a>
-
-                  <a
+                  
+                   
+              <a
             href="https://www.instagram.com/Mechyam_2025/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-pink-400 transition"
+            className="hover:text-pink-400 transition "
           >
             <FaInstagram size={28} />
           </a>
