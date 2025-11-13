@@ -158,7 +158,7 @@ const Footer = () => {
                     href="https://in.linkedin.com/in/mechyam-ai-design-solutions-private-limited-mads-383583361"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
+                    className="flex hover:text-blue-500 transition duration-300"
                     aria-label="LinkedIn"
                   >
                     <FaLinkedin size={28} />
