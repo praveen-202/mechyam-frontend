@@ -64,7 +64,7 @@ const Footer = () => {
 
               <p className="text-gray-300">BOSETEK SYSTEMS INDIA PRIVATE LIMITED.</p>
                 <div className="flex items-start text-gray-300 mt-3 ">
-                <FaMapMarkerAlt className="mt-2 mr-2 text-blue-400" size={25} /> 
+                <FaMapMarkerAlt className=" mr-2 text-blue-400" size={28} /> 
                   <p className="leading-relaxed">
                       
                       #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
@@ -76,7 +76,23 @@ const Footer = () => {
               {/* Contact Numbers */}
               <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p>+91 79816 70612 , +91 80089 71490, +91 72072 12746</p>
+                <p> + 91 80089 71490</p>
+              </div>
+              {/* Corporate Office */}
+                <p className="font-semibold text-gray-300 text-lg mt-3">
+                        CORPORATE OFFICE (India)
+                  </p>
+                <div className="flex items-start text-gray-300 ">
+                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
+                     <p className="leading-relaxed">
+                         #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
+                          Ramanthapur Road, Uppal, Medchal-Malkajgiri (D),
+                          Hyderabad, Telangana – 500 039</p>
+                </div>
+
+                <div className="flex items-center text-gray-300">
+                <FaPhoneAlt className="mr-2 text-blue-400" />
+                <p>+91 72072 12746</p>
               </div>
               
 
@@ -142,36 +158,19 @@ const Footer = () => {
                     href="https://in.linkedin.com/in/mechyam-ai-design-solutions-private-limited-mads-383583361"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
+                    className="flex hover:text-blue-500 transition duration-300"
                     aria-label="LinkedIn"
                   >
                     <FaLinkedin size={28} />
                     
                   </a>
-                  <a
-                    href="https://www.instagram.com/?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
-                    aria-label="Instagram"
-                  >
-                    <FaInstagram size={28} />
-                  </a>
-                   <a
-                    href="https://www.youtube.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex  text-gray-400 hover:text-blue-500 transition duration-300"
-                    aria-label="Youtube"
-                  >
-                    <FaYoutube size={28} />
-                  </a>
-
-                  <a
+                  
+                   
+              <a
             href="https://www.instagram.com/Mechyam_2025/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-pink-400 transition"
+            className="hover:text-pink-400 transition "
           >
             <FaInstagram size={28} />
           </a>

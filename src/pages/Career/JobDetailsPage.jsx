@@ -33,7 +33,16 @@ const JobDetailsPage = () => {
     setFormData({ ...formData, resumeFile: e.target.files[0] });
   };
 
+  
+
   const handleSubmit = async (e) => {
+
+    if (isExpired()) {
+  setMessage("The application deadline has passed. You can no longer apply.");
+  setIsLoading(false);
+  return;
+}
+
     e.preventDefault();
     setIsLoading(true);
 
@@ -103,26 +112,83 @@ const JobDetailsPage = () => {
       setIsLoading(false);
     }
   };
+const getDaysAgo = (dateString) => {
+  if (!dateString) return null;
+
+  const postedDate = new Date(dateString);
+  const today = new Date();
+
+  const diffTime = today - postedDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) return "Posted today";
+  if (diffDays === 1) return "Posted 1 day ago";
+
+  return `Posted ${diffDays} days ago`;
+};
+
+const isExpired = () => {
+  const lastDate =
+    job.lastDate ||
+    job.lastDateToApply ||
+    job.applicationDeadline ||
+    job.closingDate;
+
+  if (!lastDate) return false;
+
+  const today = new Date();
+  const deadline = new Date(lastDate);
+
+  return today > deadline;
+};
+
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-100 py-10 px-6">
       {/* ===== Blue Banner Section (Modern Style) ===== */}
-      <div className="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-sky-400 text-white rounded-2xl shadow-lg p-10 text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-2 tracking-wide drop-shadow-md">
-          {job.title || job.jobTitle}
-        </h1>
+      {/* ===== Clean & Professional Banner ===== */}
+<div className="max-w-5xl mx-auto bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white rounded-2xl shadow-xl p-10 mb-12">
 
-        <p className="text-blue-100 text-lg font-medium">
-          {job.department ? `Department: ${job.department}` : ""}
-        </p>
+  {/* Job Title */}
+  <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide mb-6">
+    {job.title || job.jobTitle}
+  </h1>
 
-        {/* ✅ Job Code / ID Display */}
-        {job.id && (
-          <p className="mt-2 text-blue-200 text-sm font-semibold tracking-wide">
-            Job Code: {job.id}
-          </p>
+  {/* Linear Row Section */}
+  <div className="flex flex-wrap items-center gap-6 text-sm md:text-base">
+
+    {/* Posted Days Ago */}
+    <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+      <span className="font-semibold">Posted:</span>
+      <span className="text-blue-100">
+        {getDaysAgo(
+          job.postedDate ||
+          job.createdAt ||
+          job.postedOn ||
+          job.date
         )}
+      </span>
+    </div>
+
+    {/* Department */}
+    {job.department && (
+      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+        <span className="font-semibold">Department:</span>
+        <span className="text-blue-100">{job.department}</span>
       </div>
+    )}
+
+    {/* Job Code */}
+    {job.id && (
+      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+        <span className="font-semibold">Job Code:</span>
+        <span className="text-blue-100">{job.id}</span>
+      </div>
+    )}
+  </div>
+</div>
+
+
 
 
       {/* ===== Main Content Section ===== */}
@@ -166,6 +232,17 @@ const JobDetailsPage = () => {
                 <strong>Salary Range:</strong> {job.salaryRange}
               </p>
             )}
+
+            {(job.lastDate || job.lastDateToApply || job.applicationDeadline || job.closingDate) && (
+               <p>
+                    <strong>Last Date to Apply:</strong>{" "}
+                    {job.lastDate ||
+                    job.lastDateToApply ||
+                    job.applicationDeadline ||
+                    job.closingDate}
+                </p>
+      )}
+
           </div>
 
           {job.requirements && (
@@ -197,7 +274,18 @@ const JobDetailsPage = () => {
             Apply for this Position
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {isExpired() && (
+  <div className="mb-4 p-3 bg-red-100 text-red-700 border border-red-300 rounded-lg font-semibold">
+    The application deadline has passed. You can no longer apply for this job.
+  </div>
+)}
+
+
+          <form
+  onSubmit={handleSubmit}
+  className={`space-y-4 ${isExpired() ? "opacity-50 pointer-events-none" : ""}`}
+>
+
             {/* Full Name */}
             <div>
               <label className="block font-medium mb-1" htmlFor="fullName">

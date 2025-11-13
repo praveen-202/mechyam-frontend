@@ -16,7 +16,7 @@ const Projects = () => {
   // -------------------------------------------------------
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://192.168.1.114:8080/mechyam/api/projects");
+      const res = await axios.get("http://192.168.1.192:8080/mechyam/api/projects");
       setProjects(res.data);
     } catch (error) {
       // Log any errors that occur during API call

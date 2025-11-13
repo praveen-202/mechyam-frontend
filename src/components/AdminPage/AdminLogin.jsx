@@ -84,7 +84,7 @@ const AdminLogin = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="admin@mechyam.com"
+            placeholder="Enter your email"
             className="w-full px-4 py-2 border rounded-lg"
             disabled={loading}
           />
@@ -94,7 +94,7 @@ const AdminLogin = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="••••••••"
+            placeholder="Enter your password"
             className="w-full px-4 py-2 border rounded-lg"
             disabled={loading}
           />
