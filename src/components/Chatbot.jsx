@@ -138,7 +138,7 @@ const Chatbot = () => {
 
   // ✅ Save recognition object to ref
    recognitionRef.current = recognition;
-}, []);
+  }, []);
 
 const speakReply = (text) => {
     if (!window.speechSynthesis) return;
@@ -152,13 +152,71 @@ const speakReply = (text) => {
     utterance.pitch = 1;
     utterance.volume = 1;
 
-    //choose a more natural female voice if available
-    const voices = window.SpeechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => v.name.includes("Google US English") || v.name.includes("Microsoft Jenny")
-);
-    if (preferredVoice) utterance.voice = preferredVoice;
+    // choose a more natural female voice if available
+    const femaleKeywords = [
+        "female",
+        "woman",
+        "zira",
+        "jenny",
+        "samantha",
+        "susan",
+        "victoria",
+        "samantha",
+        "sophie",
+        "aria",
+        "allison",
+        "denise",
+        "google",
+        "microsoft",
+    ];
 
-    window.speechSynthesis.speak(utterance);
+    const isFemaleVoice = (v) => {
+        if (!v) return false;
+        const name = (v.name || "").toLowerCase();
+        const uri = (v.voiceURI || "").toLowerCase();
+        const lang = (v.lang || "").toLowerCase();
+        // prefer voices that explicitly mention 'female' or common female names
+        return (
+            femaleKeywords.some((k) => name.includes(k) || uri.includes(k)) ||
+            name.includes("female") ||
+            uri.includes("female") ||
+            // some voices include gender indirectly; prefer English female if lang is en and name contains a known female token
+            (lang.startsWith("en") && femaleKeywords.some((k) => name.includes(k)))
+        );
+    };
+
+    const getPreferred = (list) => {
+        if (!list || !list.length) return null;
+        // 1) try to find explicitly female voice
+        const female = list.find(isFemaleVoice);
+        if (female) return female;
+        // 2) try known friendly English voices
+        const known = list.find(
+            (v) => (v.name && (v.name.includes("Google US English") || v.name.includes("Microsoft Jenny"))) ||
+                   (v.lang && v.lang.startsWith("en"))
+        );
+        return known || list[0];
+    };
+
+    // getVoices may be empty initially; use the proper lowercase `speechSynthesis` object
+    let voices = window.speechSynthesis.getVoices() || [];
+    const preferredVoice = getPreferred(voices);
+    if (preferredVoice) {
+        utterance.voice = preferredVoice;
+        window.speechSynthesis.speak(utterance);
+        window.speechSynthesis.onvoiceschanged = null;
+        return;
+    }
+
+    // If voices haven't loaded yet, wait for them then speak
+    window.speechSynthesis.onvoiceschanged = () => {
+        const updated = window.speechSynthesis.getVoices() || [];
+        const pref = getPreferred(updated);
+        if (pref) utterance.voice = pref;
+        window.speechSynthesis.speak(utterance);
+        // cleanup handler so it doesn't fire repeatedly
+        window.speechSynthesis.onvoiceschanged = null;
+    };
 };
 
 
@@ -235,6 +293,7 @@ const speakReply = (text) => {
 
                     {/* Input Area */}
                     <div className="p-2 border-t flex border-gray-200 items-center gap-2">
+                        
                         <input
                             type="text"
                             value={input}
@@ -256,16 +315,19 @@ const speakReply = (text) => {
                                     setListening(true);
                                 }
                             }}
-                            className={`p-2 rounded-full ${
+                            className={`p-2  rounded-full ${
                                 listening ? "bg-red-500" : "bg-blue-600"
                             } text-white hover:opacity-90 transition`}
                             title={listening ? "stop Listening" : "start Listening"} 
+                            
                         >
                             {listening ? <MicOff size={20} /> : <Mic size={20} />}
                         </button>
+                    
+
                         <button
                             onClick={handleSend}
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full"
+                            className=" bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full"
                         >
                             Send
                         </button>
