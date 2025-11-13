@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -58,7 +59,7 @@ const OTPModal = ({ email, tempToken, onVerified, onClose }) => {
     setSubmitting(true);
     try {
       const response = await fetch(
-        "http://192.168.1.192:8080/mechyam/api/admin/auth/verify-otp",
+        `${API_BASE_URL}/api/admin/auth/verify-otp`,
         {
           method: "POST",
           headers: {

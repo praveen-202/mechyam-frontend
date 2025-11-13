@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function AdminProtectedRoute({ children }) {
   const [valid, setValid] = useState(null);
@@ -11,7 +12,7 @@ export default function AdminProtectedRoute({ children }) {
       return;
     }
 
-    fetch("http://192.168.1.114:8080/mechyam/api/admin/auth/validate-token", {
+    fetch(`${API_BASE_URL}/api/admin/auth/validate-token`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => setValid(res.ok))

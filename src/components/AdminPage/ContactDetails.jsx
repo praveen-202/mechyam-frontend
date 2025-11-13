@@ -6,7 +6,7 @@ const ContactDetails = () => {
 
   // ✅ Pagination state
   const [pageNo, setPageNo] = useState(1);
-  const pageSize = 5;
+  const pageSize = 10;
   const [totalPages, setTotalPages] = useState(1);
 
   // ✅ State for message popup
