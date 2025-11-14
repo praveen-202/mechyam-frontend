@@ -56,23 +56,13 @@ const Footer = () => {
               <div className="flex items-start text-gray-300 mt-3 ">
                   <FaMapMarkerAlt className=" mr-2 text-blue-400" size={25} /> 
                   <p className="leading-relaxed">
-                      Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
-                      Hitech-City, Hyderabad, Telangana - 500081
-
+                      Plot No. 97-E EP, Mahalaxmipuram, Narapally,
+                      Ghatkesar (M), Medhcal-Malkajgiri (D),
+                      Hyderabad, Telangana – 500 088.
                   </p>
               </div>
 
-              <p className="text-gray-300">BOSETEK SYSTEMS INDIA PRIVATE LIMITED.</p>
-                <div className="flex items-start text-gray-300 mt-3 ">
-                <FaMapMarkerAlt className="mt-2 mr-2 text-blue-400" size={25} /> 
-                  <p className="leading-relaxed">
-                      
-                      #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
-                      Ramanthapur Road, Uppal – Medhcal Malkajgiri Dist,
-                      Hyderabad – 500 039.
-
-                  </p>
-              </div>
+              
               {/* Contact Numbers */}
               <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
@@ -85,14 +75,14 @@ const Footer = () => {
                 <div className="flex items-start text-gray-300 mt-1">
                      <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
                      <p className="leading-relaxed">
-                         #604, 7th Floor, DSL Abacus IT Park, Survey Colony,
-                          Ramanthapur Road, Uppal, Medchal-Malkajgiri (D),
-                          Hyderabad, Telangana – 500 039</p>
+                         #501-B,PSR Prime Towers, 5th Floor,
+                          Beside DLF, Gachibowli,
+                          Hyderabad, Telangana – 500 032</p>
                 </div>
 
                 <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p>+91 72072 12746</p>
+                <p>+91 8125263737, 91+ 8125263838</p>
               </div>
               
 
@@ -110,20 +100,13 @@ const Footer = () => {
                   www.mechyam.com
                 </a>
                  <FaGlobe className="mr-2 text-blue-400" />
-                <a
-                  href="https://bosetek.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  www.bosetek.com
-                </a>
+               
               </div>
 
-              {/* Emails */}
+              {/* Emails
               <div className="flex flex-col space-y-1 mt-2 text-gray-400">
   {/* Info Mail */}
-                <div className="flex items-center hover:text-blue-400 transition duration-300">
+                {/* <div className="flex items-center hover:text-blue-400 transition duration-300">
                   <FaEnvelope className="mr-2 text-blue-400" />
                   <a
                     href="mailto:info@mechyam.com?subject=Inquiry%20Regarding%20Services"
@@ -134,7 +117,7 @@ const Footer = () => {
                 </div>
 
               {/* HR Mail */}
-            <div className="flex items-center hover:text-blue-400 transition duration-300">
+            {/* <div className="flex items-center hover:text-blue-400 transition duration-300">
               <FaEnvelope className="mr-2 text-blue-400" />
               <a
                 href="mailto:hr@mechyam.com?subject=Job%20Application"
@@ -143,7 +126,7 @@ const Footer = () => {
                 hr@mechyam.com
               </a>
             </div>
-            </div>
+            </div>  */}
 
 
               <hr className="my-3 border-gray-700" />
