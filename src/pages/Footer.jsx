@@ -72,7 +72,7 @@ const Footer = () => {
                 <p className="font-semibold text-gray-300 text-lg mt-3">
                         CORPORATE OFFICE (India)
                   </p>
-                <div className="flex items-start text-gray-300 mt-1">
+                <div className="flex items-start text-gray-300 ">
                      <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
                      <p className="leading-relaxed">
                          #501-B,PSR Prime Towers, 5th Floor,
@@ -145,26 +145,18 @@ const Footer = () => {
                     aria-label="LinkedIn"
                   >
                     <FaLinkedin size={28} />
+                    
                   </a>
-                 
-                   <a
-                    href="https://www.youtube.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex hover:text-red-500 transition duration-300"
-                    aria-label="Youtube"
-                  >
-                    <FaYoutube size={28} />
-                  </a>
-
-                  <a
-                  href="https://www.instagram.com/Mechyam_2025/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-pink-400 transition"
-                 >
-                   <FaInstagram size={28} />
-                </a>
+                  
+                   
+              <a
+            href="https://www.instagram.com/Mechyam_2025/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-400 transition "
+          >
+            <FaInstagram size={28} />
+          </a>
                 </div>
               </div>
             </div>
