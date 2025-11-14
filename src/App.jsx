@@ -42,6 +42,8 @@ import UploadNewClients from "./components/AdminPage/UploadNewClients.jsx";
 import Footer from "./pages/Footer.jsx";
 import DetailedJobList from "./pages/DetailedJobList";
 
+
+
 // ✅ ScrollToTop Component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -84,7 +86,7 @@ function App() {
         <Route path="/structural-infrastructure" element={<StructuralSystemsandInfrastructure />} />
 
         {/* ✅ FIXED INVALID ROUTE PATH (removed &) */}
-        <Route path="/utilities-rnd-institutions" element={<UtilitiesandRandDInstitutions />} />
+        <Route path="/utilities-r&dinstutions" element={<UtilitiesandRandDInstitutions />} />
 
         <Route path="/structural-rnd" element={<StructuralDetailingRandD />} />
         <Route path="/mechanical-rnd" element={<MechanicalEngineeringRandD />} />
@@ -101,6 +103,7 @@ function App() {
 
         {/* ✅ FIXED ADMIN ROUTE COMPONENT */}
        <Route path="/admin/add-client" element={<UploadNewClients />} />
+      
 
        
 
