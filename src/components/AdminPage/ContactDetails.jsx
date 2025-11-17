@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import axios from "axios";
 
 const ContactDetails = () => {
@@ -15,7 +16,7 @@ const ContactDetails = () => {
   useEffect(() => {
     axios
       .get(
-        `http://192.168.1.114:8080/mechyam/api/contact/all?pageNo=${pageNo}&pageSize=${pageSize}`
+        `${API_BASE_URL}/api/contact/all?pageNo=${pageNo}&pageSize=${pageSize}`
       )
       .then((res) => {
         const pageData = res.data.data;

@@ -34,7 +34,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      console.log("API_BASE_URL:", API_BASE_URL);
+      // console.log("API_BASE_URL:", API_BASE_URL);
       const response = await fetch(
         `${API_BASE_URL}/api/admin/auth/login`,
         {

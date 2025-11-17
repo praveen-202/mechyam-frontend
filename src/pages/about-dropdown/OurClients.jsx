@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import OurClientsImg from "../../assets/OurClients-Image/ourclients2.jpg";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const OurClients = () => {
   const [clients, setClients] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://192.168.1.192:8080/mechyam/clients/all")
+    fetch(`${API_BASE_URL}/clients/all`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch clients");
         return res.json();
