@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const EmailButton = () => {
   const handleEmailClick = () => {
-    window.open('mailto:mechyam@gmail.com', '_blank');
+    window.open('mailto:hr@mechyam.com', '_blank');
   };
 
   return (
