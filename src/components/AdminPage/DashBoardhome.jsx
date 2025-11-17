@@ -19,16 +19,7 @@ const DashboardHome = ({ setActivePage }) => {
   const [newAppsMessage, setNewAppsMessage] = useState("");
 
 
-  // const extractCount = (data) => {
-  //   if (Array.isArray(data)) return data.length;
-  //   if (typeof data === "object" && data !== null) {
-  //     for (let key in data) {
-  //       if (Array.isArray(data[key])) return data[key].length;
-  //     }
-  //   }
-  //   return 0;
-  // };
-
+ 
   useEffect(() => {
     const fetchCounts = async () => {
       try {
