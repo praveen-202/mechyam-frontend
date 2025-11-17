@@ -3,7 +3,6 @@ import OurClientsImg from "../../assets/OurClients-Image/ourclients2.jpg";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const OurClients = () => {
-  const [clients, setClients] = useState([]);
   const [grouped, setGrouped] = useState({});
   const [selected, setSelected] = useState(null);
   const [search, setSearch] = useState("");
@@ -25,12 +24,11 @@ const OurClients = () => {
           group[key].push(c);
         });
         setGrouped(group);
-        setClients(data);
       })
       .catch((err) => console.error(err));
   }, []);
 
-  // unique clients (one per company)
+  // unique clients list
   let uniqueClients = Object.keys(grouped).map((key) => grouped[key][0]);
 
   // search
@@ -91,7 +89,6 @@ const OurClients = () => {
                   border shadow hover:shadow-lg text-center
                 "
               >
-                {/* Circle Icon */}
                 <div className="w-14 h-14 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
                   {client.companyName[0].toUpperCase()}
                 </div>
@@ -162,22 +159,21 @@ const OurClients = () => {
 
       {/* Footer */}
       <section className="py-16 bg-gradient-to-br from-blue-100 via-white to-blue-100 text-center">
-  <div className="max-w-3xl mx-auto px-6">
-    <h2 className="text-4xl font-extrabold text-blue-900 tracking-wide drop-shadow-sm">
-      Our Clients Are Our Priority
-    </h2>
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-4xl font-extrabold text-blue-900 tracking-wide drop-shadow-sm">
+            Our Clients Are Our Priority
+          </h2>
 
-    <p className="text-gray-700 mt-4 text-lg leading-relaxed">
-      We build strong relationships grounded in trust, innovation, and shared success.
-    </p>
+          <p className="text-gray-700 mt-4 text-lg leading-relaxed">
+            We build strong relationships grounded in trust, innovation, and
+            shared success.
+          </p>
 
-    {/* Decorative line */}
-    <div className="mt-6 flex justify-center">
-      <span className="block w-24 h-1 bg-blue-600 rounded-full"></span>
-    </div>
-  </div>
-</section>
-
+          <div className="mt-6 flex justify-center">
+            <span className="block w-24 h-1 bg-blue-600 rounded-full"></span>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
