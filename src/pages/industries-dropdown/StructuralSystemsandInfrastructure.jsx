@@ -38,9 +38,9 @@ const StructuralSystemsandInfrastructure = () => (
     {/* Structural Systems Section */}
     <section className="w-full bg-white py-12">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-start gap-8">
+        <div className="flex flex-col md:flex-row items-start gap-8 mb-12">
           {/* Left Text Section */}
-          <div className="w-full md:w-1/2 text-left">
+          <div className="w-full md:w-1/2 text-left text-lg text-justify leading-relaxed">
             <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
               Building the Foundation of Modern Infrastructure
             </h2>
@@ -95,7 +95,7 @@ const StructuralSystemsandInfrastructure = () => (
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-start gap-8">
           {/* Left Text Section */}
-          <div className="w-full md:w-1/2 text-left">
+          <div className="w-full md:w-1/2 text-left text-lg text-justify leading-relaxed">
             <h2 className="text-2xl font-bold mb-4 bg-gray-200 p-5 rounded">
               Infrastructure Engineering and Development
             </h2>
