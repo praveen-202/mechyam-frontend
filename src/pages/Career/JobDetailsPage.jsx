@@ -142,6 +142,17 @@ const isExpired = () => {
   return today > deadline;
 };
 
+const formatDate = (dateStr) => {
+  if (!dateStr) return "Not specified";
+
+  const d = new Date(dateStr);
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  const year = d.getFullYear();
+
+  return `${month}-${day}-${year}`; // MM-DD-YYYY
+};
+
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-gray-100 py-10 px-6">
@@ -236,10 +247,12 @@ const isExpired = () => {
             {(job.lastDate || job.lastDateToApply || job.applicationDeadline || job.closingDate) && (
                <p>
                     <strong>Last Date to Apply:</strong>{" "}
-                    {job.lastDate ||
+                    {formatDate(
+                    job.lastDate ||
                     job.lastDateToApply ||
                     job.applicationDeadline ||
-                    job.closingDate}
+                    job.closingDate
+                    )}
                 </p>
       )}
 
