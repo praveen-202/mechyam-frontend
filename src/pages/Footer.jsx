@@ -99,7 +99,7 @@ const Footer = () => {
                 >
                   www.mechyam.com
                 </a>
-                 <FaGlobe className="mr-2 text-blue-400" />
+                 
                
               </div>
 
@@ -117,7 +117,8 @@ const Footer = () => {
                 </div>
 
               {/* HR Mail */}
-            {/* <div className="flex items-center hover:text-blue-400 transition duration-300">
+              <div className="flex flex-col space-y-1 mt-2 text-gray-400"></div>
+            <div className="flex items-center hover:text-blue-400 transition duration-300 ">
               <FaEnvelope className="mr-2 text-blue-400" />
               <a
                 href="mailto:hr@mechyam.com?subject=Job%20Application"
@@ -125,8 +126,8 @@ const Footer = () => {
               >
                 hr@mechyam.com
               </a>
-            </div>
-            </div>  */}
+            
+            </div> 
 
 
               <hr className="my-3 border-gray-700" />
