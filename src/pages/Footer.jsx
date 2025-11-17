@@ -62,6 +62,20 @@ const Footer = () => {
                   </p>
               </div>
 
+              {/* <div className="flex items-start text-gray-300 mt-3 ">
+  <FaMapMarkerAlt className="mr-2 text-blue-400" size={25} /> 
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=Plot+No+2/1-C+Sy+No+79+B+Square+Towers+301+3rd+Floor+Patrika+Nagar+Hitech-City+Hyderabad+Telangana+500081"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="leading-relaxed hover:text-blue-400 transition cursor-pointer"
+  >
+    Plot No. 2/1-C, Sy.No. - 79, # B Square Towers, 301 3rd Floor, Patrika Nagar,
+    Hitech-City, Hyderabad, Telangana - 500081
+  </a>
+</div> */}
+
+
               <p className="text-gray-300">BOSETEK SYSTEMS INDIA PRIVATE LIMITED.</p>
                 <div className="flex items-start text-gray-300 mt-3 ">
                 <FaMapMarkerAlt className=" mr-2 text-blue-400" size={28} /> 

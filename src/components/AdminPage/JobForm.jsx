@@ -2,6 +2,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+// Convert USA format (MM/DD/YYYY) to HTML input format (YYYY-MM-DD)
+function convertToInputDate(usaDate) {
+  if (!usaDate) return "";
+  const [month, day, year] = usaDate.split("/");
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+}
+
+// Convert HTML input format (YYYY-MM-DD) to USA format (MM/DD/YYYY)
+function convertToUSDate(inputDate) {
+  if (!inputDate) return "";
+  const [year, month, day] = inputDate.split("-");
+  return `${month}/${day}/${year}`;
+}
+
+
 const JobForm = ({ onAddJob }) => {
   // ------------------- State Management -------------------
   const [formData, setFormData] = useState({
@@ -40,12 +55,14 @@ const JobForm = ({ onAddJob }) => {
     }
 
     // Prepare data for API
-    const jobData = {
-      ...formData,
-      postedDate: new Date().toISOString(),
-      numberOfOpenings: parseInt(formData.numberOfOpenings, 10),
-      isActive: true, // Always active internally
-    };
+   const jobData = {
+  ...formData,
+  closingDate: convertToInputDate(formData.closingDate), // FIX HERE
+  postedDate: new Date().toISOString(),
+  numberOfOpenings: parseInt(formData.numberOfOpenings, 10),
+  isActive: true,
+};
+
 
     try {
       setLoading(true);
@@ -261,17 +278,25 @@ const JobForm = ({ onAddJob }) => {
 
           {/* Closing Date */}
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Last Date to Apply
-            </label>
-            <input
-              type="date"
-              name="closingDate"
-              value={formData.closingDate}
-              onChange={handleChange}
-              className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            />
-          </div>
+  <label className="block text-gray-700 font-semibold mb-2">
+    Last Date to Apply
+  </label>
+  <input
+    type="date"
+    name="closingDate"
+    value={convertToInputDate(formData.closingDate)}
+    onChange={(e) =>
+      handleChange({
+        target: {
+          name: "closingDate",
+          value: convertToUSDate(e.target.value),
+        },
+      })
+    }
+    className="w-full border border-gray-400 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+  />
+</div>
+
 
           {/* Submit Button */}
           <button

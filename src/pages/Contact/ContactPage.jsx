@@ -121,7 +121,7 @@ const ContactPage = () => {
         captchaAnswer: parseInt(formData.captchaAnswer, 10)
       };
 
-      await axios.post("http://192.168.1.114:8080/mechyam/api/contact/submit", payload);
+      await axios.post("http://192.168.1.192:8080/mechyam/api/contact/submit", payload);
       alert("Form submitted successfully!");
 
       setFormData({
@@ -173,7 +173,7 @@ const ContactPage = () => {
           </div>
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Career Inquiries</h2>
-            <p>careers@mechyam.com</p>
+            <p>hr@mechyam.com</p>
           </div>
         </div>
 
