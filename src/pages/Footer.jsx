@@ -53,16 +53,21 @@ const Footer = () => {
               <p className="font-semibold text-gray-300 text-lg">MECHYAM AI DESIGN SOLUTIONS PVT. LTD.</p>
 
               {/* Address */}
-              <div className="flex items-start text-gray-300 mt-3 ">
-                  <FaMapMarkerAlt className=" mr-2 text-blue-400" size={25} /> 
-                  <p className="leading-relaxed">
-                      Plot No. 97-E EP, Mahalaxmipuram, Narapally,
-                      Ghatkesar (M), Medhcal-Malkajgiri (D),
-                      Hyderabad, Telangana – 500 088.
-                  </p>
-              </div>
+              <div className="flex items-start text-gray-300 mt-3 cursor-pointer">
+  <FaMapMarkerAlt className="mr-2 text-blue-400" size={25} />
 
-              
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=Plot+No.+97-E+EP,+Mahalaxmipuram,+Narapally,+Ghatkesar,+Medchal-Malkajgiri,+Hyderabad,+Telangana+500088"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="leading-relaxed hover:underline"
+  >
+    Plot No. 97-E EP, Mahalaxmipuram, Narapally,
+    Ghatkesar (M), Medhcal-Malkajgiri (D),
+    Hyderabad, Telangana – 500 088.
+  </a>
+</div>
+
               {/* Contact Numbers */}
               <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
@@ -72,17 +77,25 @@ const Footer = () => {
                 <p className="font-semibold text-gray-300 text-lg mt-3">
                         CORPORATE OFFICE (India)
                   </p>
-                <div className="flex items-start text-gray-300 ">
-                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
-                     <p className="leading-relaxed">
-                         #501-B,PSR Prime Towers, 5th Floor,
-                          Beside DLF, Gachibowli,
-                          Hyderabad, Telangana – 500 032</p>
-                </div>
+                <div className="flex items-start text-gray-300 cursor-pointer">
+  <FaMapMarkerAlt className="mr-2 text-blue-400" size={25} />
+
+  <a
+    href="https://www.google.com/maps/search/?api=1&query=501-B,+PSR+Prime+Towers,+5th+Floor,+Beside+DLF,+Gachibowli,+Hyderabad,+Telangana+500032"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="leading-relaxed hover:underline"
+  >
+    #501-B, PSR Prime Towers, 5th Floor,
+    Beside DLF, Gachibowli,
+    Hyderabad, Telangana – 500 032
+  </a>
+</div>
+
 
                 <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p>+91 8125263737, 91+ 8125263838</p>
+                <p>+91 8125263737, +91 8125263838</p>
               </div>
               
 
@@ -103,22 +116,11 @@ const Footer = () => {
                
               </div>
 
-              {/* Emails
-              <div className="flex flex-col space-y-1 mt-2 text-gray-400">
-  {/* Info Mail */}
-                {/* <div className="flex items-center hover:text-blue-400 transition duration-300">
-                  <FaEnvelope className="mr-2 text-blue-400" />
-                  <a
-                    href="mailto:info@mechyam.com?subject=Inquiry%20Regarding%20Services"
-                    className="underline"
-                  >
-                    info@mechyam.com
-                  </a>
-                </div>
+              
 
               {/* HR Mail */}
               <div className="flex flex-col space-y-1 mt-2 text-gray-400"></div>
-            <div className="flex items-center hover:text-blue-400 transition duration-300 ">
+            <div className="flex items-center text-gray-400 hover:text-blue-400 space-x-4 transition duration-300 ">
               <FaEnvelope className="mr-2 text-blue-400" />
               <a
                 href="mailto:hr@mechyam.com?subject=Job%20Application"

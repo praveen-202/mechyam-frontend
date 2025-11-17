@@ -119,10 +119,23 @@ const DashboardHome = ({ setActivePage }) => {
 
       </div>
       {newAppsMessage && (
-        <div className="mb-6 bg-green-100 text-green-700 p-4 rounded-xl text-center font-semibold">
-          {newAppsMessage}
-        </div>
-      )}
+  <div className="
+      mb-6 
+      bg-gradient-to-r from-green-200 to-green-100 
+      text-green-800 
+      p-5 
+      rounded-2xl 
+      text-center 
+      font-semibold 
+      shadow-md 
+      border border-green-300 
+      animate-pulse
+    "
+  >
+    🌱 <span className="font-bold">New candidate applications have been submitted today.</span>
+  </div>
+)}
+
 
 
       {/* Stats Cards */}
