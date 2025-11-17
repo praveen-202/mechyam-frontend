@@ -55,11 +55,17 @@ const Footer = () => {
               {/* Address */}
               <div className="flex items-start text-gray-300 mt-3 ">
                   <FaMapMarkerAlt className=" mr-2 text-blue-400" size={25} /> 
-                  <p className="leading-relaxed">
+                  <a
+                      href="https://www.google.com/maps/place/Mechyam+AI+Design+Solutions+Pvt.+Ltd./@17.4321072,78.3497173,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb91f6f6f4f8b7:0x5d3f5e3c4e4e4e4e!8m2!3d17.4321029!4d78.351906"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="leading-relaxed hover:text-blue-400 transition"
+                  >
                       Plot No. 97-E EP, Mahalaxmipuram, Narapally,
                       Ghatkesar (M), Medhcal-Malkajgiri (D),
                       Hyderabad, Telangana – 500 088.
-                  </p>
+                  </a>
+                  
               </div>
 
               
@@ -74,10 +80,16 @@ const Footer = () => {
                   </p>
                 <div className="flex items-start text-gray-300 ">
                      <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
-                     <p className="leading-relaxed">
+                     <a
+                          href="https://www.google.com/maps/place/Mechyam+AI+Design+Solutions+Pvt.+Ltd./@17.4321072,78.3497173,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb91f6f6f4f8b7:0x5d3f5e3c4e4e4e4e!8m2!3d17.4321029!4d78.351906"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="leading-relaxed hover:text-blue-400 transition"
+                     >
                          #501-B,PSR Prime Towers, 5th Floor,
                           Beside DLF, Gachibowli,
-                          Hyderabad, Telangana – 500 032</p>
+                          Hyderabad, Telangana – 500 032.
+                        </a>
                 </div>
 
                 <div className="flex items-center text-gray-300">
@@ -89,7 +101,7 @@ const Footer = () => {
               <hr className="my-3 border-gray-700" />
 
               {/* Website */}
-              <div className="flex items-center text-gray-400 hover:text-blue-400 space-x-4 transition duration-300">
+              <div className="flex items-center text-gray-400 hover:text-blue-400  transition duration-300">
                 <FaGlobe className="mr-2 text-blue-400" />
                 <a
                   href="https://www.mechyam.com"
@@ -99,25 +111,15 @@ const Footer = () => {
                 >
                   www.mechyam.com
                 </a>
-                 <FaGlobe className="mr-2 text-blue-400" />
+                
                
               </div>
 
-              {/* Emails
+              {/* Emails */}
               <div className="flex flex-col space-y-1 mt-2 text-gray-400">
-  {/* Info Mail */}
-                {/* <div className="flex items-center hover:text-blue-400 transition duration-300">
-                  <FaEnvelope className="mr-2 text-blue-400" />
-                  <a
-                    href="mailto:info@mechyam.com?subject=Inquiry%20Regarding%20Services"
-                    className="underline"
-                  >
-                    info@mechyam.com
-                  </a>
-                </div>
 
               {/* HR Mail */}
-            {/* <div className="flex items-center hover:text-blue-400 transition duration-300">
+              <div className="flex items-center hover:text-blue-400 transition duration-300">
               <FaEnvelope className="mr-2 text-blue-400" />
               <a
                 href="mailto:hr@mechyam.com?subject=Job%20Application"
@@ -125,8 +127,8 @@ const Footer = () => {
               >
                 hr@mechyam.com
               </a>
-            </div>
-            </div>  */}
+              </div>
+             </div> 
 
 
               <hr className="my-3 border-gray-700" />
