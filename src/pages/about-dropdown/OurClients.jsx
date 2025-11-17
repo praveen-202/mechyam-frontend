@@ -3,8 +3,12 @@ import OurClientsImg from "../../assets/OurClients-Image/ourclients2.jpg";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const OurClients = () => {
-  const [clients, setClients] = useState([]);
-  const [error, setError] = useState("");
+  const [grouped, setGrouped] = useState({});
+  const [selected, setSelected] = useState(null);
+  const [search, setSearch] = useState("");
+  const [sortAsc, setSortAsc] = useState(true);
+
+  const normalize = (name) => name.toLowerCase().trim();
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/clients/all`)
@@ -13,119 +17,161 @@ const OurClients = () => {
         return res.json();
       })
       .then((data) => {
-        setClients(data);
-        setError("");
+        const group = {};
+        data.forEach((c) => {
+          const key = normalize(c.companyName);
+          if (!group[key]) group[key] = [];
+          group[key].push(c);
+        });
+        setGrouped(group);
       })
-      .catch((err) => {
-        console.error("Failed to load clients:", err);
-        setError("Unable to load clients. Please try again later.");
-      });
+      .catch((err) => console.error(err));
   }, []);
+
+  // unique clients list
+  let uniqueClients = Object.keys(grouped).map((key) => grouped[key][0]);
+
+  // search
+  uniqueClients = uniqueClients.filter((c) =>
+    c.companyName.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // sort
+  uniqueClients.sort((a, b) =>
+    sortAsc
+      ? a.companyName.localeCompare(b.companyName)
+      : b.companyName.localeCompare(a.companyName)
+  );
 
   return (
     <>
-      {/* Hero Section */}
-      {/* Hero Section */}
-<section className="relative w-full h-[50vh] overflow-hidden m-0 p-0">
-  <img
-    src={OurClientsImg}
-    alt="Our Clients"
-    className="absolute inset-0 w-full h-full object-cover object-center"
-  />
-
-  {/* Centered Box with Arrow */}
-  <div className="absolute inset-0 flex items-center justify-center">
-    <div className="relative bg-white/90 px-12 py-5 rounded-lg shadow-xl">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 tracking-wide">
-        Our Clients
-      </h1>
-
-      {/* Arrow Pointer */}
-      <div
-        className="absolute right-[-35px] top-1/2 -translate-y-1/2 w-0 h-0"
-        style={{
-          borderTop: "30px solid transparent",
-          borderBottom: "30px solid transparent",
-          borderLeft: "35px solid rgba(255,255,255,0.9)",
-        }}
-      ></div>
-    </div>
-  </div>
-</section>
-
-
-      {/* Clients Table Section */}
-      <section className="w-full bg-white py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-blue-900 mb-10">
-            Trusted by Leading Organizations
-          </h2>
-
-          {/* Scrollable Table Box */}
-          <div className="max-w-4xl mx-auto shadow-xl rounded-lg border border-gray-300 overflow-hidden">
-            
-            {/* Scroll Container */}
-            <div className="max-h-80 overflow-y-auto">
-              <table className="min-w-full border-collapse text-left">
-                <thead>
-                  <tr className="bg-yellow-500 text-white text-lg sticky top-0 z-10">
-                    <th className="py-3 px-6 border border-gray-300 font-semibold">Client Name</th>
-                    <th className="py-3 px-6 border border-gray-300 font-semibold">Location / Project</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {error ? (
-                    <tr>
-                      <td colSpan="2" className="text-center py-4 text-red-600 border border-gray-300">
-                        {error}
-                      </td>
-                    </tr>
-                  ) : clients.length > 0 ? (
-                    clients.map((client, index) => (
-                      <tr
-                        key={client.id}
-                        className={`transition ${
-                          index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                        } hover:bg-blue-50`}
-                      >
-                        <td className="py-3 px-6 border border-gray-300 font-medium text-gray-800">
-                          {client.companyName}
-                        </td>
-                        <td className="py-3 px-6 border border-gray-300 text-gray-700">
-                          {client.companyLocation}
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="2" className="text-center py-4 text-gray-500 border border-gray-300">
-                        No clients added yet.
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-
-          </div>
+      {/* Hero */}
+      <section className="relative w-full h-[45vh] overflow-hidden">
+        <img
+          src={OurClientsImg}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow">
+            Our Clients
+          </h1>
         </div>
       </section>
 
-      {/* Closing Section */}
-      <section className="w-full bg-gradient-to-r from-blue-50 via-white to-blue-50 py-14">
-        <div className="container mx-auto px-4 text-center">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold text-blue-900 tracking-wide mb-4"
-            style={{ textShadow: "1px 1px 6px rgba(0,0,0,0.1)" }}
+      {/* Search + Sort */}
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-4 px-6 mt-10">
+        <input
+          className="w-full md:flex-1 px-4 py-3 border rounded-lg shadow-sm"
+          placeholder="Search Clients..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button
+          onClick={() => setSortAsc(!sortAsc)}
+          className="px-5 py-3 bg-blue-600 text-white rounded-lg shadow"
+        >
+          Sort {sortAsc ? "A → Z" : "Z → A"}
+        </button>
+      </div>
+
+      {/* Clients */}
+      <section className="py-14 bg-gray-50">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
+          {uniqueClients.map((client) => {
+            const key = normalize(client.companyName);
+
+            return (
+              <div
+                key={key}
+                onClick={() => setSelected(key)}
+                className="
+                  bg-white rounded-xl p-8 cursor-pointer transition hover:-translate-y-2
+                  border shadow hover:shadow-lg text-center
+                "
+              >
+                <div className="w-14 h-14 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
+                  {client.companyName[0].toUpperCase()}
+                </div>
+
+                <h3 className="text-lg font-bold mt-4 text-gray-900">
+                  {client.companyName}
+                </h3>
+
+                <div className="w-10 h-1 bg-blue-600 mx-auto mt-3 rounded-full" />
+
+                <p className="text-gray-500 text-sm mt-3">
+                  {grouped[key]?.length} Projects
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Modal */}
+      {selected && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative"
+            onClick={(e) => e.stopPropagation()}
           >
-            OUR CLIENTS ARE OUR PARTNERS AND OUR PRIORITY
+            <button
+              className="absolute top-3 right-3 w-8 h-8 bg-red-500 text-white rounded-full"
+              onClick={() => setSelected(null)}
+            >
+              ×
+            </button>
+
+            <h2 className="text-3xl font-bold text-center text-blue-700">
+              {grouped[selected][0].companyName}
+            </h2>
+
+            <p className="text-center text-gray-600 mt-2 mb-8">
+              Registered Locations
+            </p>
+
+            <div className="space-y-4">
+              {grouped[selected].map((c, i) => (
+                <div
+                  key={i}
+                  className="p-4 bg-gray-100 rounded-lg border shadow-sm"
+                >
+                  <p className="font-semibold">Project / Location:</p>
+                  <p className="text-gray-700 mt-1">{c.companyLocation}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setSelected(null)}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Footer */}
+      <section className="py-16 bg-gradient-to-br from-blue-100 via-white to-blue-100 text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-4xl font-extrabold text-blue-900 tracking-wide drop-shadow-sm">
+            Our Clients Are Our Priority
           </h2>
-          <div className="mx-auto w-24 h-1 bg-blue-600 rounded-full mb-5"></div>
-          <p className="text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
-            We build lasting relationships based on trust, innovation, and shared success —
-            delivering solutions that empower our clients across industries.
+
+          <p className="text-gray-700 mt-4 text-lg leading-relaxed">
+            We build strong relationships grounded in trust, innovation, and
+            shared success.
           </p>
+
+          <div className="mt-6 flex justify-center">
+            <span className="block w-24 h-1 bg-blue-600 rounded-full"></span>
+          </div>
         </div>
       </section>
     </>

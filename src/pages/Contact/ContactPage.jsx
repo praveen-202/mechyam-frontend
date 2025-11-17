@@ -174,7 +174,7 @@ const ContactPage = () => {
           </div>
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Career Inquiries</h2>
-            <p>careers@mechyam.com</p>
+            <p>hr@mechyam.com</p>
           </div>
         </div>
 
