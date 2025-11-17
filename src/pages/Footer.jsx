@@ -68,7 +68,6 @@ const Footer = () => {
                   
               </div>
 
-              
               {/* Contact Numbers */}
               <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
@@ -94,7 +93,7 @@ const Footer = () => {
 
                 <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
-                <p>+91 8125263737, 91+ 8125263838</p>
+                <p>+91 8125263737, +91 8125263838</p>
               </div>
               
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import OurClientsImg from "../../assets/OurClients-Image/ourclients2.jpg";
+import OurClientsImg from "../../assets/OurClients-Image/ourclients3.jpg";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const OurClients = () => {
