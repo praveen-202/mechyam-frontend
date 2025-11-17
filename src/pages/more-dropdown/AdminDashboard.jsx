@@ -8,6 +8,7 @@ import UploadNewProjects from "../../components/AdminPage/UploadNewProjects";
 import UploadNewClients from "../../components/AdminPage/UploadNewClients";
 import DashboardHome from "../../components/AdminPage/DashBoardhome.jsx";
 import Applications from "../Applications"; // ✅ Corrected import path
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 import {
   Menu,
@@ -29,7 +30,7 @@ const AdminDashboard = () => {
   const [jobs, setJobs] = useState([]);
   const [loadingLogout, setLoadingLogout] = useState(false);
 
-  const adminEmail = sessionStorage.getItem("email") || "Admin";
+  // const adminEmail = sessionStorage.getItem("email") || "Admin";
   const menuRef = useRef(null);
 
   // ✅ Add new job handler
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
     try {
       setLoadingLogout(true);
       await axios.post(
-        "http://192.168.1.114:8080/mechyam/api/admin/auth/logout",
+        `${API_BASE_URL}/api/admin/auth/logout`,
         {},
         {
           headers: { Authorization: `Bearer ${sessionStorage.getItem("adminToken")}` },

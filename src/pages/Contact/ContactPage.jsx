@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import contactImg from "../../assets/ContactUs-Image/contactus03.jpg";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -121,7 +122,7 @@ const ContactPage = () => {
         captchaAnswer: parseInt(formData.captchaAnswer, 10)
       };
 
-      await axios.post("http://192.168.1.192:8080/mechyam/api/contact/submit", payload);
+      await axios.post(`${API_BASE_URL}/api/contact/submit`, payload);
       alert("Form submitted successfully!");
 
       setFormData({

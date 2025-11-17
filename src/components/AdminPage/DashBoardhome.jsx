@@ -1,9 +1,10 @@
 // src/pages/AdminDashboard/DashboardHome.jsx
 
 import React, { useEffect, useState } from "react";
-import { Briefcase, Users, Building2, PlusCircle, FileText } from "lucide-react";
+import { Briefcase, Users, Building2, PlusCircle, FileText } from  "lucide-react";
 import axios from "axios";
 import Applications from "../../pages/Applications"; // ✅ imported
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const DashboardHome = ({ setActivePage }) => {
   const [stats, setStats] = useState({
@@ -20,82 +21,82 @@ const DashboardHome = ({ setActivePage }) => {
 
  
   useEffect(() => {
-  const fetchCounts = async () => {
-    try {
-      const token = sessionStorage.getItem("adminToken");
+    const fetchCounts = async () => {
+      try {
+        const token = sessionStorage.getItem("adminToken");
 
-      const [jobsRes, clientsRes, projectsRes, applicationsRes] =
-        await Promise.all([
-          axios.get("http://192.168.1.192:8080/mechyam/api/career/jobs/all", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          axios.get("http://192.168.1.192:8080/mechyam/clients/all", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          axios.get("http://192.168.1.192:8080/mechyam/api/projects", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          axios.get("http://192.168.1.192:8080/mechyam/api/career/applications", {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-        ]);
+        const [jobsRes, clientsRes, projectsRes, applicationsRes] =
+          await Promise.all([
+            axios.get(`${API_BASE_URL}/api/career/jobs/all`, {
+              headers: { Authorization: `Bearer ${token}` },
+            }),
+            axios.get(`${API_BASE_URL}/clients/all`, {
+              headers: { Authorization: `Bearer ${token}` },
+            }),
+            axios.get(`${API_BASE_URL}/api/projects`, {
+              headers: { Authorization: `Bearer ${token}` },
+            }),
+            axios.get(`${API_BASE_URL}/api/career/applications`, {
+              headers: { Authorization: `Bearer ${token}` },
+            }),
+          ]);
 
-      // ✅ Extract data safely
-      const extractArray = (res) =>
-        Array.isArray(res.data)
-          ? res.data
-          : Array.isArray(res.data?.data?.content)
-          ? res.data.data.content
-          : Array.isArray(res.data?.data)
-          ? res.data.data
-          : [];
+        // ✅ Extract data safely
+        const extractArray = (res) =>
+          Array.isArray(res.data)
+            ? res.data
+            : Array.isArray(res.data?.data?.content)
+              ? res.data.data.content
+              : Array.isArray(res.data?.data)
+                ? res.data.data
+                : [];
 
-      const jobs = extractArray(jobsRes);
-      const clients = extractArray(clientsRes);
-      const projects = extractArray(projectsRes);
-      const applications = extractArray(applicationsRes);
+        const jobs = extractArray(jobsRes);
+        const clients = extractArray(clientsRes);
+        const projects = extractArray(projectsRes);
+        const applications = extractArray(applicationsRes);
 
-      // ✅ Calculate total applicants count correctly
-      let totalApplicants = 0;
+        // ✅ Calculate total applicants count correctly
+        let totalApplicants = 0;
 
-      // if backend returns flat list of applicants
-      if (applications.length > 0 && applications[0].job) {
-        totalApplicants = applications.length;
-      } else {
-        // if backend returns grouped jobs with applicants[]
-        applications.forEach((job) => {
-          if (Array.isArray(job.applicants)) {
-            totalApplicants += job.applicants.length;
-          }
+        // if backend returns flat list of applicants
+        if (applications.length > 0 && applications[0].job) {
+          totalApplicants = applications.length;
+        } else {
+          // if backend returns grouped jobs with applicants[]
+          applications.forEach((job) => {
+            if (Array.isArray(job.applicants)) {
+              totalApplicants += job.applicants.length;
+            }
+          });
+        }
+
+        setStats({
+          jobs: jobs.length,
+          clients: clients.length,
+          projects: projects.length,
+          applications: totalApplicants, // ✅ fixed
         });
+        // 📌 Compare today's and yesterday's applications count
+        const yesterdayCount = Number(localStorage.getItem("applicationsCount"));
+
+        if (yesterdayCount && totalApplicants > yesterdayCount) {
+          setNewAppsMessage("Today, new applications have been received.");
+        }
+
+        // 📌 Save today's count for tomorrow
+        localStorage.setItem("applicationsCount", totalApplicants);
+
+      } catch (err) {
+        console.error("❌ Error fetching dashboard stats:", err);
+        setError("Unable to load dashboard data");
+      } finally {
+        setLoading(false);
       }
+    };
 
-      setStats({
-        jobs: jobs.length,
-        clients: clients.length,
-        projects: projects.length,
-        applications: totalApplicants, // ✅ fixed
-      });
-      // 📌 Compare today's and yesterday's applications count
-const yesterdayCount = Number(localStorage.getItem("applicationsCount"));
-
-if (yesterdayCount && totalApplicants > yesterdayCount) {
-  setNewAppsMessage("Today, new applications have been received.");
-}
-
-// 📌 Save today's count for tomorrow
-localStorage.setItem("applicationsCount", totalApplicants);
-
-    } catch (err) {
-      console.error("❌ Error fetching dashboard stats:", err);
-      setError("Unable to load dashboard data");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchCounts();
-}, []);
+    fetchCounts();
+  }, []);
 
 
   const cards = [
@@ -115,13 +116,13 @@ localStorage.setItem("applicationsCount", totalApplicants);
         <h1 className="text-4xl font-bold text-blue-800 tracking-wide drop-shadow-sm">
           Welcome, Admin
         </h1>
-       
+
       </div>
       {newAppsMessage && (
-  <div className="mb-6 bg-green-100 text-green-700 p-4 rounded-xl text-center font-semibold">
-    {newAppsMessage}
-  </div>
-)}
+        <div className="mb-6 bg-green-100 text-green-700 p-4 rounded-xl text-center font-semibold">
+          {newAppsMessage}
+        </div>
+      )}
 
 
       {/* Stats Cards */}
@@ -136,8 +137,8 @@ localStorage.setItem("applicationsCount", totalApplicants);
               <div>
                 <p className="text-sm opacity-90">{card.label}</p>
                 <p className="text-5xl font-bold mt-1">
-  {card.value > 0 ? card.value : ""}
-</p>
+                  {card.value > 0 ? card.value : ""}
+                </p>
 
               </div>
               {card.icon}

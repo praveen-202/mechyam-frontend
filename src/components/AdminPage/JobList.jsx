@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const JobList = () => {
   // Holds all job records fetched from the backend
@@ -20,7 +21,7 @@ const JobList = () => {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          "http://192.168.1.192:8080/mechyam/api/career/jobs/all"
+          `${API_BASE_URL}/api/career/jobs/all`
         );
 
         // Validate and extract jobs array from the response

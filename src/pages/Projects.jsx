@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const Projects = () => {
   // -------------------------------------------------------
@@ -16,7 +18,7 @@ const Projects = () => {
   // -------------------------------------------------------
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://192.168.1.192:8080/mechyam/api/projects");
+      const res = await axios.get(`${API_BASE_URL}/api/projects`);
       setProjects(res.data);
     } catch (error) {
       // Log any errors that occur during API call
