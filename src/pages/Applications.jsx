@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FileText, User, ArrowLeft, Users } from "lucide-react";
+import { FileText, User, Users } from "lucide-react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-const Applications = ({ setActivePage }) => {
+const Applications = () => {
   const [applications, setApplications] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ const Applications = ({ setActivePage }) => {
         const token = sessionStorage.getItem("adminToken");
 
         const response = await axios.get(
-          "http://192.168.1.192:8080/mechyam/api/career/applications",
+          `${API_BASE_URL}/api/career/applications`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -23,7 +24,7 @@ const Applications = ({ setActivePage }) => {
 
         console.log("🟢 Raw Applications API Response:", response.data);
 
-        // Handle data structure from backend (paginated or flat)
+        // Handle dynamic backend response structure
         const data =
           Array.isArray(response.data) && response.data.length
             ? response.data
@@ -35,7 +36,7 @@ const Applications = ({ setActivePage }) => {
 
         console.log("🟢 Extracted Applications Data:", data);
 
-        // 🧠 Group applications by job
+        // Group applications by job
         const jobMap = {};
         data.forEach((app) => {
           const jobCode = app.job?.id || "UNKNOWN";
@@ -61,8 +62,11 @@ const Applications = ({ setActivePage }) => {
         const grouped = Object.values(jobMap);
         console.log("🟢 Grouped Applications Data:", grouped);
 
-        // ✅ Calculate total applicants
-        const total = grouped.reduce((sum, job) => sum + job.applicants.length, 0);
+        // Total applicants count
+        const total = grouped.reduce(
+          (sum, job) => sum + job.applicants.length,
+          0
+        );
 
         setApplications(grouped);
         setTotalApplicants(total);
@@ -77,7 +81,6 @@ const Applications = ({ setActivePage }) => {
     fetchApplications();
   }, []);
 
-  // ✅ Loader
   if (loading)
     return (
       <div className="text-center text-lg py-10 font-medium text-gray-700">
@@ -85,7 +88,6 @@ const Applications = ({ setActivePage }) => {
       </div>
     );
 
-  // ✅ Error
   if (error)
     return (
       <div className="text-center text-red-600 py-10 font-semibold">
@@ -93,7 +95,6 @@ const Applications = ({ setActivePage }) => {
       </div>
     );
 
-  // ✅ No Data
   if (!applications || applications.length === 0)
     return (
       <div className="text-center text-gray-500 py-20">
@@ -101,7 +102,6 @@ const Applications = ({ setActivePage }) => {
       </div>
     );
 
-  // ✅ Page UI
   return (
     <div className="max-w-7xl mx-auto py-10 px-6 bg-gradient-to-br from-gray-50 to-gray-200 min-h-screen rounded-xl">
       {/* Header */}
@@ -109,10 +109,9 @@ const Applications = ({ setActivePage }) => {
         <h1 className="text-3xl font-bold text-blue-800 flex items-center gap-2">
           <FileText size={30} /> Job Applications
         </h1>
-       
       </div>
 
-      {/* ✅ Total Applicants Summary Card */}
+      {/* Total Applicants Card */}
       <div className="mb-10 bg-white shadow-md rounded-2xl p-6 flex items-center justify-between border border-gray-200">
         <div className="flex items-center gap-3">
           <Users size={36} className="text-blue-700" />
@@ -120,14 +119,15 @@ const Applications = ({ setActivePage }) => {
             <h3 className="text-lg font-semibold text-gray-700">
               Total Applicants
             </h3>
-            <p className="text-3xl font-bold text-blue-800">{totalApplicants}</p>
+            <p className="text-3xl font-bold text-blue-800">
+              {totalApplicants}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* ✅ Job List / Applicants View */}
+      {/* Job / Applicant View */}
       {selectedJob ? (
-        // --- Applicant list for a job ---
         <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
           <button
             onClick={() => setSelectedJob(null)}
@@ -156,6 +156,7 @@ const Applications = ({ setActivePage }) => {
                       {applicant.name}
                     </p>
                   </div>
+
                   <p className="text-gray-600 text-sm">
                     <strong>Email:</strong> {applicant.email}
                   </p>
@@ -181,7 +182,7 @@ const Applications = ({ setActivePage }) => {
           )}
         </div>
       ) : (
-        // --- Job list view with counts ---
+        // Job cards list
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {applications.map((job, idx) => (
             <div
@@ -196,9 +197,11 @@ const Applications = ({ setActivePage }) => {
                 </div>
                 <FileText className="text-orange-600" size={32} />
               </div>
+
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 {job.jobTitle}
               </h3>
+
               <p className="text-gray-600 flex items-center gap-1">
                 <Users size={18} className="text-blue-700" />
                 <span>

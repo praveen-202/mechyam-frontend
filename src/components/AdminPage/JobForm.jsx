@@ -1,6 +1,8 @@
 // src/components/AdminPage/JobForm.jsx
 import React, { useState } from "react";
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 // Convert USA format (MM/DD/YYYY) to HTML input format (YYYY-MM-DD)
 function convertToInputDate(usaDate) {
@@ -69,7 +71,7 @@ const JobForm = ({ onAddJob }) => {
 
       // POST request to backend API
       const response = await axios.post(
-        "http://192.168.1.192:8080/mechyam/api/career/jobs",
+        `${API_BASE_URL}/api/career/jobs`,
         jobData
       );
 

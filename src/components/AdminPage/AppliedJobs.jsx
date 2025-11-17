@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Search, RotateCcw, Download, X } from "lucide-react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const AppliedJobs = () => {
   const [applications, setApplications] = useState([]);
@@ -22,7 +23,7 @@ const AppliedJobs = () => {
   const fetchAllApplications = () => {
     setLoading(true);
     axios
-      .get(`http://192.168.1.114:8080/mechyam/api/career/applications?page=${page}&size=${pageSize}`)
+      .get(`${API_BASE_URL}/api/career/applications?page=${page}&size=${pageSize}`)
       .then((res) => {
         const data = res.data.data;
         setApplications(data?.content || []);
@@ -42,7 +43,7 @@ const AppliedJobs = () => {
     setLoading(true);
 
     axios
-      .get(`http://192.168.1.114:8080/mechyam/api/career/applications/job/${searchJobId}`)
+      .get(`${API_BASE_URL}/api/career/applications/job/${searchJobId}`)
       .then((res) => {
         setApplications(res.data.data || []);
         setTotalPages(1);
@@ -66,7 +67,7 @@ const AppliedJobs = () => {
 
   // ✅ Resume download
   const handleDownload = (id) => {
-    const fileUrl = `http://192.168.1.192:8080/mechyam/api/career/applications/${id}/resume`;
+    const fileUrl = `${API_BASE_URL}/api/career/applications/${id}/resume`;
     window.open(fileUrl, "_blank");
   };
 

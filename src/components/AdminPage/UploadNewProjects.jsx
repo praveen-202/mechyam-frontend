@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Loader2 } from "lucide-react"; // Lucide spinner icon
-
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const UploadNewProjects = () => {
   // ------------------- State Management -------------------
   const [title, setTitle] = useState(""); // Holds project title
@@ -18,7 +18,7 @@ const UploadNewProjects = () => {
   // Used to verify project upload success and refresh project data
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://192.168.1.192:8080/mechyam/api/projects");
+      const res = await axios.get(`${API_BASE_URL}/api/projects`);
       setProjects(res.data);
       setError("");
     } catch (error) {
@@ -75,7 +75,7 @@ const UploadNewProjects = () => {
       setLoading(true); // Show spinner during upload
 
       // Send POST request to backend
-      await axios.post("http://192.168.1.192:8080/mechyam/api/projects", formData, {
+      await axios.post(`${API_BASE_URL}/api/projects`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -105,7 +105,7 @@ const UploadNewProjects = () => {
     if (!window.confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      await axios.delete(`http://192.168.1.192:8080/mechyam/api/projects/${projectId}`);
+      await axios.delete(`${API_BASE_URL}/api/projects/${projectId}`);
       alert("Project deleted successfully!");
       fetchProjects();
     } catch (err) {
