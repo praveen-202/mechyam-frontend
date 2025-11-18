@@ -4,7 +4,8 @@ import { motion as Motion } from "framer-motion";
 import Chatbot from "../../components/Chatbot";
 
 // 🖼 Image imports
-import MechymaImage from "../../assets/Home-Images/Mechyam01.jpg";
+import MechymaImage from "../../assets/Home-Images/Mechyam02.png";
+import MechymaImage1 from "../../assets/Home-Images/Mechyam01.jpg"
 import engineeringImg from "../../assets/EngineeringDesign-Images/engineeringdesign.jpg";
 import structuralImg from "../../assets/StructuralAnalysis-Images/structural-analysis.jpg";
 import chess from "../../assets/Home-Images/chess.jpg";
@@ -41,17 +42,12 @@ const Home = () => {
       {/* ==============================
           🏠 HERO SECTION
       ============================== */}
-      <section
-        id="home"
-        className="relative w-full h-[80vh] md:h-screen overflow-hidden"
-      >
-        <img
-          src={MechymaImage}
-          alt="MECHYAM"
-          loading="eager"
-          decoding="async"
-          className="w-full h-full object-cover brightness-95 contrast-110"
-        />
+      {/* <section id="home" className="relative w-screen h-screen bg-grey-500 flex items-center justify-center overflow-hidden" > 
+        <img src={MechymaImage} alt="MECHYAM" className="w-full h-full object-contain mix-blend-multiply scale-110" /> */}
+
+        <section id="home" className="relative w-full h-[80vh] md:h-screen overflow-hidden" > 
+          <img src={MechymaImage1} alt="MECHYAM" loading="eager" decoding="async" className="w-full h-full object-cover brightness-95 contrast-110" />
+
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6">
           <Motion.h1
             initial={{ opacity: 0, y: 30 }}
