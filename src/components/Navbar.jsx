@@ -52,17 +52,17 @@ const Navbar = () => {
     <>
       {/* ✅ Navbar Section */}
       <nav
-        className={`bg-white shadow-md fixed top-0 left-0 w-full z-10 transition-transform duration-300 ${
+        className={`bg-white shadow-md fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${
           showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="flex justify-between items-center px-0 md:px-2 py-0 md:py-0">
+        <div className="flex justify-between items-center px-6 md:px-10 py-4">
           {/* Left: Logo + Company Name */}
           <div className="flex items-center space-x-3">
             <Link to="/" onClick={() => setMenuOpen(false)}>
-              <img src={logo} alt="Mechyam Logo" className="h-32 w-44" />
+              <img src={logo} alt="Mechyam Logo" className="h-20 w-17" />
             </Link>
-            {/* <span className="text-2xl font-bold text-blue-900">Mechyam</span> */}
+            <span className="text-2xl font-bold text-blue-900">Mechyam</span>
           </div>
 
           {/* Hamburger Menu Button (Mobile) */}
