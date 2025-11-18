@@ -110,7 +110,8 @@ const DashboardHome = ({ setActivePage }) => {
   if (error) return <p className="text-center text-red-600 py-10">{error}</p>;
 
   return (
-    <div className="max-w-7xl mx-auto py-10 px-6 bg-gradient-to-br from-gray-50 to-gray-200 min-h-screen rounded-xl">
+    <div className="w-full py-10 px-6 bg-gradient-to-br from-gray-50 to-gray-200 min-h-screen">
+
       {/* Header */}
       <div className="mb-10 text-center">
         <h1 className="text-4xl font-bold text-blue-800 tracking-wide drop-shadow-sm">
@@ -132,7 +133,7 @@ const DashboardHome = ({ setActivePage }) => {
       animate-pulse
     "
   >
-    🌱 <span className="font-bold">New candidate applications have been submitted today.</span>
+     <span className="font-bold">New candidate applications have been submitted today.</span>
   </div>
 )}
 

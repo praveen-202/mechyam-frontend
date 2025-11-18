@@ -46,7 +46,7 @@ const OurClients = () => {
   return (
     <>
       {/* Hero */}
-      <section className="relative w-full h-[45vh] overflow-hidden">
+      <section className="relative w-full h-[50vh] overflow-hidden">
         <img
           src={OurClientsImg}
           className="absolute inset-0 w-full h-full object-cover"
