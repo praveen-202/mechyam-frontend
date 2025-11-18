@@ -62,7 +62,7 @@ const JobList = () => {
 
     try {
       await axios.delete(
-        `http://192.168.1.192:8080/mechyam/api/career/jobs/${jobId}`
+        `${API_BASE_URL}/api/career/jobs/${jobId}`
       );
 
       // Update state after deletion
