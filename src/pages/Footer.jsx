@@ -10,7 +10,7 @@ const Footer = () => {
       { name: "Structural Analysis", link: "/structural-analysis" },
       { name: "Structural Engineering Services", link: "/structural-engineering" },
       { name: "Structural Steel Detailing Services", link: "/structuralsteeldetailingservices" },
-      
+
     ],
     MECHANICAL: [
       { name: "Product Design & Development", link: "/product-design-development" },
@@ -21,15 +21,15 @@ const Footer = () => {
       { name: "Aerospace and Transportation", link: "/aerospace-transportation" },
       { name: "Wind Energy and Renewables", link: "/windenergyrenewables" },
       { name: "Manufacturing and Plant Engineering", link: "/manufacturing-plantengineering" },
-      {name: "Structural System and Infrastructure",link:"/structural-infrastructure"},
-      {name:"Utilities & R&D Instutions",link:"/utilities-r&dinstutions"}
+      { name: "Structural System and Infrastructure", link: "/structural-infrastructure" },
+      { name: "Utilities & R&D Instutions", link: "/utilities-r&dinstutions" }
     ],
     GENERAL: [
       { name: "Home", link: "/" },
       { name: "About", link: "/about" },
       { name: "Projects", link: "/projects" },
       { name: "Contact", link: "/contact" },
-      
+
     ],
     CAREERS: [{ name: "View Opportunities", link: "/careers" }],
   };
@@ -49,23 +49,23 @@ const Footer = () => {
               CONTACT
             </h2>
             <div className="mb-6 text-sm leading-6 space-y-3">
-             
+
               <p className="font-semibold text-gray-300 text-lg">MECHYAM AI DESIGN SOLUTIONS PVT. LTD.</p>
 
               {/* Address */}
               <div className="flex items-start text-gray-300 mt-3 ">
-                  <FaMapMarkerAlt className=" mr-2 text-blue-400" size={25} /> 
-                  <a
-                      href="https://www.google.com/maps/place/Mechyam+AI+Design+Solutions+Pvt.+Ltd./@17.4321072,78.3497173,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb91f6f6f4f8b7:0x5d3f5e3c4e4e4e4e!8m2!3d17.4321029!4d78.351906"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="leading-relaxed hover:text-blue-400 transition"
-                  >
-                      Plot No. 97-E EP, Mahalaxmipuram, Narapally,
-                      Ghatkesar (M), Medhcal-Malkajgiri (D),
-                      Hyderabad, Telangana – 500 088.
-                  </a>
-                  
+                <FaMapMarkerAlt className=" mr-2 text-blue-400" size={25} />
+                <a
+                  href="https://www.google.com/maps/place/17%C2%B025'09.4%22N+78%C2%B037'38.8%22E/@17.4193417,78.6274306,49m/data=!3m1!1e3!4m4!3m3!8m2!3d17.419264!4d78.627434!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-relaxed hover:text-blue-400 transition"
+                >
+                  Plot No. 97-E EP, Mahalaxmipuram, Narapally,
+                  Ghatkesar (M), Medhcal-Malkajgiri (D),
+                  Hyderabad, Telangana – 500 088.
+                </a>
+
               </div>
 
               {/* Contact Numbers */}
@@ -74,28 +74,28 @@ const Footer = () => {
                 <p> + 91 80089 71490</p>
               </div>
               {/* Corporate Office */}
-                <p className="font-semibold text-gray-300 text-lg mt-3">
-                        CORPORATE OFFICE (India)
-                  </p>
-                <div className="flex items-start text-gray-300 ">
-                     <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
-                     <a
-                          href="https://www.google.com/maps/place/Mechyam+AI+Design+Solutions+Pvt.+Ltd./@17.4321072,78.3497173,17z/data=!3m1!4b1!4m5!3m4!1s0x3bcb91f6f6f4f8b7:0x5d3f5e3c4e4e4e4e!8m2!3d17.4321029!4d78.351906"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="leading-relaxed hover:text-blue-400 transition"
-                     >
-                         #501-B,PSR Prime Towers, 5th Floor,
-                          Beside DLF, Gachibowli,
-                          Hyderabad, Telangana – 500 032.
-                        </a>
-                </div>
+              <p className="font-semibold text-gray-300 text-lg mt-3">
+                CORPORATE OFFICE (India)
+              </p>
+              <div className="flex items-start text-gray-300 ">
+                <FaMapMarkerAlt className=" mr-2 text-blue-400 " size={30} />
+                <a
+                  href="https://www.google.com/maps/place/PSR+Prime+Tower/@17.4468856,78.3522741,442m/data=!3m1!1e3!4m6!3m5!1s0x3bcb93bc4ed905dd:0xde04a2d79881269f!8m2!3d17.4470695!4d78.354116!16s%2Fg%2F12qf68vbt!5m1!1e2?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-relaxed hover:text-blue-400 transition"
+                >
+                  #501-B,PSR Prime Towers, 5th Floor,
+                  Beside DLF, Gachibowli,
+                  Hyderabad, Telangana – 500 032.
+                </a>
+              </div>
 
-                <div className="flex items-center text-gray-300">
+              <div className="flex items-center text-gray-300">
                 <FaPhoneAlt className="mr-2 text-blue-400" />
                 <p>+91 8125263737, +91 8125263838</p>
               </div>
-              
+
 
               <hr className="my-3 border-gray-700" />
 
@@ -110,24 +110,24 @@ const Footer = () => {
                 >
                   www.mechyam.com
                 </a>
-                
-               
+
+
               </div>
 
               {/* Emails */}
               <div className="flex flex-col space-y-1 mt-2 text-gray-400">
 
-              {/* HR Mail */}
-              <div className="flex items-center hover:text-blue-400 transition duration-300">
-              <FaEnvelope className="mr-2 text-blue-400" />
-              <a
-                href="mailto:hr@mechyam.com?subject=Job%20Application"
-                className="underline"
-              >
-                hr@mechyam.com
-              </a>
+                {/* HR Mail */}
+                <div className="flex items-center hover:text-blue-400 transition duration-300">
+                  <FaEnvelope className="mr-2 text-blue-400" />
+                  <a
+                    href="mailto:hr@mechyam.com?subject=Job%20Application"
+                    className="underline"
+                  >
+                    hr@mechyam.com
+                  </a>
+                </div>
               </div>
-             </div> 
 
 
               <hr className="my-3 border-gray-700" />
@@ -146,18 +146,18 @@ const Footer = () => {
                     aria-label="LinkedIn"
                   >
                     <FaLinkedin size={28} />
-                    
+
                   </a>
-                  
-                   
-              <a
-            href="https://www.instagram.com/Mechyam_2025/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-pink-400 transition "
-          >
-            <FaInstagram size={28} />
-          </a>
+
+
+                  <a
+                    href="https://www.instagram.com/Mechyam_2025/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-pink-400 transition "
+                  >
+                    <FaInstagram size={28} />
+                  </a>
                 </div>
               </div>
             </div>
