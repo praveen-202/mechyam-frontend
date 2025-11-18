@@ -42,18 +42,19 @@ const Home = () => {
       {/* ==============================
           🏠 HERO SECTION
       ============================== */}
-      {/* <section id="home" className="relative w-screen h-screen bg-grey-500 flex items-center justify-center overflow-hidden" > 
-        <img src={MechymaImage} alt="MECHYAM" className="w-full h-full object-contain mix-blend-multiply scale-110" /> */}
+      <section id="home" className="relative w-screen h-screen bg-grey-500 flex items-center justify-center overflow-hidden" >
+        <img src={MechymaImage} alt="MECHYAM" className="w-full h-full object-contain mix-blend-multiply scale-110" />
 
-        <section id="home" className="relative w-full h-[80vh] md:h-screen overflow-hidden" > 
-          <img src={MechymaImage1} alt="MECHYAM" loading="eager" decoding="async" className="w-full h-full object-cover brightness-95 contrast-110" />
+        {/* <section id="home" className="relative w-full h-[80vh] md:h-screen overflow-hidden" > 
+          <img src={MechymaImage1} alt="MECHYAM" loading="eager" decoding="async" className="w-full h-full object-cover brightness-95 contrast-110" /> */}
 
-        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6">
+        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-6 transform -translate-y-[50px]">
+
           <Motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg mt-[180px]"
           >
             MECHYAM AI DESIGN SOLUTIONS
           </Motion.h1>
@@ -71,6 +72,7 @@ const Home = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
+            className="mt-[50px]"
           >
             <Link
               to="/about"
