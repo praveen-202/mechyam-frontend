@@ -375,7 +375,7 @@ const Navbar = () => {
           <div className="md:hidden bg-white shadow-md">
             <ul className="flex flex-col text-gray-800 font-medium px-6 py-4 space-y-3">
               <li>
-                <Link to="/steel-structure" onClick={() => setMenuOpen(false)}>
+                <Link to="/structural-steel" onClick={() => setMenuOpen(false)}>
                   Structural Steel
                 </Link>
               </li>
