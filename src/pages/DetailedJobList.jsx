@@ -91,12 +91,12 @@ const DetailedJobList = () => {
           </div>
 
           {/* Closing Date */}
-         <div>
-  <span className="font-bold">Closing Date:</span>{" "}
-  {job.closingDate
-    ? new Date(job.closingDate).toLocaleDateString("en-US")
-    : "N/A"}
-</div>
+          <div>
+            <span className="font-bold">Closing Date:</span>{" "}
+            {job.closingDate
+              ? new Date(job.closingDate).toLocaleDateString("en-US")
+              : "N/A"}
+          </div>
 
 
           {/* Job Description */}
